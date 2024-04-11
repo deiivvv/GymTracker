@@ -1,4 +1,4 @@
-package com.example.gymtracker.Dto;
+package com.dad.gymtracker.Dto;
 
 import lombok.*;
 @Getter

@@ -1,6 +1,12 @@
+drop database if exists gymtracker;
+create database gymtracker;
+
+use gymtracker;
+
 CREATE TABLE usuarios (
   id INT AUTO_INCREMENT,
   nombre VARCHAR(100),
+  contrasena VARCHAR(100),
   rol VARCHAR(50),
   PRIMARY KEY (id)
 );

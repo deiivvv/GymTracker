@@ -1,4 +1,4 @@
-package com.example.gymtracker.Controller;
+package com.dad.gymtracker.Controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
