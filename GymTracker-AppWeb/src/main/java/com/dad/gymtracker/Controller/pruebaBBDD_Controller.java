@@ -9,20 +9,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.dad.gymtracker.Dto.Usuario;
 import com.dad.gymtracker.Respository.UsuarioRepository;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@Controller
+@Controller/*
 @AllArgsConstructor 
-@NoArgsConstructor
+@NoArgsConstructor*/
 public class pruebaBBDD_Controller {
 	
     private UsuarioRepository usuarioRepository;
-
+/*
     @GetMapping("/usuarios")
     @ResponseBody
     public List<Usuario> obtenerTodosLosUsuarios() {
         return usuarioRepository.findAll();
-    }
+    }*/
 
 }

@@ -1,7 +1,8 @@
 package com.dad.gymtracker.Service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+/*import org.springframework.beans.factory.annotation.Autowired;*/
 import org.springframework.stereotype.Service;
+/*
 
 import com.dad.gymtracker.Dto.Usuario;
 import com.dad.gymtracker.Respository.UsuarioRepository;
@@ -12,16 +13,17 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+*/
 
 
 @Service
-@Slf4j
+/*@Slf4j*/
 //@AllArgsConstructor 
 //@NoArgsConstructor
 //@RequiredArgsConstructor
 public class UsuarioService {
 	
-//	@Autowired
+/*//	@Autowired
 	private final UsuarioRepository usuarioRepository;
 	
 	public UsuarioService(UsuarioRepository usuarioRepository) {
@@ -30,5 +32,5 @@ public class UsuarioService {
 
 	public List<Usuario> obtenerTodosLosUsuarios() {
         return usuarioRepository.findAll();
-    }
+    }*/
 }

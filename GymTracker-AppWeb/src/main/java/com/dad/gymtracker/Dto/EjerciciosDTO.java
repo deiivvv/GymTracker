@@ -1,11 +1,11 @@
 package com.dad.gymtracker.Dto;
 
-import lombok.*;
+/*import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder*/
 public class EjerciciosDTO {
 
     private int id;

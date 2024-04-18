@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Listado de Ejercicios</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script th:inline="javascript">
+        // Hacer la solicitud a la API cuando la página se cargue
+        function cargarEjercicios() {
+            axios.get('http://localhost:8081/ejercicios')
+                .then(function(response) {
+                    const listaEjercicios = document.getElementById('lista-ejercicios');
+                    response.data.forEach((e)=> {
+                        const li = document.createElement('li');
+                        li.innerHTML = e.nombre;
+                        listaEjercicios.appendChild(li);
+                    });
+                })
+                .catch(function(error) {
+                    console.error('Error al obtener los ejercicios:', error);
+                });
+        };
+    </script>
+
 </head>
-<body>
-$END$
+<body onload="cargarEjercicios()">
+<h1>Listado de Ejercicios</h1>
+
+<ul id="lista-ejercicios">
+    <!-- Aquí se mostrarán los ejercicios -->
+</ul>
+
+
 </body>
 </html>

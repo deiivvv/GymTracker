@@ -28,6 +28,11 @@ public class MenuController {
         return "perfil";
     }
 
+    @GetMapping("/mis-entrenamientos")
+    public String misEntrenamientos(Model model, HttpSession session){
+        model.addAttribute("usuario", session.getAttribute("usuario"));
+        return "misEntrenamientos";
+    }
 
     @GetMapping("/logout")
     public String destroySession(HttpServletRequest request) {
