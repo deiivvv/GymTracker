@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 public class ControladorApi {
 
@@ -35,7 +37,9 @@ public class ControladorApi {
 
 	@GetMapping("/ejercicios/{id}")
 	public ResponseEntity<Ejercicio> getEjercicio(@PathVariable(name = "id") Long id) {
-		return ResponseEntity.ok(ejerciciosRepository.findById(id).get());
+		Optional<Ejercicio> ejercicioOptional = ejerciciosRepository.findById(id);
+		return ejercicioOptional.map(ResponseEntity::ok)
+				.orElse(ResponseEntity.notFound().build());
 	}
 
 	@PostMapping("/ejercicios")
