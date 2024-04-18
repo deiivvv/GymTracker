@@ -1,5 +1,10 @@
 # Comandos Git
 
+- **Clonar repositorio:**
+  ```
+  git clone https://github.com/deiivvv/GymTracker.git
+  ```
+  
 - **Verificar la situación actual de tu repositorio Git y tus cambios:**
   ```
   git status
