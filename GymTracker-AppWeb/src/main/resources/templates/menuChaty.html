@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GymTracker</title>
+    <link rel="shortcut icon" href="/images/logo/logoBlanco.png">
+    <!--<link rel="stylesheet" type="text/css" href="/css/styles_menu.css">-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Para evitar que las imágenes desplacen el contenido */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .menu {
+            width: 250px; /* Ancho del menú */
+            text-align: center;
+        }
+
+        .menu h1 {
+            margin-top: 0;
+            color: #343a40;
+        }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .menu ul li {
+            margin-bottom: 10px;
+        }
+
+        .menu ul li a {
+            color: #343a40;
+            text-decoration: none;
+        }
+
+        .background-image {
+            width: calc(33.33% - 125px); /* 33.33% del ancho de la pantalla menos el ancho del menú */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .left-image {
+            background-image: url("static/images/menu/hombre/hombre1.png") ;
+        }
+
+        .right-image {
+            background-image: url("static/images/menu/hombre/hombre1.png") ;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="background-image left-image"></div>
+    <div class="menu">
+        <h1>GymTracker</h1>
+        <ul>
+            <li><a href="/inicio">Inicio</a></li>
+            <li><a href="/mis-entrenamientos">Mis entrenamientos</a></li>
+            <li><a href="/ejercicios">Ejercicios</a></li>
+            <li><a href="/estadisticas">Estadísticas</a></li>
+            <li><a href="/perfil">Perfil</a></li>
+            <li><a href="/logout">Salir</a></li>
+        </ul>
+    </div>
+    <div class="background-image right-image"></div>
+</div>
+
+</body>
+</html>

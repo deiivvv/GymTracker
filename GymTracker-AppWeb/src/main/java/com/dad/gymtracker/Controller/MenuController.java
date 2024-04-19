@@ -19,7 +19,8 @@ public class MenuController {
     @PostMapping("/inicio")
     public String menu(@RequestBody String usuario, HttpSession session){
         session.setAttribute("usuario",usuario);
-        return "menu";
+        /*return "menu";*/
+        return "menuChaty";
     }
 
     @GetMapping("/perfil")
