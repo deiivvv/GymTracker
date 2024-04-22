@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MenuController {
@@ -16,11 +17,11 @@ public class MenuController {
         return "login";
     }
 
-    @PostMapping("/inicio")
+    @RequestMapping("/inicio")
     public String menu(@RequestBody String usuario, HttpSession session){
         session.setAttribute("usuario",usuario);
         /*return "menu";*/
-        return "menuChaty";
+        return "b";
     }
 
     @GetMapping("/perfil")

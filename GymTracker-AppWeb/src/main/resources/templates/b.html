@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GymTracker</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+		body {
+			background-color: #f8f9fa;
+			/* Color de fondo */
+		}
+
+		.main-content {
+			margin-top: 50px;
+		}
+
+		.side-image {
+			width: 50%;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			padding: 20px;
+			text-align: center;
+		}
+
+		.side-image img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.menu {
+			background-color: #ffffff;
+			/* Color de fondo del menú */
+			border-radius: 10px;
+			padding: 20px;
+		}
+
+		.menu-item {
+			padding: 10px 0;
+		}
+
+		.menu-item a {
+			color: #000000;
+			/* Color del texto */
+			text-decoration: none;
+		}
+
+		@media (max-width: 768px) {
+			.side-image {
+				display: none;
+			}
+
+			.main-content {
+				margin-top: 20px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Imagen hombre -->
+	<div class="side-image" style="left: 0;">
+		<img src="https://via.placeholder.com/200x400.png?text=Hombre" alt="Hombre">
+	</div>
+
+	<!-- Imagen mujer -->
+	<div class="side-image" style="right: 0;">
+		<img src="https://via.placeholder.com/200x400.png?text=Mujer" alt="Mujer">
+	</div>
+
+	<!-- Contenido principal -->
+	<div class="container main-content">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="menu text-center">
+					<h1>GymTracker</h1>
+					<div class="menu-item">
+						<a href="/mis_entrenamientos">Mis entrenamientos</a>
+					</div>
+					<div class="menu-item">
+						<a href="/ejercicios">Ejercicios</a>
+					</div>
+					<div class="menu-item">
+						<a href="/estadisticas">Estadísticas</a>
+					</div>
+					<div class="menu-item">
+						<a href="/perfil">Perfil</a>
+					</div>
+					<div class="menu-item">
+						<a href="/salir">Salir</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
