@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Listado de Ejercicios</title>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<script th:inline="javascript">
+		// Hacer la solicitud a la API 
+		function cargarEjercicios(url) {
+			axios.get(url)
+				.then(function (response) {
+					const listaEjercicios = document.getElementById('lista-ejercicios');
+					listaEjercicios.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos ejercicios
+					response.data.forEach((e) => {
+						const li = document.createElement('li');
+						li.innerHTML = e.nombre;
+						listaEjercicios.appendChild(li);
+					});
+				})
+				.catch(function (error) {
+					console.error('Error al obtener los ejercicios:', error);
+				});
+		};
+
+		function cargarEjerciciosGenerales() {
+			const url = 'http://localhost:8081/ejercicios';
+			cargarEjercicios(url);
+		};
+
+		function cargarEjerciciosSegunSelector(selector, parametro) {
+			const select = document.querySelector(selector);
+			const seleccionado = select.value;
+			const url = `http://localhost:8081/ejercicios/${parametro}?${parametro}=${seleccionado}`;
+			cargarEjercicios(url);
+		}
+
+		function cargarEjerciciosSegunMusculo() {
+			cargarEjerciciosSegunSelector('select[name="musculo"]', 'musculo');
+		}
+
+		function cargarEjerciciosSegunEquipamiento() {
+			cargarEjerciciosSegunSelector('select[name="equipamiento"]', 'equipamiento');
+		}
+
+
+	</script>
+
+</head>
+
+<body onload="cargarEjerciciosGenerales()">
+
+	<select name="equipamiento" onchange="cargarEjerciciosSegunEquipamiento()">
+		<option value="" selected>Selecciona el equipamiento</option>
+		<option value="Pesas">Pesas</option>
+		<option value="Maquina">Máquina</option>
+		<option value="Polea">Polea</option>
+		<option value="Peso corporal">Peso corporal</option>
+	</select>
+
+
+	<select name="musculo" onchange="cargarEjerciciosSegunMusculo()">
+		<option value="" selected>Selecciona un músculo</option>
+		<option value="Cuadriceps">Cuadriceps</option>
+		<option value="Gluteos">Gluteos</option>
+		<option value="Pectorales">Pectorales</option>
+		<option value="Espalda">Espalda</option>
+		<option value="Biceps">Biceps</option>
+		<option value="Triceps">Triceps</option>
+		<option value="Deltoides">Deltoides</option>
+		<option value="Abdominales">Abdominales</option>
+		<option value="Gemelos">Gemelos</option>
+	</select>
+
+	<h1>Listado de Ejercicios</h1>
+
+	<ul id="lista-ejercicios">
+		<!-- Aquí se mostrarán los ejercicios -->
+	</ul>
+
+
+</body>
+
+</html>
