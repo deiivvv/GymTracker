@@ -1,4 +1,4 @@
-package com.example.apiejercicios;
+package com.example.apiejercicios.orm;
 
 import java.util.Objects;
 
@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Ejercicio {
+public class EjercicioORM {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,7 +71,7 @@ public class Ejercicio {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Ejercicio other = (Ejercicio) obj;
+		EjercicioORM other = (EjercicioORM) obj;
 		return id == other.id;
 	}
 }

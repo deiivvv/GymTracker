@@ -1,7 +1,7 @@
 package com.example.apiejercicios.Controller;
 
-import com.example.apiejercicios.Ejercicio;
-import com.example.apiejercicios.EjercicioRepository;
+import com.example.apiejercicios.orm.EjercicioORM;
+import com.example.apiejercicios.repositorio.RepositoryEjercicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,47 +10,47 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-public class ControladorApi {
+public class ControllerEjercicio {
 
 	@Autowired
-	private  EjercicioRepository ejerciciosRepository;
+	private RepositoryEjercicio ejerciciosRepository;
 
 	@GetMapping("/ejercicios")
-	public ResponseEntity<Iterable<Ejercicio>> getEjercicios() {
+	public ResponseEntity<Iterable<EjercicioORM>> getEjercicios() {
 		return ResponseEntity.ok(ejerciciosRepository.findAll());
 	}
 
 	@GetMapping("/ejercicios/nombre")
-	public ResponseEntity<Iterable<Ejercicio>> getEjerciciosByNombre(@RequestParam String nombre) {
+	public ResponseEntity<Iterable<EjercicioORM>> getEjerciciosByNombre(@RequestParam String nombre) {
 		return ResponseEntity.ok(ejerciciosRepository.findByNombreContaining(nombre));
 	}
 
 	@GetMapping("/ejercicios/musculo")
-	public ResponseEntity<Iterable<Ejercicio>> getEjerciciosByMusculo(@RequestParam String musculo) {
+	public ResponseEntity<Iterable<EjercicioORM>> getEjerciciosByMusculo(@RequestParam String musculo) {
 		return ResponseEntity.ok(ejerciciosRepository.findByMusculoContaining(musculo));
 	}
 
 	@GetMapping("/ejercicios/equipamiento")
-	public ResponseEntity<Iterable<Ejercicio>> getEjerciciosByEquipamieto(@RequestParam String equipamiento) {
+	public ResponseEntity<Iterable<EjercicioORM>> getEjerciciosByEquipamieto(@RequestParam String equipamiento) {
 		return ResponseEntity.ok(ejerciciosRepository.findByEquipamientoContaining(equipamiento));
 	}
 
 	@GetMapping("/ejercicios/{id}")
-	public ResponseEntity<Ejercicio> getEjercicio(@PathVariable(name = "id") Long id) {
-		Optional<Ejercicio> ejercicioOptional = ejerciciosRepository.findById(id);
+	public ResponseEntity<EjercicioORM> getEjercicio(@PathVariable(name = "id") Long id) {
+		Optional<EjercicioORM> ejercicioOptional = ejerciciosRepository.findById(id);
 		return ejercicioOptional.map(ResponseEntity::ok)
 				.orElse(ResponseEntity.notFound().build());
 	}
 
 	@PostMapping("/ejercicios")
-	public ResponseEntity<Ejercicio> createEjercicio(@RequestBody Ejercicio producto) {
+	public ResponseEntity<EjercicioORM> createEjercicio(@RequestBody EjercicioORM producto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(ejerciciosRepository.save(producto));
 	}
 
 	@PutMapping("/ejercicios/{id}")
-	public ResponseEntity<Ejercicio> updateEjercicio(@PathVariable(name = "id") Long id,
-			@RequestBody Ejercicio ejercicio) {
-		return ResponseEntity.ok(ejerciciosRepository.save(ejercicio));
+	public ResponseEntity<EjercicioORM> updateEjercicio(@PathVariable(name = "id") Long id,
+														@RequestBody EjercicioORM ejercicioORM) {
+		return ResponseEntity.ok(ejerciciosRepository.save(ejercicioORM));
 	}
 
 	@DeleteMapping("/ejercicios/{id}")
