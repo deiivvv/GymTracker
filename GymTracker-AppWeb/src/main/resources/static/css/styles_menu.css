@@ -2,50 +2,51 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Para evitar que las imágenes desplacen el contenido */
 }
 
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    justify-content: space-between;
+    position: relative;
 }
 
 .menu {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Ancho del menú */
+    background-color: #343a40;
+    color: white;
     padding: 20px;
-    width: 300px;
-}
-
-.menu h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
 }
 
 .menu ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
-    margin: 0;
 }
 
-.menu li {
+.menu ul li {
     margin-bottom: 10px;
 }
 
-.menu a {
+.menu ul li a {
+    color: white;
     text-decoration: none;
-    color: #555;
-    font-weight: bold;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
 }
 
-.menu a:hover {
-    background-color: #f0f0f0;
+.background-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: calc(50% - 125px); /* Ancho de la mitad de la pantalla menos la mitad del menú */
+    background-size: cover;
+    background-position: center;
+}
+
+.imagenHombre {
+    left: 0;
+    background-image: url("static/images/menu/hombre/hombre1.png") ;
+}
+
+.imagenMujer {
+    right: 0;
+    background-image: url("static/images/menu/hombre/hombre1.png") ;
 }

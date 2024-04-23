@@ -1,0 +1,102 @@
+body {
+  background-color: #f5f5f5;
+}
+
+.header-nav {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+}
+
+.header-nav-list {
+  display: flex;
+  justify-content: center;
+}
+
+.header-nav-item {
+  margin: 0 1rem;
+}
+
+.header-nav-link {
+  color: #333;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.header-nav-link:hover {
+  background-color: #ddd;
+}
+
+.header-nav-folder-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-nav-folder-item {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-nav-folder-item:last-child {
+  border-bottom: none;
+}
+
+.header-nav-link {
+  color: #333;
+  text-decoration: none;
+}
+
+.header-nav-text {
+  display: block;
+  padding: 10px 20px;
+}
+
+.icon-caret {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-caret--right {
+  transform: rotate(0deg);
+}
+
+.header-nav-item--folder:hover .icon-caret {
+  transform: rotate(90deg);
+}
+
+.gym-tracker-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.gym-tracker-logo h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (max-width: 767.98px) {
+  .header-nav-list {
+    flex-direction: column;
+  }
+
+  .header-nav-item {
+    margin: 1rem 0;
+  }
+
+  .header-nav-folder-content {
+    position: static;
+    width: 100%;
+  }
+}
