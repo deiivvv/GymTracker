@@ -13,11 +13,11 @@
 				.then(function (response) {
 					const listaEjercicios = document.getElementById('lista-ejercicios');
 					listaEjercicios.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos ejercicios
-					if(response.data.length===0){
+					if (response.data.length === 0) {
 						const li = document.createElement('li');
 						li.innerHTML = "No se ha encontrado ningún ejercicio bajo tu búsqueda";
 						listaEjercicios.appendChild(li);
-					}else {
+					} else {
 						response.data.forEach((e) => {
 							const li = document.createElement('li');
 							li.innerHTML = e.nombre;
@@ -35,36 +35,27 @@
 			cargarEjercicios(url);
 		};
 
-		function cargarEjerciciosSegunInput(id, parametro) {
-			const input = document.getElementById(id);
-			const valor = input.value;
-			const url = `http://localhost:8081/ejercicios/${parametro}?${parametro}=${valor}`;
+		function cargarEjerciciosSegunInputs() {
+			const musculo = document.getElementById('idMusculoEjercicio').value;
+			const equipamiento = document.getElementById('idEquipamientoEjercicio').value;
+			const nombre = document.getElementById('idNombreEjercicio').value;
+
+			const url = `http://localhost:8081/ejercicios/buscar?nombre=${nombre}&musculo=${musculo}&equipamiento=${equipamiento}`;
 			cargarEjercicios(url);
 		}
-
-		function cargarEjerciciosSegunMusculo() {
-			cargarEjerciciosSegunInput('idMusculoEjercicio', 'musculo');
-		}
-
-		function cargarEjerciciosSegunEquipamiento() {
-			cargarEjerciciosSegunInput('idEquipamientoEjercicio', 'equipamiento');
-		}
-       function cargarEjerciciosSegunNombre() {
-           cargarEjerciciosSegunInput('idNombreEjercicio', 'nombre');
-       }
 
 	</script>
 
 </head>
 
-<body onload="cargarEjerciciosGenerales()">
+<body onload="cargarEjerciciosSegunInputs()">
 
-    <div class="search-container">
-	    <label for="idNombreEjercicio">Buscar ejercicios por nombre:</label>
-	    <input type="text" id="idNombreEjercicio" onchange="cargarEjerciciosSegunNombre()">
-    </div>
+	<div class="search-container">
+		<label for="idNombreEjercicio">Buscar ejercicios por nombre:</label>
+		<input type="text" id="idNombreEjercicio" oninput="cargarEjerciciosSegunInputs()">
+	</div>
 
-	<select id="idEquipamientoEjercicio" onchange="cargarEjerciciosSegunEquipamiento()">
+	<select id="idEquipamientoEjercicio" onchange="cargarEjerciciosSegunInputs()">
 		<option value="" selected>Selecciona el equipamiento</option>
 		<option value="Pesas">Pesas</option>
 		<option value="Maquina">Máquina</option>
@@ -73,7 +64,7 @@
 	</select>
 
 
-	<select id="idMusculoEjercicio" onchange="cargarEjerciciosSegunMusculo()">
+	<select id="idMusculoEjercicio" onchange="cargarEjerciciosSegunInputs()">
 		<option value="" selected>Selecciona un músculo</option>
 		<option value="Cuadriceps">Cuadriceps</option>
 		<option value="Gluteos">Gluteos</option>
