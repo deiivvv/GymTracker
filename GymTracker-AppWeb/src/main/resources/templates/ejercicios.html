@@ -7,17 +7,23 @@
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 	<script th:inline="javascript">
-		// Hacer la solicitud a la API 
+		// Hacer la solicitud a la API
 		function cargarEjercicios(url) {
 			axios.get(url)
 				.then(function (response) {
 					const listaEjercicios = document.getElementById('lista-ejercicios');
 					listaEjercicios.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos ejercicios
-					response.data.forEach((e) => {
+					if(response.data.length===0){
 						const li = document.createElement('li');
-						li.innerHTML = e.nombre;
+						li.innerHTML = "No se ha encontrado ningún ejercicio bajo tu búsqueda";
 						listaEjercicios.appendChild(li);
-					});
+					}else {
+						response.data.forEach((e) => {
+							const li = document.createElement('li');
+							li.innerHTML = e.nombre;
+							listaEjercicios.appendChild(li);
+						});
+					}
 				})
 				.catch(function (error) {
 					console.error('Error al obtener los ejercicios:', error);
@@ -29,21 +35,23 @@
 			cargarEjercicios(url);
 		};
 
-		function cargarEjerciciosSegunSelector(selector, parametro) {
-			const select = document.querySelector(selector);
-			const seleccionado = select.value;
-			const url = `http://localhost:8081/ejercicios/${parametro}?${parametro}=${seleccionado}`;
+		function cargarEjerciciosSegunInput(id, parametro) {
+			const input = document.getElementById(id);
+			const valor = input.value;
+			const url = `http://localhost:8081/ejercicios/${parametro}?${parametro}=${valor}`;
 			cargarEjercicios(url);
 		}
 
 		function cargarEjerciciosSegunMusculo() {
-			cargarEjerciciosSegunSelector('select[name="musculo"]', 'musculo');
+			cargarEjerciciosSegunInput('idMusculoEjercicio', 'musculo');
 		}
 
 		function cargarEjerciciosSegunEquipamiento() {
-			cargarEjerciciosSegunSelector('select[name="equipamiento"]', 'equipamiento');
+			cargarEjerciciosSegunInput('idEquipamientoEjercicio', 'equipamiento');
 		}
-
+       function cargarEjerciciosSegunNombre() {
+           cargarEjerciciosSegunInput('idNombreEjercicio', 'nombre');
+       }
 
 	</script>
 
@@ -51,7 +59,12 @@
 
 <body onload="cargarEjerciciosGenerales()">
 
-	<select name="equipamiento" onchange="cargarEjerciciosSegunEquipamiento()">
+    <div class="search-container">
+	    <label for="idNombreEjercicio">Buscar ejercicios por nombre:</label>
+	    <input type="text" id="idNombreEjercicio" onchange="cargarEjerciciosSegunNombre()">
+    </div>
+
+	<select id="idEquipamientoEjercicio" onchange="cargarEjerciciosSegunEquipamiento()">
 		<option value="" selected>Selecciona el equipamiento</option>
 		<option value="Pesas">Pesas</option>
 		<option value="Maquina">Máquina</option>
@@ -60,7 +73,7 @@
 	</select>
 
 
-	<select name="musculo" onchange="cargarEjerciciosSegunMusculo()">
+	<select id="idMusculoEjercicio" onchange="cargarEjerciciosSegunMusculo()">
 		<option value="" selected>Selecciona un músculo</option>
 		<option value="Cuadriceps">Cuadriceps</option>
 		<option value="Gluteos">Gluteos</option>
