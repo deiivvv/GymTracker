@@ -12,11 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MenuController {
 
-    @GetMapping("/")
-    public String login(){
-        return "login";
-    }
-
     @RequestMapping("/inicio")
     public String menu(@RequestBody String usuario, HttpSession session){
         session.setAttribute("usuario",usuario);
