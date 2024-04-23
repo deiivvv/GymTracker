@@ -20,8 +20,8 @@ public class MenuController {
     @RequestMapping("/inicio")
     public String menu(@RequestBody String usuario, HttpSession session){
         session.setAttribute("usuario",usuario);
-        /*return "menu";*/
-        return "b";
+        return "menu";
+        
     }
 
     @GetMapping("/perfil")
