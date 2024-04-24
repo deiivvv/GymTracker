@@ -55,7 +55,7 @@
                     } else {
                         response.data.forEach((e) => {
                             const li = document.createElement('li');
-                            li.innerHTML = e.nombre;
+                            li.innerHTML = capitalizeFirstLetter(e.nombre);
                             listaEjercicios.appendChild(li);
                         });
                     }
@@ -79,6 +79,10 @@
             cargarEjercicios(url);
         }
 
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
     </script>
 
 </head>
@@ -92,10 +96,10 @@
 
 <select id="idEquipamientoEjercicio" onchange="cargarEjerciciosSegunInputs()">
     <option value="" selected>Selecciona el equipamiento</option>
-    <option value="Pesas">Pesas</option>
-    <option value="Maquina">Máquina</option>
-    <option value="Polea">Polea</option>
-    <option value="Peso corporal">Peso corporal</option>
+    <option value="pesas">Pesas</option>
+    <option value="maquina">Máquina</option>
+    <option value="polea">Polea</option>
+    <option value="peso corporal">Peso corporal</option>
 </select>
 
 
