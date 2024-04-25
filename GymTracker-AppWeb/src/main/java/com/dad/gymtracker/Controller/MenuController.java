@@ -35,6 +35,11 @@ public class MenuController {
         model.addAttribute("usuario", session.getAttribute("usuario"));
         return "misEntrenamientos";
     }
+    @GetMapping("/ejercicios")
+    public String ejercicios(Model model, HttpSession session){
+        model.addAttribute("usuario", session.getAttribute("usuario"));
+        return "ejercicios";
+    }
 
     @GetMapping("/logout")
     public String destroySession(HttpServletRequest request) {
