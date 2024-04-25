@@ -10,7 +10,14 @@ CREATE TABLE usuarios (
   rol VARCHAR(50),
   PRIMARY KEY (id)
 );
-
+create table perfil(
+ id_usuario int,
+ genero varchar(100),
+ altura float,
+ peso float,
+ edad int,
+ FOREIGN KEY (id_usuario)  REFERENCES usuarios(id)
+);
 CREATE TABLE rutinas (
   id INT AUTO_INCREMENT,
   id_usuario INT,
