@@ -1,30 +1,18 @@
-const hombreImages = ['hombre1.jpg', 'hombre2.jpg', 'hombre3.jpg']; // Lista de imágenes izquierdas
-const mujerImages = ['hombre1.jpg', 'hombre2.jpg', 'hombre3.jpg']; // Lista de imágenes derechas
+const hombreImages = ['hombre1.png', 'hombre2.png'];
+const mujerImages = ['hombre1.png', 'hombre2.png'];
 
-const hombre = document.querySelector('.imagenHombre');
-const mujer = document.querySelector('.imagenMujer');
+let index = 0;
 
-let indexHombre = 0;
-let indexMujer = 0;
-
-let IMAGENES="/images/menu";
 function cambioImages() {
 
-    /*document.getElementById("idImagenHombre").src=hombreImages[indexHombre];*/
-    document.getElementById("idImagenHombre").src=IMAGENES + "/hombre/" + hombreImages[indexHombre];
-    document.getElementById("idImagenMujer").src=IMAGENES + "/hombre/" + hombreImages[indexHombre];
-    /*document.getElementById("idImagenMujer").src=IMAGENES + "/mujer/" + mujerImages[indexMujer];*/
+    if(index >= hombreImages.length || index >= mujerImages.length){
+        index = 0;
+    }
+    document.getElementById("idImagenHombre").src= "./images/menu/hombre/" + hombreImages[index];
+    document.getElementById("idImagenMujer").src= "./images/menu/hombre/" + mujerImages[index];
 
-    indexHombre++;
-    indexMujer++;
-    /*// Cambiar la imagen izquierda
-    indexHombre = (indexHombre + 1) % indexHombre.length;
-    hombre.style.backgroundImage = `url(${hombreImages[indexMujer]})`;
+    index++;
 
-    // Cambiar la imagen derecha
-    indexMujer = (indexMujer + 1) % indexMujer.length;
-    mujer.style.backgroundImage = `url(${mujerImages[indexMujer]})`;*/
 }
 
-// Cambiar las imágenes cada 3 segundos
 setInterval(cambioImages, 3000);

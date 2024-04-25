@@ -1,39 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>GymTracker</title>
-    <link rel="shortcut icon" href="/images/logo/logoBlanco.png">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GymTracker</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="/js/menu.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/css/styles_menu.css">
-    <script src="/js/menu.js"></script>
+	<style>
+		body {
+			background-color: #f8f9fa;
+
+			display: grid;
+			grid-template-columns: 2fr 3fr 2fr;
+			grid-template-rows: repeat(4, 1fr);
+			grid-column-gap: 0px;
+			grid-row-gap: 3px;
+		}
+
+		.main-content {
+			margin-top: 50px;
+		}
+
+		.title{
+			grid-column: 2;
+			grid-row: 1;
+			display: flex;
+			justify-content: center;
+			align-items: end;
+		}
+		.container{
+			grid-column: 2;
+			grid-row: 2/4;
+		}
+
+		.hombre {
+			grid-column: 1;
+			grid-row: 2/4;
+		}
+
+		.mujer {
+			grid-column: 3;
+			grid-row: 2/4;
+		}
+
+		img{
+			width: 100%;
+		}
+
+		.side-image {
+			width: 100%;
+			padding: 20px;
+			text-align: center;
+		}
+
+		.menu {
+			background-color: #ffffff;
+			border-radius: 10px;
+			padding: 20px;
+		}
+
+		.menu-item {
+			padding: 10px 0;
+		}
+
+		.menu-item a {
+			color: #000000;
+			/* Color del texto */
+			text-decoration: none;
+		}
+
+		@media (max-width: 768px) {
+			.side-image {
+				display: none;
+			}
+
+			.main-content {
+				margin-top: 20px;
+			}
+		}
+	</style>
 </head>
-<body>
-
-<!--<div th:replace="fragments/sidebar.html"></div>-->
 
 <body>
+	<div class="side-image hombre">
+		<img id="idImagenHombre" src="/images/menu/hombre/hombre1.png" alt="Hombre">
+	</div>
 
-<div class="encabezado">
-    <h1>GymTracker</h1>
-</div>
-<div class="container">
-    <div class="laterales">
-        <img id="idImagenHombre" class="imagenLateral izq" src="/images/menu/hombre/hombre1.png" alt="">
-    </div>
-    <div class="menu">
-        <ul>
-            <li><a href="/inicio">Inicio</a></li>
-            <li><a href="/mis-entrenamientos">Mis entrenamientos</a></li>
-            <li><a href="/ejercicios">Ejercicios</a></li>
-            <li><a href="/estadisticas">Estadísticas</a></li>
-            <li><a href="/perfil">Perfil</a></li>
-            <li><a href="/logout">Salir</a></li>
-        </ul>
-    </div>
-    <div class="laterales">
-        <img id="idImagenMujer"  class="imagenLateral derecha" src="/images/menu/hombre/hombre2.png" alt="">
-    </div>
-</div>
+	<div class="side-image mujer">
+		<img id="idImagenMujer" src="/images/menu/hombre/hombre2.png" alt="Hombre">
+	</div>
+
+	<div class="title">
+		<h1>GymTracker</h1>
+	</div>
+
+	<div class="container main-content">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="menu text-center">
+
+					<div class="menu-item">
+						<a href="/mis_entrenamientos">Mis entrenamientos  &#128197;</a>
+					</div>
+					<div class="menu-item">
+						<a href="/ejercicios">Ejercicios &#128170;</a>
+					</div>
+					<div class="menu-item">
+						<a href="/estadisticas">Estadísticas  &#128200;</a>
+					</div>
+					<div class="menu-item">
+						<a href="/perfil">Perfil &#128100;</a>
+					</div>
+					<div class="menu-item">
+						<a href="/salir">Salir &#128682;</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
