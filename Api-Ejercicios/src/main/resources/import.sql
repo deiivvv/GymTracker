@@ -1,5 +1,3 @@
-Aquí están todos los valores modificados en minúsculas y sin tildes:
-
 -- Ejercicio 1: Sentadillas
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('sentadillas', 'cuadriceps, gluteos', 'ejercicio para piernas y gluteos', 'pesas');
 
