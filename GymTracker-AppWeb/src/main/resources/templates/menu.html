@@ -12,9 +12,16 @@
 
 <!--<div th:replace="fragments/sidebar.html"></div>-->
 
+<body>
+
+<div class="encabezado">
+    <h1>GymTracker</h1>
+</div>
 <div class="container">
+    <div class="laterales">
+        <img id="idImagenHombre" class="imagenLateral izq" src="/images/menu/hombre/hombre1.png" alt="">
+    </div>
     <div class="menu">
-        <h1>GymTracker</h1>
         <ul>
             <li><a href="/inicio">Inicio</a></li>
             <li><a href="/mis-entrenamientos">Mis entrenamientos</a></li>
@@ -24,8 +31,9 @@
             <li><a href="/logout">Salir</a></li>
         </ul>
     </div>
-    <div class="background-image imagenHombre"></div>
-    <div class="background-image imagenMujer"></div>
+    <div class="laterales">
+        <img id="idImagenMujer"  class="imagenLateral derecha" src="/images/menu/hombre/hombre2.png" alt="">
+    </div>
 </div>
 </body>
 </html>

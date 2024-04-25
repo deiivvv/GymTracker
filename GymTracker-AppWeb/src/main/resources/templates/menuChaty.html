@@ -5,6 +5,7 @@
     <title>GymTracker</title>
     <link rel="shortcut icon" href="/images/logo/logoBlanco.png">
     <!--<link rel="stylesheet" type="text/css" href="/css/styles_menu.css">-->
+    <!--<script src="/js/menu.js"></script>-->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,11 +14,23 @@
             overflow: hidden; /* Para evitar que las imágenes desplacen el contenido */
         }
 
+        .encabezado {
+            text-align: center;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+        }
+        .encabezado h1{
+
+            width: 100%;
+        }
+
         .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 100vh;
+            padding: 0 20px; /* Añadido para dar espacio a los laterales */
         }
 
         .menu {
@@ -33,38 +46,52 @@
         .menu ul {
             list-style-type: none;
             padding: 0;
+            margin-top: 20px;
         }
 
         .menu ul li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .menu ul li a {
             color: #343a40;
+            font-size: 18px; /* Tamaño de la fuente aumentado */
             text-decoration: none;
         }
 
-        .background-image {
-            width: calc(33.33% - 125px); /* 33.33% del ancho de la pantalla menos el ancho del menú */
-            background-size: cover;
-            background-position: center;
+        .laterales{
+            text-align: center;
+            width: 30%;
         }
 
-        .left-image {
-            background-image: url("static/images/menu/hombre/hombre1.png") ;
+        .imagenLateral{
+            max-width: 100%;
+            height: 50vh;
+            overflow: hidden;
         }
 
-        .right-image {
-            background-image: url("static/images/menu/hombre/hombre1.png") ;
+        .izq{
+            order: 0;
         }
+
+        .derecha{
+            order: 2; /* Cambiado para hacer simétrico */
+        }
+
     </style>
 </head>
 <body>
 
+<div class="encabezado">
+    <h1>GymTracker</h1>
+</div>
+
 <div class="container">
-    <div class="background-image left-image"></div>
+    <div class="laterales">
+        <img id="idImagenHombre" class="imagenLateral izq" src="/images/menu/hombre/hombre1.png" alt="">
+    </div>
+
     <div class="menu">
-        <h1>GymTracker</h1>
         <ul>
             <li><a href="/inicio">Inicio</a></li>
             <li><a href="/mis-entrenamientos">Mis entrenamientos</a></li>
@@ -74,7 +101,11 @@
             <li><a href="/logout">Salir</a></li>
         </ul>
     </div>
-    <div class="background-image right-image"></div>
+
+    <div class="laterales">
+        <img id="idImagenMujer"  class="imagenLateral derecha" src="/images/menu/hombre/hombre2.png" alt="">
+    </div>
+
 </div>
 
 </body>

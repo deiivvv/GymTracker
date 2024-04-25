@@ -20,7 +20,7 @@ public class MenuController {
     public String menu(@RequestBody String usuario, HttpSession session){
         session.setAttribute("usuario",usuario);
         /*return "menu";*/
-        return "menuChaty";
+        return "menu";
     }
 
     @GetMapping("/perfil")

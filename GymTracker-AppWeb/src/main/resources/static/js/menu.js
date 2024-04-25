@@ -7,14 +7,23 @@ const mujer = document.querySelector('.imagenMujer');
 let indexHombre = 0;
 let indexMujer = 0;
 
+let IMAGENES="/images/menu";
 function cambioImages() {
-    // Cambiar la imagen izquierda
+
+    /*document.getElementById("idImagenHombre").src=hombreImages[indexHombre];*/
+    document.getElementById("idImagenHombre").src=IMAGENES + "/hombre/" + hombreImages[indexHombre];
+    document.getElementById("idImagenMujer").src=IMAGENES + "/hombre/" + hombreImages[indexHombre];
+    /*document.getElementById("idImagenMujer").src=IMAGENES + "/mujer/" + mujerImages[indexMujer];*/
+
+    indexHombre++;
+    indexMujer++;
+    /*// Cambiar la imagen izquierda
     indexHombre = (indexHombre + 1) % indexHombre.length;
     hombre.style.backgroundImage = `url(${hombreImages[indexMujer]})`;
 
     // Cambiar la imagen derecha
     indexMujer = (indexMujer + 1) % indexMujer.length;
-    mujer.style.backgroundImage = `url(${mujerImages[indexMujer]})`;
+    mujer.style.backgroundImage = `url(${mujerImages[indexMujer]})`;*/
 }
 
 // Cambiar las imágenes cada 3 segundos
