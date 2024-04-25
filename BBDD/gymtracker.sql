@@ -11,6 +11,15 @@ CREATE TABLE usuarios (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE perfil (
+  id_usuario INT AUTO_INCREMENT,
+  genero VARCHAR(100),
+  edad int,
+  altura float,
+  peso float,
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);
+
 CREATE TABLE rutinas (
   id INT AUTO_INCREMENT,
   id_usuario INT,
