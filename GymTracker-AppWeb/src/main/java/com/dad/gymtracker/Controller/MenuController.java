@@ -22,8 +22,7 @@ public class MenuController {
                        HttpSession session){
 
         /*cosas de bbdd y  login*/
-        /*session.setAttribute("idUsuario", id);*/
-        session.setAttribute("usuario",usuario);
+        session.setAttribute("idUsuario", 3);
         return "menu";
 
     }
@@ -39,7 +38,7 @@ public class MenuController {
         return "ejercicios";
     }
 
-    @GetMapping("/logout")
+    @GetMapping("/cerrar-sesion")
     public String destroySession(HttpServletRequest request) {
         request.getSession().invalidate();
         return "redirect:/";

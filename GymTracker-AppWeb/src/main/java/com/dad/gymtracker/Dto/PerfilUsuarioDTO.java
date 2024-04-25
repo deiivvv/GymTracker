@@ -7,19 +7,18 @@ import jakarta.persistence.Id;
 public class PerfilUsuarioDTO {
 
     @Id
-    private Long id;
+    private int id;
     private String nombre;
     private int edad;
     private float altura;
-    /*private float peso;
-    private String mail;
-    private String genero;*/
+    private float peso;
+    private String genero;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getNombre() {
@@ -41,9 +40,25 @@ public class PerfilUsuarioDTO {
     public float getAltura() {
         return altura;
     }
-
+    
     public void setAltura(float altura) {
         this.altura = altura;
+    }
+
+    public void setPeso(float peso) {
+        this.peso = peso;
+    }
+    public float getPeso() {
+        return peso;
+    }
+
+    
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
 }

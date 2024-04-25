@@ -14,28 +14,25 @@
 
 <div class="container">
     <div class="profile">
-        <h1>Mi Perfil</h1>
+        <h1>Mi perfil</h1>
         <div class="profile-info">
             <div class="info">
                 <strong>Nombre: </strong><span th:text="${perfilUsuario.nombre}"></span>
             </div>
             <div class="info">
-                <strong>Email: </strong> juan@example.com
+                <strong>Edad: </strong><span th:text="${perfilUsuario.edad}"></span> años
             </div>
             <div class="info">
-                <strong>Edad: </strong><span th:text="${perfilUsuario.edad}"></span>
+                <strong>Género: </strong><span th:text="${perfilUsuario.genero}"></span>
             </div>
             <div class="info">
-                <strong>Género: </strong> Masculino
-            </div>
-            <div class="info">
-                <strong>Peso: </strong> 75 kg
+                <strong>Peso: </strong><span th:text="${perfilUsuario.peso}"></span> Kg
             </div>
             <div class="info">
                 <strong>Altura: </strong><span th:text="${perfilUsuario.altura}"></span>
             </div>
         </div>
-        <a href="editarperfil.html">Editar Perfil</a>
+        <a href="/perfil/editar">Editar Perfil</a>
     </div>
 </div>
 </body>

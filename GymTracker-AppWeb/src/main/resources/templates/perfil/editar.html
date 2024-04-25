@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - GymTracker</title>
+    <link rel="shortcut icon" href="/images/logo/logoBlanco.png">
+    <link rel="stylesheet" type="text/css" href="/css/styles_perfil.css">
+</head>
+<body>
+
+<div th:replace="~{fragments/sidebar.html}"></div>
+
+<div class="container">
+    <div class="profile">
+        <h1>Editar Perfil</h1>
+        <form action="/perfil/guardar" method="post" th:object="${perfilUsuarioDTO}">
+            <div class="profile-info">
+                <div class="info">
+                    <label for="idNombre">Nombre:</label>
+                    <input type="text" id="idNombre" name="nombre" th:field="*{nombre}">
+                </div>
+                <div class="info">
+                    <label for="idEdad">Edad:</label>
+                    <input type="number" id="idEdad" name="edad" th:field="*{edad}">
+                </div>
+                <div class="info">
+                    <label for="idGenero">Género:</label>
+                    <select id="idGenero" name="genero" th:field="*{genero}">
+						<option value="Masculino">Masculino</option>
+						<option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+                <div class="info">
+                    <label for="idPeso">Peso (kg):</label>
+                    <input type="number" id="idPeso" name="peso" th:field="*{peso}">
+                </div>
+                <div class="info">
+                    <label for="idAltura">Altura (cm):</label>
+                    <input type="number" id="idAltura" name="altura" th:field="*{altura}">
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit">Guardar</button>
+                <a href="/perfil" class="cancel-button">Cancelar</a>
+                <a href="/perfil/elimiar" class="delete-button">Eliminar Cuenta</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
