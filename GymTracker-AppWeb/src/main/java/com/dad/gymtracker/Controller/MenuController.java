@@ -18,16 +18,14 @@ public class MenuController {
     }
 
     @RequestMapping("/inicio")
-    public String menu(@RequestBody String usuario, HttpSession session){
+    public String menu(@RequestBody String usuario,
+                       HttpSession session){
+
+        /*cosas de bbdd y  login*/
+        /*session.setAttribute("idUsuario", id);*/
         session.setAttribute("usuario",usuario);
         return "menu";
-        
-    }
 
-    @GetMapping("/perfil")
-    public String perfil(Model model, HttpSession session){
-        model.addAttribute("usuario", session.getAttribute("usuario"));
-        return "perfil";
     }
 
     @GetMapping("/mis-entrenamientos")

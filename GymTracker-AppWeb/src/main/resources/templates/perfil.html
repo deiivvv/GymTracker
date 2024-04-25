@@ -17,22 +17,22 @@
         <h1>Mi Perfil</h1>
         <div class="profile-info">
             <div class="info">
-                <strong>Nombre:</strong><span></span>
+                <strong>Nombre: </strong><span th:text="${perfilUsuario.nombre}"></span>
             </div>
             <div class="info">
-                <strong>Email:</strong> juan@example.com
+                <strong>Email: </strong> juan@example.com
             </div>
             <div class="info">
-                <strong>Edad:</strong> 30 años
+                <strong>Edad: </strong><span th:text="${perfilUsuario.edad}"></span>
             </div>
             <div class="info">
-                <strong>Género:</strong> Masculino
+                <strong>Género: </strong> Masculino
             </div>
             <div class="info">
-                <strong>Peso:</strong> 75 kg
+                <strong>Peso: </strong> 75 kg
             </div>
             <div class="info">
-                <strong>Altura:</strong> 175 cm
+                <strong>Altura: </strong><span th:text="${perfilUsuario.altura}"></span>
             </div>
         </div>
         <a href="editarperfil.html">Editar Perfil</a>
