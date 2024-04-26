@@ -9,6 +9,8 @@
             <basic name="nombre"/>
             <basic name="altura"/>
             <basic name="edad"/>
+            <basic name="peso"/>
+            <basic name="genero"/>
         </attributes>
     </entity>
 
