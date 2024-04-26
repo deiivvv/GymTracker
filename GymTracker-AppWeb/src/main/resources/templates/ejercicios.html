@@ -5,86 +5,8 @@
     <meta charset="UTF-8">
     <title>Listado de Ejercicios</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <style>
-        /* Estilos para el contenedor de búsqueda */
-        .search-container {
-            margin-bottom: 20px;
-        }
-
-        /* Estilos para los selects */
-        select {
-            padding: 8px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
-        }
-
-        /* Estilos para el input de búsqueda */
-        input[type="text"] {
-            padding: 8px;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        /* Estilos para la lista de ejercicios */
-        #lista-ejercicios {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        #lista-ejercicios li {
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-    </style>
-    <script th:inline="javascript">
-        // Hacer la solicitud a la API
-        function cargarEjercicios(url) {
-            axios.get(url)
-                .then(function (response) {
-                    const listaEjercicios = document.getElementById('lista-ejercicios');
-                    listaEjercicios.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos ejercicios
-                    if (response.data.length === 0) {
-                        const li = document.createElement('li');
-                        li.innerHTML = "No se ha encontrado ningún ejercicio bajo tu búsqueda";
-                        listaEjercicios.appendChild(li);
-                    } else {
-                        response.data.forEach((e) => {
-                            const li = document.createElement('li');
-                            li.innerHTML = capitalizeFirstLetter(e.nombre);
-                            listaEjercicios.appendChild(li);
-                        });
-                    }
-                })
-                .catch(function (error) {
-                    console.error('Error al obtener los ejercicios:', error);
-                });
-        };
-
-        function cargarEjerciciosGenerales() {
-            const url = 'http://localhost:8081/ejercicios';
-            cargarEjercicios(url);
-        };
-
-        function cargarEjerciciosSegunInputs() {
-            const musculo = document.getElementById('idMusculoEjercicio').value;
-            const equipamiento = document.getElementById('idEquipamientoEjercicio').value;
-            const nombre = document.getElementById('idNombreEjercicio').value;
-
-            const url = `http://localhost:8081/ejercicios/buscar?nombre=${nombre}&musculo=${musculo}&equipamiento=${equipamiento}`;
-            cargarEjercicios(url);
-        }
-
-        function capitalizeFirstLetter(string) {
-            return string.charAt(0).toUpperCase() + string.slice(1);
-        }
-
-    </script>
-
+    <link rel="stylesheet" type="text/css" href="/css/styles_ejercicios.css">
+    <script src="/js/ejercicios.js"></script>
 </head>
 
 <body onload="cargarEjerciciosSegunInputs()">
