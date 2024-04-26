@@ -11,7 +11,7 @@ import org.hibernate.annotations.Immutable;
 @NoArgsConstructor
 @Builder
 @Immutable
-public class PerfilUsuarioDTO {
+public class PerfilDTO {
 
     @Id
     private int id;

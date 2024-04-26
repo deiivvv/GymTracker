@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - GymTracker</title>
     <link rel="shortcut icon" href="/images/logo/logoBlanco.png">
 
-    <link rel="stylesheet" type="text/css" href="/css/styles_perfil.css">
+    <div th:replace="~{fragments/bootstrap.html}"></div>
+    <!--<link rel="stylesheet" type="text/css" href="/css/styles_perfil.css">-->
 </head>
-<body>
 
-<div th:replace="fragments/sidebar.html"></div>
-
-<div class="container">
-    <div class="profile">
-        <h1>Mi perfil</h1>
-        <div class="profile-info">
-            <div class="info">
-                <strong>Nombre: </strong><span th:text="${perfilUsuario.nombre}"></span>
-            </div>
-            <div class="info">
-                <strong>Edad: </strong><span th:text="${perfilUsuario.edad}"></span> años
-            </div>
-            <div class="info">
-                <strong>Género: </strong><span th:text="${perfilUsuario.genero}"></span>
-            </div>
-            <div class="info">
-                <strong>Peso: </strong><span th:text="${perfilUsuario.peso}"></span> Kg
-            </div>
-            <div class="info">
-                <strong>Altura: </strong><span th:text="${perfilUsuario.altura}"></span>
+<body style="background-color: lightgrey;">
+    <!--<div th:replace="fragments/sidebar.html"></div>-->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img class="img-fluid" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                <h1 class="text-center">Mi Perfil</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="idNombre"><b>Nombre:</b></label>
+                            <input th:field="*{perfilUsuario.nombre}" id="idNombre" class="form-control" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="idEdad"><b>Edad:</b></label>
+                            <input th:field="*{perfilUsuario.edad}" id="idEdad" class="form-control" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="idGenero"><b>Género:</b></label>
+                            <input th:field="*{perfilUsuario.genero}" id="idGenero" class="form-control" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="idPeso"><b>Peso (kg):</b></label>
+                            <input th:field="*{perfilUsuario.peso}" id="idPeso" class="form-control" readonly/>
+                        </div>
+                        <div class="form-group">
+                            <label for="idAltura"><b>Altura (cm): </b></label>
+                            <input th:field="*{perfilUsuario.altura}" id="idAltura" class="form-control" readonly/>
+                        </div>
+                        <div class="text-center">
+                            <a href="/perfil/editar" class="btn btn-success">Editar Perfil</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <a href="/perfil/editar">Editar Perfil</a>
     </div>
-</div>
 </body>
+
 </html>

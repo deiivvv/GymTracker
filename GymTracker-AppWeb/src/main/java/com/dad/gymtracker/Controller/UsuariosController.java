@@ -1,7 +1,8 @@
 package com.dad.gymtracker.Controller;
 
-import com.dad.gymtracker.Dto.PerfilUsuarioDTO;
+import com.dad.gymtracker.Dto.PerfilDTO;
 import com.dad.gymtracker.Dto.UsuarioDTO;
+import com.dad.gymtracker.Dto.UsuarioPerfilDTO;
 import com.dad.gymtracker.Service.UsuarioService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -20,15 +21,13 @@ public class UsuariosController {
 
     @GetMapping("/usuario/crear")
     public String crearUsuario(Model model){
-        model.addAttribute("usuarioDTO" ,new UsuarioDTO());
-        model.addAttribute("perfilUsuarioDTO" ,new PerfilUsuarioDTO());
+        model.addAttribute("usuarioPerfilDTO", new UsuarioPerfilDTO());
         return RUTATEMPLATES + "/crear";
     }
 
     @PostMapping("/usuario/crear")
-    public String crearUsuario(@ModelAttribute UsuarioDTO usuarioDTO,
-                               @ModelAttribute PerfilUsuarioDTO perfilUsuarioDTO){
-        usuarioService.crearUsuario(usuarioDTO, perfilUsuarioDTO);
+    public String crearUsuario(@ModelAttribute UsuarioPerfilDTO usuarioPerfilDTO){
+        usuarioService.crearUsuario(usuarioPerfilDTO.getUsuarioDTO(), usuarioPerfilDTO.getPerfilDTO());
         return "redirect:/";
     }
 

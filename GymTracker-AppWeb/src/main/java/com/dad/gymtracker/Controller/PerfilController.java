@@ -1,6 +1,6 @@
 package com.dad.gymtracker.Controller;
 
-import com.dad.gymtracker.Dto.PerfilUsuarioDTO;
+import com.dad.gymtracker.Dto.PerfilDTO;
 import com.dad.gymtracker.Service.PerfilService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
@@ -30,10 +30,10 @@ public class PerfilController {
     }
     
     @PostMapping("/perfil/guardar")
-    public String editar(@ModelAttribute PerfilUsuarioDTO perfilUsuarioDTO,
+    public String editar(@ModelAttribute PerfilDTO perfilDTO,
     					HttpSession session){
-    	perfilUsuarioDTO.setId((int)session.getAttribute("idUsuario"));
-        perfilService.editarUsuario(perfilUsuarioDTO);
+    	perfilDTO.setId((int)session.getAttribute("idUsuario"));
+        perfilService.editarUsuario(perfilDTO);
         return "redirect:/perfil";
     }
     

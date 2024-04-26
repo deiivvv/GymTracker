@@ -4,26 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - GymTracker</title>
-    <link rel="shortcut icon" href="/images/logo/logoBlanco.png">
-    <link rel="stylesheet" type="text/css" href="/css/styles_login.css">
+    <link rel="shortcut icon" href="/images/logo/logoVerde.png">
+	
+	<div th:replace="~{fragments/bootstrap.html}"></div>
 </head>
-<body>
-<div class="container">
-    <div class="login-form">
-        <h1>Iniciar Sesión</h1>
-        <form action="/inicio" method="post">
-            <div class="form-group">
-                <label for="username">Usuario:</label>
-                <input type="text" id="username" name="username" required>
+<body style="background-color: lightgrey;">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img class="img-fluid" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                <h1 class="text-center">GymTracker</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form action="/inicio" method="post">
+                            <div class="form-group">
+                                <label for="idUsuario"><b>Usuario:</b></label>
+                                <input type="text" id="idUsuario" name="usuario" class="form-control" placeholder="Nombre de usuario" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="idContrasena"><b>Contraseña:</b></label>
+                                <input type="password" id="idContrasena" class="form-control" name="contrasena" placeholder="**************" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success mr-2">Iniciar Sesión</button>
+                                <a href="/usuario/crear" class="btn btn-outline-success">Crear usuario</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-        <a href="/usuario/crear">Crear usuario</a>
+        </div>
     </div>
-</div>
 </body>
 </html>

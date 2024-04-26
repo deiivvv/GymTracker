@@ -1,0 +1,15 @@
+body{
+    background-color: lightgrey;
+}
+
+.giro{
+    transition: rotateY(180deg) 5s;
+}
+
+.oculto{
+    display: none;
+}
+
+.girado{
+    transform: rotateY(180deg);
+}

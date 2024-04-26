@@ -1,6 +1,6 @@
 package com.dad.gymtracker.Service;
 
-import com.dad.gymtracker.Dto.PerfilUsuarioDTO;
+import com.dad.gymtracker.Dto.PerfilDTO;
 import com.dad.gymtracker.Dto.UsuarioDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -19,7 +19,7 @@ public class UsuarioService {
     @PersistenceContext
     private EntityManager entityManager;
     @Transactional
-    public void crearUsuario(UsuarioDTO usarioDTO, PerfilUsuarioDTO perfilUsuarioDTO) {
+    public void crearUsuario(UsuarioDTO usarioDTO, PerfilDTO perfilUsuarioDTO) {
         String sqlInsertUsuario = "INSERT INTO usuarios (nombre, contrasena, rol)" +
                 " VALUES (?, ?, 'usuario');";
 
