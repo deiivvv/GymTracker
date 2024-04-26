@@ -10,7 +10,7 @@
 </head>
 
 <body onload="cargarEjerciciosSegunInputs()">
-
+<div th:replace="~{fragments/sidebar.html}"></div>
 <div class="search-container">
     <label for="idNombreEjercicio">Buscar ejercicios por nombre:</label>
     <input type="text" id="idNombreEjercicio" oninput="cargarEjerciciosSegunInputs()">
