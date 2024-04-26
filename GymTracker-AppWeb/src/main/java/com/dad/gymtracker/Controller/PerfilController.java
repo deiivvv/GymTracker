@@ -3,23 +3,19 @@ package com.dad.gymtracker.Controller;
 import com.dad.gymtracker.Dto.PerfilUsuarioDTO;
 import com.dad.gymtracker.Service.PerfilService;
 import jakarta.servlet.http.HttpSession;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
+@AllArgsConstructor
 public class PerfilController {
 	
 	private final String RUTATEMPLATES= "/perfil";
     private PerfilService perfilService;
-
-    public PerfilController(PerfilService perfilService){
-        this.perfilService=perfilService;
-    }
 
     @GetMapping("/perfil")
     public String mostrar(Model model, HttpSession session){

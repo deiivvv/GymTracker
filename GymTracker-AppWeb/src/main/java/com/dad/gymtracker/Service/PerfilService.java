@@ -18,9 +18,17 @@ public class PerfilService {
 		String sql = "SELECT id, nombre, edad, genero, altura, peso" + " FROM usuarios u JOIN perfil p"
 				+ " WHERE id= ? AND id=id_usuario " + " ORDER BY nombre;";
 
-		PerfilUsuarioDTO resultados = (PerfilUsuarioDTO) entityManager.createNativeQuery(sql, PerfilUsuarioDTO.class)
+		PerfilUsuarioDTO resultado = (PerfilUsuarioDTO) entityManager.createNativeQuery(sql, PerfilUsuarioDTO.class)
 				.setParameter(1, idUsuario).getSingleResult();
-		return resultados;
+        new PerfilUsuarioDTO();
+        return PerfilUsuarioDTO.builder()
+				.id(resultado.getId())
+				.nombre(resultado.getNombre())
+				.edad(resultado.getEdad())
+				.genero(resultado.getGenero())
+				.altura(resultado.getAltura())
+				.peso(resultado.getPeso())
+				.build();
 	}
 
 	@Transactional

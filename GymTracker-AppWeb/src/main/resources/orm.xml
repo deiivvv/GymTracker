@@ -11,6 +11,7 @@
             <basic name="edad"/>
             <basic name="peso"/>
             <basic name="genero"/>
+            <basic name="correo"/>
         </attributes>
     </entity>
 

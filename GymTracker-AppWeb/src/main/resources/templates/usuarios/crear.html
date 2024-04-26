@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Perfil - GymTracker</title>
+    <link rel="shortcut icon" href="/images/logo/logoBlanco.png">
+    <link rel="stylesheet" type="text/css" href="/css/styles_perfil.css">
+</head>
+
+<script>
+    function cambioDeFormulario(){
+        document.getElementById("idContenedorUsuario").style.visibility="hidden";
+        document.getElementById("idContenedorPerfil").style.visibility="visible";
+    }
+
+    function enviarFormularios(){
+        document.getElementById('idFormUsuario').submit()
+        document.getElementById('idFormPerfil').submit()
+    }
+</script>
+<body>
+
+<div th:replace="~{fragments/sidebar.html}"></div>
+
+<div class="container">
+    <div id="idContenedorUsuario">
+        <h1>Crear Usuario</h1>
+        <form action="/usuario/crear" method="post" th:object="${usuarioDTO}" id="idFormUsuario">
+            <div class="profile-info">
+                <div class="info">
+                    <label for="idNombre">Nombre:</label>
+                    <input type="text" id="idNombre" name="nombre" th:field="*{nombre}">
+                </div>
+                <div class="info">
+                    <label for="idContrasena">Contraseña:</label>
+                    <input type="number" id="idContrasena" name="contrasena" th:field="*{contrasena}">
+                </div>
+            </div>
+            <input type="button" name="botonUsuario" id="idBotonUsuario" onclick="cambioDeFormulario()" value="Aceptar">
+        </form>
+    </div>
+    <div class="profile" id="idContenedorPerfil" style="visibility: hidden">
+        <h1>Crear tu perfil</h1>
+        <form action="/usuario/crear" method="post" th:object="${perfilUsuarioDTO}" id="idFormPerfil">
+            <div class="profile-info">
+                <div class="info">
+                    <label for="idEdad">Edad:</label>
+                    <input type="number" id="idEdad" name="edad" th:field="*{edad}">
+                </div>
+                <div class="info">
+                    <label for="idGenero">Género:</label>
+                    <select id="idGenero" name="genero" th:field="*{genero}">
+						<option value="Masculino">Masculino</option>
+						<option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+                <div class="info">
+                    <label for="idPeso">Peso (kg):</label>
+                    <input type="number" id="idPeso" name="peso" th:field="*{peso}">
+                </div>
+                <div class="info">
+                    <label for="idAltura">Altura (cm):</label>
+                    <input type="number" id="idAltura" name="altura" th:field="*{altura}">
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="button" onclick="enviarFormularios()">Crear</button>
+                <a href="/" class="cancel-button">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
