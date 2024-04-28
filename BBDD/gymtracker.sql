@@ -11,13 +11,24 @@ CREATE TABLE usuarios (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE perfil (
+  id_usuario INT AUTO_INCREMENT,
+  genero VARCHAR(100),
+  edad int,
+  altura float,
+  peso float,
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+    ON DELETE CASCADE
+);
+
 CREATE TABLE rutinas (
   id INT AUTO_INCREMENT,
   id_usuario INT,
   nombre VARCHAR(100),
   fecha DATE,
   num_ejercicios INT,
-  FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+    ON DELETE CASCADE,
   PRIMARY KEY (id)
 );
 
@@ -46,7 +57,8 @@ CREATE TABLE ejercicios_musculos (
 CREATE TABLE rutinas_ejercicios (
   id_rutina INT,
   id_ejercicio INT,
-  FOREIGN KEY (id_rutina) REFERENCES rutinas(id),
+  FOREIGN KEY (id_rutina) REFERENCES rutinas(id)
+    ON DELETE CASCADE,
   FOREIGN KEY (id_ejercicio) REFERENCES ejercicios(id),
   PRIMARY KEY (id_rutina, id_ejercicio)
 );

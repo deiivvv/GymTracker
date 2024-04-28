@@ -1,36 +1,41 @@
 package com.dad.gymtracker.Service;
 
-/*import org.springframework.beans.factory.annotation.Autowired;*/
-import org.springframework.stereotype.Service;
-/*
-
-import com.dad.gymtracker.Dto.Usuario;
-import com.dad.gymtracker.Respository.UsuarioRepository;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import com.dad.gymtracker.Dto.PerfilDTO;
+import com.dad.gymtracker.Dto.UsuarioDTO;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-*/
+
 
 
 @Service
-/*@Slf4j*/
-//@AllArgsConstructor 
-//@NoArgsConstructor
-//@RequiredArgsConstructor
+@Slf4j
 public class UsuarioService {
-	
-/*//	@Autowired
-	private final UsuarioRepository usuarioRepository;
-	
-	public UsuarioService(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
 
-	public List<Usuario> obtenerTodosLosUsuarios() {
-        return usuarioRepository.findAll();
-    }*/
+
+    @PersistenceContext
+    private EntityManager entityManager;
+    @Transactional
+    public void crearUsuario(UsuarioDTO usarioDTO, PerfilDTO perfilUsuarioDTO) {
+        String sqlInsertUsuario = "INSERT INTO usuarios (nombre, contrasena, rol)" +
+                " VALUES (?, ?, 'usuario');";
+
+        entityManager.createNativeQuery(sqlInsertUsuario).setParameter(1, usarioDTO.getNombre())
+                .setParameter(2, usarioDTO.getContrasena())
+                .executeUpdate();
+
+        String sqlInsertPeril = "INSERT INTO perfil (altura, edad, peso, genero, id_usuario)" +
+                " VALUES (?, ?, ?, ?, (SELECT id FROM usuarios" +
+                " WHERE id =" +
+                " (select LAST_INSERT_ID())));";
+
+        entityManager.createNativeQuery(sqlInsertPeril).setParameter(1, perfilUsuarioDTO.getAltura())
+                .setParameter(2, perfilUsuarioDTO.getEdad())
+                .setParameter(3, perfilUsuarioDTO.getPeso())
+                .setParameter(4, perfilUsuarioDTO.getGenero())
+                .executeUpdate();
+    }
 }
