@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil - GymTracker</title>
     <link rel="shortcut icon" href="/images/logo/logoVerde.png">
-    <!--<link rel="stylesheet" type="text/css" href="/css/styles_perfil.css">-->
 
     <div th:replace="~{fragments/bootstrap.html}"></div>
 </head>
 
 <body style="background-color: lightgrey;">
-    <!--<div th:replace="~{fragments/sidebar.html}"></div>-->
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -41,6 +39,7 @@
                             <div class="form-group">
                                 <label for="idGenero"><b>Género:</b></label>
                                 <select id="idGenero" name="genero" th:field="*{genero}" class="form-control">
+									<option value="Sin especificar">Seleccione su género</option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Femenino">Femenino</option>
                                 </select>
