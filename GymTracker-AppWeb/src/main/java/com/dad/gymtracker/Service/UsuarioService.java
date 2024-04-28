@@ -1,62 +1,41 @@
 package com.dad.gymtracker.Service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.dad.gymtracker.Dto.PerfilDTO;
+import com.dad.gymtracker.Dto.UsuarioDTO;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
-/*import org.springframework.beans.factory.annotation.Autowired;*/
-import org.springframework.stereotype.Service;
-/*
-
-import com.dad.gymtracker.Dto.Usuario;
-import com.dad.gymtracker.Respository.UsuarioRepository;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-*/
+
 
 
 @Service
-/*@Slf4j*/
-//@AllArgsConstructor 
-//@NoArgsConstructor
-//@RequiredArgsConstructor
+@Slf4j
 public class UsuarioService {
-	
-private Connection conexion;
-	
-	
-	public void crearUsuario(String nombreUsuario, String contrasenaHash) {
-        try {
-            PreparedStatement statement = conexion.prepareStatement("INSERT INTO usuarios (nombre_usuario, contrasena) VALUES (?, ?)");
-            statement.setString(1, nombreUsuario);
-            statement.setString(2, contrasenaHash);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
-    // Método para autenticar un usuario
-    public boolean autenticarUsuario(String nombreUsuario, String contrasena) {
-        try {
-            PreparedStatement statement = conexion.prepareStatement("SELECT contrasena FROM usuarios WHERE nombre_usuario = ?");
-            statement.setString(1, nombreUsuario);
-            ResultSet result = statement.executeQuery();
-            if (result.next()) {
-                String contrasenaHash = result.getString("contrasena");
-                // Aquí debes comparar la contraseña ingresada por el usuario con la contraseña almacenada en la base de datos
-                // Si coinciden, devuelve true; de lo contrario, devuelve false
-                return contrasena.equals(contrasenaHash);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
+    @PersistenceContext
+    private EntityManager entityManager;
+    @Transactional
+    public void crearUsuario(UsuarioDTO usarioDTO, PerfilDTO perfilUsuarioDTO) {
+        String sqlInsertUsuario = "INSERT INTO usuarios (nombre, contrasena, rol)" +
+                " VALUES (?, ?, 'usuario');";
+
+        entityManager.createNativeQuery(sqlInsertUsuario).setParameter(1, usarioDTO.getNombre())
+                .setParameter(2, usarioDTO.getContrasena())
+                .executeUpdate();
+
+        String sqlInsertPeril = "INSERT INTO perfil (altura, edad, peso, genero, id_usuario)" +
+                " VALUES (?, ?, ?, ?, (SELECT id FROM usuarios" +
+                " WHERE id =" +
+                " (select LAST_INSERT_ID())));";
+
+        entityManager.createNativeQuery(sqlInsertPeril).setParameter(1, perfilUsuarioDTO.getAltura())
+                .setParameter(2, perfilUsuarioDTO.getEdad())
+                .setParameter(3, perfilUsuarioDTO.getPeso())
+                .setParameter(4, perfilUsuarioDTO.getGenero())
+                .executeUpdate();
     }
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - GymTracker</title>
+    <link rel="shortcut icon" href="/images/logo/logoVerde.png">
+    <!--<link rel="stylesheet" type="text/css" href="/css/styles_perfil.css">-->
+
+    <div th:replace="~{fragments/bootstrap.html}"></div>
+</head>
+
+<body style="background-color: lightgrey;">
+    <!--<div th:replace="~{fragments/sidebar.html}"></div>-->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img class="img-fluid" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                <h1 class="text-center">Editar Perfil</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form action="/perfil/guardar" method="post" th:object="${perfilUsuarioDTO}">
+                            <div class="form-group">
+                                <label for="idNombre"><b>Nombre:</b></label>
+                                <input type="text" id="idNombre" name="nombre" th:field="*{nombre}"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="idEdad"><b>Edad:</b></label>
+                                <input type="number" id="idEdad" name="edad" th:field="*{edad}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="idGenero"><b>Género:</b></label>
+                                <select id="idGenero" name="genero" th:field="*{genero}" class="form-control">
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="idPeso"><b>Peso (kg):</b></label>
+                                <input type="number" id="idPeso" name="peso" th:field="*{peso}" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="idAltura"><b>Altura (cm): </b></label>
+                                <input type="number" id="idAltura" name="altura" th:field="*{altura}"
+                                    class="form-control">
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success mr-2">Guardar</button>
+                                <a href="/perfil" class="btn btn-outline-success">Cancelar</a>
+                                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                                    data-bs-target="#modalConfirm">Eliminar Cuenta</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">¿Estás seguro de que quieres eliminar tu cuenta?</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Esta acción eliminará permanentemente tu cuenta y todos tus datos asociados. ¿Estás seguro de que
+                        quieres continuar?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                    <a href="/perfil/eliminar" class="btn btn-danger">Eliminar cuenta</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

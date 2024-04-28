@@ -13,16 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MenuController {
 
     @RequestMapping("/inicio")
-    public String menu(@RequestBody String usuario, HttpSession session){
-        session.setAttribute("usuario",usuario);
-        return "menu";
-        
-    }
+    public String menu(@RequestBody String usuario,
+                       HttpSession session){
 
-    @GetMapping("/perfil")
-    public String perfil(Model model, HttpSession session){
-        model.addAttribute("usuario", session.getAttribute("usuario"));
-        return "perfil";
+        /*cosas de bbdd y  login*/
+        session.setAttribute("idUsuario", 8);
+        return "menu";
+
     }
 
     @GetMapping("/mis-entrenamientos")
@@ -36,7 +33,7 @@ public class MenuController {
         return "ejercicios";
     }
 
-    @GetMapping("/logout")
+    @GetMapping("/cerrar-sesion")
     public String destroySession(HttpServletRequest request) {
         request.getSession().invalidate();
         return "redirect:/";

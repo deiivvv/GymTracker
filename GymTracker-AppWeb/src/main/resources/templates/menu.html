@@ -5,37 +5,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>GymTracker</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="shortcut icon" href="/images/logo/logoVerde.png">
 	<script src="/js/menu.js"></script>
-
+	<div th:replace="~{fragments/bootstrap.html}"></div>
 	<style>
-		body {
-			background-color: #f8f9fa;
-
-			display: grid;
-			grid-template-columns: 2fr 3fr 2fr;
-			grid-template-rows: repeat(4, 1fr);
-			grid-column-gap: 0px;
-			grid-row-gap: 3px;
+		.list-group-item.active {
+			background-color: #218838;
+			border-color: #1e7e34;
+        }
+		a{
+			color: black;
 		}
-
-		.main-content {
-			margin-top: 50px;
+		a:hover{
+			color: #fff;
 		}
-
-		.title{
-			grid-column: 2;
-			grid-row: 1;
-			display: flex;
-			justify-content: center;
-			align-items: end;
+		a.active{
+			color: #fff
 		}
-		.container{
-			grid-column: 2;
-			grid-row: 2/4;
-		}
-
-		.hombre {
+		
+/*.hombre {
 			grid-column: 1;
 			grid-row: 2/4;
 		}
@@ -54,77 +42,60 @@
 			padding: 20px;
 			text-align: center;
 		}
-
-		.menu {
-			background-color: #ffffff;
-			border-radius: 10px;
-			padding: 20px;
-		}
-
-		.menu-item {
-			padding: 10px 0;
-		}
-
-		.menu-item a {
-			color: #000000;
-			/* Color del texto */
-			text-decoration: none;
-		}
-
-		@media (max-width: 768px) {
-			.side-image {
-				display: none;
-			}
-
-			.main-content {
-				margin-top: 20px;
-			}
-		}
-	</style>
+		*/
+	</style> 
 </head>
 
-<body>
-	<div class="side-image hombre">
+<body style="background-color: lightgrey;">
+	<!-- <div class="side-image hombre">
 		<img id="idImagenHombre" src="/images/menu/hombre/hombre1.png" alt="Hombre">
 	</div>
 
 	<div class="side-image mujer">
 		<img id="idImagenMujer" src="/images/menu/hombre/hombre2.png" alt="Hombre">
-	</div>
-
-	<div class="title">
-		<h1>GymTracker</h1>
-	</div>
-
-	<div class="container main-content">
-		<div class="row justify-content-center">
-			<div class="col-md-6">
-				<div class="menu text-center">
-					
-					<div class="menu-item">
-						<a href="/mis_entrenamientos">Mis entrenamientos  &#128197;</a>
-					</div>
-					<div class="menu-item">
-						<a href="/ejercicios">Ejercicios &#128170;</a>
-					</div>
-					<div class="menu-item">
-						<a href="/estadisticas">Estadísticas  &#128200;</a>
-					</div>
-					<div class="menu-item">
-						<a href="/perfil">Perfil &#128100;</a>
-					</div>
-					<div class="menu-item">
-						<a href="/salir">Salir &#128682;</a>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</div> -->
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img class="img-fluid" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                <h1 class="text-center">GymTracker</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+						<div class="list-group text-center">
+							<div class="list-group-item list-group-item-action active">
+								<a class="active">Inicio</a>
+							</div>
+							<div class="list-group-item btn-outline-success">
+								<a href="/nueva_rutina">Nueva rutina &#10133;</a>
+							</div>
+							<div class="list-group-item  btn-outline-success">
+								<a href="/mis_entrenamientos">Mis entrenamientos  &#128197;</a>
+							</div>
+							<div class="list-group-item btn-outline-success">
+								<a href="/ejercicios">Ejercicios &#128170;</a>
+							</div>
+							<div class="list-group-item btn-outline-success">
+								<a href="/estadisticas">Estadísticas  &#128200;</a>
+							</div>
+							<div class="list-group-item btn-outline-success">
+								<a href="/perfil">Perfil &#128100;</a>
+							</div>
+							<div class="list-group-item btn-outline-success">
+								<a href="/cerrar-sesion">Cerrar sesión &#128682;</a>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>

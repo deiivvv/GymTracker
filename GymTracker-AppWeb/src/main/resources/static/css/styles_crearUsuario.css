@@ -1,0 +1,18 @@
+body{
+    background-color: lightgrey;
+}
+
+.contenedor{
+    transition: transform 1s ease-in-out;
+    display: flex;
+}
+.oculto {
+    order: 2;
+    transform: rotateY(180deg);
+    visibility: hidden;
+}
+
+.mostrar {
+    transform: rotateY(0deg);
+    visibility: visible;
+}
