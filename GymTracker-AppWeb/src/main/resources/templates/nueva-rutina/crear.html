@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GymTracker</title>
+	<link rel="shortcut icon" href="/images/logo/logoVerde.png">
+
+	<div th:replace="~{fragments/bootstrap.html}"></div>
+	<div th:replace="~{fragments/sidebar.html}"></div>
+	
+	<script src="/js/menu.js"></script>
+	<link rel="stylesheet" href="./css/styles_nuevaRutina.css">
+
+</head>
+
+<body style="background-color: lightgrey;">
+    <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl">
+                <div class="card shadow-lg">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img class="img-fluid logo" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-between align-items-center">
+                                <h1 class="text-center">Nueva rutina</h1>
+                                <input type="button" class="btn btn-success"  onclick="generarEjercicio()" value="Añadir Ejercicio"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+						<div class="text-center">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
