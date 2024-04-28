@@ -2,14 +2,17 @@ body{
     background-color: lightgrey;
 }
 
-.giro{
-    transition: rotateY(180deg) 5s;
+.contenedor{
+    transition: transform 1s ease-in-out;
+    display: flex;
 }
-
-.oculto{
-    display: none;
-}
-
-.girado{
+.oculto {
+    order: 2;
     transform: rotateY(180deg);
+    visibility: hidden;
+}
+
+.mostrar {
+    transform: rotateY(0deg);
+    visibility: visible;
 }

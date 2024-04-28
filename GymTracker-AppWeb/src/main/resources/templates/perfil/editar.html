@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil - GymTracker</title>
-    <link rel="shortcut icon" href="/images/logo/logoBlanco.png">
+    <link rel="shortcut icon" href="/images/logo/logoVerde.png">
     <!--<link rel="stylesheet" type="text/css" href="/css/styles_perfil.css">-->
 
     <div th:replace="~{fragments/bootstrap.html}"></div>
@@ -31,7 +31,8 @@
                         <form action="/perfil/guardar" method="post" th:object="${perfilUsuarioDTO}">
                             <div class="form-group">
                                 <label for="idNombre"><b>Nombre:</b></label>
-                                <input type="text" id="idNombre" name="nombre" th:field="*{nombre}" class="form-control">
+                                <input type="text" id="idNombre" name="nombre" th:field="*{nombre}"
+                                    class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="idEdad"><b>Edad:</b></label>
@@ -50,15 +51,36 @@
                             </div>
                             <div class="form-group">
                                 <label for="idAltura"><b>Altura (cm): </b></label>
-                                <input type="number" id="idAltura" name="altura" th:field="*{altura}" class="form-control">
+                                <input type="number" id="idAltura" name="altura" th:field="*{altura}"
+                                    class="form-control">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success mr-2">Guardar</button>
                                 <a href="/perfil" class="btn btn-outline-success">Cancelar</a>
-                                <a href="/perfil/elimiar" class="btn btn-outline-success">Eliminar Cuenta</a>
+                                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                                    data-bs-target="#modalConfirm">Eliminar Cuenta</button>
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">¿Estás seguro de que quieres eliminar tu cuenta?</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Esta acción eliminará permanentemente tu cuenta y todos tus datos asociados. ¿Estás seguro de que
+                        quieres continuar?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                    <a href="/perfil/eliminar" class="btn btn-danger">Eliminar cuenta</a>
                 </div>
             </div>
         </div>

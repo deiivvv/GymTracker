@@ -22,7 +22,7 @@ public class MenuController {
                        HttpSession session){
 
         /*cosas de bbdd y  login*/
-        session.setAttribute("idUsuario", 3);
+        session.setAttribute("idUsuario", 8);
         return "menu";
 
     }

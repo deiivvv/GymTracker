@@ -37,7 +37,7 @@ public class PerfilController {
         return "redirect:/perfil";
     }
     
-    @GetMapping("/perfil/elimiar")
+    @GetMapping("/perfil/eliminar")
     public String eliminar(HttpSession session){
     	perfilService.borrarUsuario((int) session.getAttribute("idUsuario"));
         return "redirect:/cerrar-sesion";
