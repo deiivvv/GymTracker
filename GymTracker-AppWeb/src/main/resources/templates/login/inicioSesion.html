@@ -24,14 +24,15 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="/inicio" method="post">
+						<span th:if="${mensajeError}" th:text="${mensajeError}"></span>
+                        <form action="/inicio" method="post" th:object="${usuario}">
                             <div class="form-group">
                                 <label for="idUsuario"><b>Usuario:</b></label>
-                                <input type="text" id="idUsuario" name="usuario" class="form-control" placeholder="Nombre de usuario" required>
+                                <input type="text" id="idUsuario" name="nombre" th:field="*{nombre}" class="form-control" placeholder="Nombre de usuario" required>
                             </div>
                             <div class="form-group">
                                 <label for="idContrasena"><b>Contraseña:</b></label>
-                                <input type="password" id="idContrasena" class="form-control" name="contrasena" placeholder="**************" required>
+                                <input type="password" id="idContrasena" class="form-control" name="contrasena"	th:field="*{contrasena}" placeholder="**************" required>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success mr-2">Iniciar Sesión</button>

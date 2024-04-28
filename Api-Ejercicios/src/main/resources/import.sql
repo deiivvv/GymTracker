@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+=======
+>>>>>>> main
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('sentadillas', 'cuadriceps, gluteos', 'ejercicio para piernas y gluteos', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de banca', 'pectorales, triceps', 'ejercicio para el pecho y triceps', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('dominadas', 'espalda, biceps', 'ejercicio para la espalda y biceps', 'peso corporal');
