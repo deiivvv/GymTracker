@@ -3,6 +3,7 @@ package com.dad.gymtracker.Service;
 import com.dad.gymtracker.Dto.PerfilDTO;
 import com.dad.gymtracker.Dto.UsuarioDTO;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,4 +39,25 @@ public class UsuarioService {
                 .setParameter(4, perfilUsuarioDTO.getGenero())
                 .executeUpdate();
     }
+    
+    public UsuarioDTO buscarUsuario(String nombre, String contrasena) {
+        String sqlBuscarUsuario = "SELECT id, nombre, contrasena, rol FROM usuarios WHERE nombre = ? AND contrasena = ?";
+
+        try {
+            UsuarioDTO resultado = (UsuarioDTO) entityManager.createNativeQuery(sqlBuscarUsuario, UsuarioDTO.class)
+                    .setParameter(1, nombre)
+                    .setParameter(2, contrasena)
+                    .getSingleResult();
+
+            return UsuarioDTO.builder()
+                    .id(resultado.getId())
+                    .nombre(resultado.getNombre())
+                    .contrasena(resultado.getContrasena())
+                    .rol(resultado.getRol())
+                    .build();
+        } catch (NoResultException e) {
+            return null; // Devuelve null si no se encuentra ningún usuario
+        }
+    }
+
 }
