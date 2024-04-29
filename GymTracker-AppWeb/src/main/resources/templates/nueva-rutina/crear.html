@@ -53,8 +53,7 @@
             <div class="modal-header">
                 <h1 class="flex-grow-1 text-center m-0">Buscar Ejercicios</h1>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-outline-success">Aceptar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
             <div class="modal-body">
@@ -111,8 +110,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
@@ -133,10 +131,12 @@
                                     <label for="idPesoModalCrear"><b>Peso (kg):</b></label>
                                     <input type="number" id="idPesoModalCrear" name="peso" class="form-control">
                                 </div>
+								<div class="alert alert-warning mt-3" id="idAlertPesoCrear" style="display: none;">Peso inválido</div>
                                 <div class="form-group">
                                     <label for="idRepesModalCrear"><b>Repeticiones:</b></label>
                                     <input type="number" id="idRepesModalCrear" name="repeticiones" class="form-control">
                                 </div>
+								<div class="alert alert-warning mt-3" id="idAlertRepesCrear" style="display: none;">Número de repeticiones inválido</div>
                                 <input type="hidden" id="idHidden">
                             </div>
                         </div>
@@ -145,7 +145,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" onclick="crearSerie(document.getElementById('idPesoModalCrear').value, document.getElementById('idRepesModalCrear').value, document.getElementById('idHidden').value)">Aceptar</button>
+                <button type="button" class="btn btn-success" onclick="crearSerie(document.getElementById('idPesoModalCrear').value, 
+								   												  document.getElementById('idRepesModalCrear').value,
+								   												  document.getElementById('idHidden').value);">Aceptar</button>
             </div>
         </div>
     </div>
@@ -166,10 +168,12 @@
                                     <label for="idPesoModalEditar"><b>Peso (kg):</b></label>
                                     <input type="number" id="idPesoModalEditar" name="peso" class="form-control">
                                 </div>
+								<div class="alert alert-warning mt-3" id="idAlertPesoEditar" style="display: none;">Peso inválido</div>
                                 <div class="form-group">
                                     <label for="idRepesModalEditar"><b>Repeticiones:</b></label>
                                     <input type="number" id="idRepesModalEditar" name="repeticiones" class="form-control">
                                 </div>
+								<div class="alert alert-warning mt-3" id="idAlertRepesEditar" style="display: none;">Número de repeticiones inválido</div>
                                 <input type="hidden" id="idSerieHidden"/>
                             </div>
                         </div>
@@ -178,7 +182,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" onclick="editarSerie(document.getElementById('idPesoModalEditar').value, document.getElementById('idRepesModalEditar').value, document.getElementById('idSerieHidden').value)">Aceptar</button>
+                <button type="button" class="btn btn-success" onclick="editarSerie(document.getElementById('idPesoModalEditar').value,
+																				   document.getElementById('idRepesModalEditar').value,
+																				   document.getElementById('idSerieHidden').value)">Aceptar</button>
             </div>
         </div>
     </div>

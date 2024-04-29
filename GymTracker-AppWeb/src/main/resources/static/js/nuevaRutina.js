@@ -1,3 +1,4 @@
+
 function seleccionable(){
 	
 	document.querySelectorAll("[id^='idCard']")
@@ -20,6 +21,8 @@ function crearEjercicio(id){
     listaEjercicios.appendChild(hideElement);
     
     $('#idModalEjercicios').modal('hide');
+    
+    $('#idModalSeriesCrear').modal('show');
 }
 
 let idEjercicio=0;
@@ -89,7 +92,6 @@ function crearCardEjercicio(nombre) {
 
     let path1Add = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path1Add.setAttribute("d", "M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2");
-    /*buttonAddSerie.textContent = 'Añadir Serie';*/
     svgAdd.appendChild(path1Add);
     buttonAddSerie.appendChild(svgAdd);
 
@@ -179,6 +181,8 @@ function crearCardEjercicio(nombre) {
 
 let idSerie=0;
 function crearSerie(peso, repes, id) {
+	
+	if(validacionSeries("Crear")){
     idSerie++;
     let tableSeries = document.getElementById("idTablaSeriesBody" + id);
 
@@ -270,20 +274,47 @@ function crearSerie(peso, repes, id) {
     serie.appendChild(labelRepes);
 
     $('#idModalSeriesCrear').modal('hide');
+    }
 }
 
 function editarSerie(peso, repes, id){
-    let serie=document.getElementById("idSerie" + id);
-    let tds=serie.querySelectorAll("td");
-    tds[0].innerHTML=peso;
-    tds[1].innerHTML=repes;
-    let inputs= serie.querySelectorAll("label input");
-    inputs[0].value=peso;
-    inputs[1].value=repes;
+	if(validacionSeries("Editar")){
+    	let serie=document.getElementById("idSerie" + id);
+    	let tds=serie.querySelectorAll("td");
+    	tds[0].innerHTML=peso;
+    	tds[1].innerHTML=repes;
+    	let inputs= serie.querySelectorAll("label input");
+    	inputs[0].value=peso;
+    	inputs[1].value=repes;
 
-    $('#idModalSeriesEditar').modal('hide');
+    	$('#idModalSeriesEditar').modal('hide');
+    }
 }
 
 function ejercicioSelecionado(inputHidden){
     document.getElementById("idHidden").value=inputHidden.value;
+}
+
+function validacionSeries(tipo){
+	let valido=true;
+	let alerts=["idAlertPesoCrear", "idAlertRepesCrear", "idAlertPesoEditar", "idAlertRepesEditar"];
+	alerts.forEach((a)=>{
+		document.getElementById(a).style="display:none";
+	});
+	
+	let alertPeso=document.getElementById("idAlertPeso" + tipo);
+	let alertRepes=document.getElementById("idAlertRepes" + tipo);
+	
+	let inputPeso= document.getElementById("idPesoModal" + tipo).value;
+	let inputRepes= document.getElementById("idRepesModal" + tipo).value;
+	
+	if(inputPeso<0){
+		alertPeso.style="display: block";
+		valido=false;
+	}
+	if(inputRepes<1){
+		alertRepes.style="display: block";
+		valido= false;
+	}
+	return valido;
 }
