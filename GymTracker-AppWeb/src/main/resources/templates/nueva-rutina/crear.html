@@ -106,17 +106,36 @@
                     <h1 class="container mt-3 mb-4">Listado de Ejercicios</h1>
                     <div class="container mt-3">
                         <div id="lista-ejercicios">
-                            <div class="card mt-3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Sentadilla</h5>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <p class="card-text">Descripción del ejercicio...</p>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img src="sentadilla.jpg" class="img-fluid" alt="Sentadilla">
-                                        </div>
-                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="idModalSeriesCrear" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="flex-grow-1 text-center m-0">Añadir serie</h1>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="container mt-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="idPesoModalCrear"><b>Peso (kg):</b></label>
+                                    <input type="number" id="idPesoModalCrear" name="peso" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="idRepesModalCrear"><b>Repeticiones:</b></label>
+                                    <input type="number" id="idRepesModalCrear" name="repeticiones" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -124,8 +143,41 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-outline-success">Aceptar</button>
+                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="crearSerie(document.getElementById('idPesoModalCrear').value, document.getElementById('idRepesModalCrear').value)">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="idModalSeriesEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="flex-grow-1 text-center m-0">Editar serie</h1>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="container mt-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="idPesoModalEditar"><b>Peso (kg):</b></label>
+                                    <input type="number" id="idPesoModalEditar" name="peso" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="idRepesModalEditar"><b>Repeticiones:</b></label>
+                                    <input type="number" id="idRepesModalEditar" name="repeticiones" class="form-control">
+                                </div>
+                                <input type="hidden" id="idSerieHidden"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="editarSerie(document.getElementById('idPesoModalEditar').value, document.getElementById('idRepesModalEditar').value, document.getElementById('idSerieHidden').value)">Aceptar</button>
             </div>
         </div>
     </div>
