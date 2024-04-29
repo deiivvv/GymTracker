@@ -22,7 +22,10 @@ function crearEjercicio(id){
     $('#idModalEjercicios').modal('hide');
 }
 
+let idEjercicio=0;
 function crearCardEjercicio(nombre) {
+    idEjercicio++;
+
     let container = document.createElement('div');
     container.classList.add("container");
     container.classList.add("mt-5");
@@ -67,6 +70,14 @@ function crearCardEjercicio(nombre) {
 
     buttonAddSerie.setAttribute('data-bs-toggle', 'modal');
     buttonAddSerie.setAttribute('data-bs-target', '#idModalSeriesCrear');
+
+    let inputHidden=document.createElement("input")
+    inputHidden.value= idEjercicio;
+    inputHidden.type="hidden"
+
+    buttonAddSerie.addEventListener('click', function (){
+        ejercicioSelecionado(inputHidden)
+    });
 
     let svgAdd = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svgAdd.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -133,14 +144,14 @@ function crearCardEjercicio(nombre) {
 
     let tableSeries = document.createElement('table');
     tableSeries.classList.add('table', 'table-hover');
-    tableSeries.setAttribute('id', 'idTablaSeries');
+    tableSeries.setAttribute('id', 'idTablaSeries' + idEjercicio);
 
     let tableSeriesHead = document.createElement('thead');
     tableSeriesHead.setAttribute('id', 'idTablaSeriesHead');
     tableSeriesHead.setAttribute("style", "color:#fff; background-color:#000")
 
     let tableSeriesBody = document.createElement('tbody');
-    tableSeriesBody.setAttribute('id', 'idTablaSeriesBody');
+    tableSeriesBody.setAttribute('id', 'idTablaSeriesBody' + idEjercicio);
 
     let tr=document.createElement("tr");
     let tdPeso=document.createElement("th");
@@ -167,12 +178,12 @@ function crearCardEjercicio(nombre) {
 }
 
 let idSerie=0;
-function crearSerie(peso, repes) {
+function crearSerie(peso, repes, id) {
     idSerie++;
-    let tableSeries = document.getElementById("idTablaSeriesBody");
+    let tableSeries = document.getElementById("idTablaSeriesBody" + id);
 
     let serie = document.createElement("tr");
-    serie.setAttribute('id', idSerie);
+    serie.setAttribute('id', 'idSerie' + idSerie);
 
     let tdPeso = document.createElement("td");
     let tdRepes = document.createElement("td");
@@ -204,7 +215,7 @@ function crearSerie(peso, repes) {
     buttonEditarSerie.setAttribute('data-bs-toggle', 'modal');
     buttonEditarSerie.setAttribute('data-bs-target', '#idModalSeriesEditar');
     buttonEditarSerie.addEventListener('click', function () {
-        document.getElementById("idSerieHidden").value=idSerie;
+        document.getElementById("idSerieHidden").value=serie.id.replace("idSerie","");
         document.getElementById("idRepesModalEditar").value=repes;
         document.getElementById("idPesoModalEditar").value=peso;
     });
@@ -261,8 +272,8 @@ function crearSerie(peso, repes) {
     $('#idModalSeriesCrear').modal('hide');
 }
 
-function editarSerie(peso, repes, idSerie){
-    let serie=document.getElementById(idSerie);
+function editarSerie(peso, repes, id){
+    let serie=document.getElementById("idSerie" + id);
     let tds=serie.querySelectorAll("td");
     tds[0].innerHTML=peso;
     tds[1].innerHTML=repes;
@@ -271,4 +282,8 @@ function editarSerie(peso, repes, idSerie){
     inputs[1].value=repes;
 
     $('#idModalSeriesEditar').modal('hide');
+}
+
+function ejercicioSelecionado(inputHidden){
+    document.getElementById("idHidden").value=inputHidden.value;
 }
