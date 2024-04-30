@@ -1,0 +1,23 @@
+.fixed-size-row {
+    min-width: 1300px;
+}
+
+@media only screen and (max-width: 1400px) {
+    .fixed-size-row {
+        min-width: 760px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .fixed-size-row {
+        min-width: 200px;
+    }
+}
+
+body{
+    background-color: lightgrey;
+}
+
+img{
+    max-width: 37%;
+}
