@@ -7,12 +7,10 @@
     <title>GymTracker</title>
     <link rel="shortcut icon" href="/images/logo/logoVerde.png">
 
-    <div th:replace="~{fragments/bootstrap.html}"></div>
     <div th:replace="~{fragments/sidebar.html}"></div>
-
     <script src="/js/ejercicios.js"></script>
     <script src="/js/nuevaRutina.js"></script>
-    <link rel="stylesheet" href="./css/styles_nuevaRutina.css">
+    <link rel="stylesheet" href="/css/styles_nuevaRutina.css">
 
 </head>
 
@@ -30,13 +28,22 @@
                             <h1 class="text-center">Nueva rutina</h1>
                         </div>
                         <div class="col-md-3 d-flex align-items-center  justify-content-center">
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#idModalEjercicios">Añadir Ejercicio
+                            <button onclick="clase_activo()" class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#idSidebar"
+                                    aria-controls="sidebar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                                </svg>
+                                Menú
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="col-md-3 d-flex align-items-center justify-content-center">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#idModalEjercicios">Añadir Ejercicio
+                    </button>
+                    </div>
                     <ul class="list-group text-center" id="idlistaEjercicios">
 
                     </ul>
@@ -51,61 +58,57 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="flex-grow-1 text-center m-0">Buscar Ejercicios</h1>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <div class="row">
+                    <div class="col-md-9 d-flex justify-content-center align-items-center">
+                        <h1>Buscar Ejercicios</h1>
+                    </div>
+                    <div class="col-md-3 d-flex justify-content-center align-items-center">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
                 </div>
             </div>
             <div class="modal-body">
-                <div class="container">
-                    <div class="container mt-3">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="search-container mb-3">
-                                    <label for="idNombreEjercicio" class="form-label">Buscar ejercicios por
-                                        nombre:</label>
-                                    <input type="text" id="idNombreEjercicio" class="form-control"
-                                           oninput="cargarEjerciciosSegunInputs()">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <select id="idEquipamientoEjercicio" class="form-select"
-                                        onchange="cargarEjerciciosSegunInputs()">
-                                    <option value="" selected>Selecciona el equipamiento</option>
-                                    <option value="pesas">Pesas</option>
-                                    <option value="maquina">Máquina</option>
-                                    <option value="polea">Polea</option>
-                                    <option value="peso corporal">Peso corporal</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <select id="idMusculoEjercicio" class="form-select"
-                                        onchange="cargarEjerciciosSegunInputs()">
-                                    <option value="" selected>Selecciona un músculo</option>
-                                    <option value="cuadriceps">Cuadriceps</option>
-                                    <option value="gluteos">Gluteos</option>
-                                    <option value="pectorales">Pectorales</option>
-                                    <option value="triceps">Triceps</option>
-                                    <option value="espalda">Espalda</option>
-                                    <option value="biceps">Biceps</option>
-                                    <option value="espalda baja">Espalda baja</option>
-                                    <option value="isquiotibiales">Isquiotibiales</option>
-                                    <option value="deltoides">Deltoides</option>
-                                    <option value="abdominales">Abdominales</option>
-                                    <option value="gemelos">Gemelos</option>
-                                    <option value="multiples">Multiples</option>
-                                    <option value="antebrazo">Antebrazo</option>
-                                    <option value="trapecio">Trapecio</option>
-                                </select>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="idNombreEjercicio" class="form-label"><b>Buscar ejercicios por
+                            nombre:</b></label>
+                        <input type="text" id="idNombreEjercicio" class="form-control mb-3"
+                               oninput="cargarEjerciciosSegunInputs()">
                     </div>
-                    <h1 class="container mt-3 mb-4">Listado de Ejercicios</h1>
-                    <div class="container mt-3">
-                        <div id="lista-ejercicios">
-                        </div>
+                    <div class="col-md-6">
+                        <select id="idEquipamientoEjercicio" class="form-select"
+                                onchange="cargarEjerciciosSegunInputs()">
+                            <option value="" selected>Selecciona el equipamiento</option>
+                            <option value="pesas">Pesas</option>
+                            <option value="maquina">Máquina</option>
+                            <option value="polea">Polea</option>
+                            <option value="peso corporal">Peso corporal</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select id="idMusculoEjercicio" class="form-select"
+                                onchange="cargarEjerciciosSegunInputs()">
+                            <option value="" selected>Selecciona un músculo</option>
+                            <option value="cuadriceps">Cuadriceps</option>
+                            <option value="gluteos">Gluteos</option>
+                            <option value="pectorales">Pectorales</option>
+                            <option value="triceps">Triceps</option>
+                            <option value="espalda">Espalda</option>
+                            <option value="biceps">Biceps</option>
+                            <option value="espalda baja">Espalda baja</option>
+                            <option value="isquiotibiales">Isquiotibiales</option>
+                            <option value="deltoides">Deltoides</option>
+                            <option value="abdominales">Abdominales</option>
+                            <option value="gemelos">Gemelos</option>
+                            <option value="multiples">Multiples</option>
+                            <option value="antebrazo">Antebrazo</option>
+                            <option value="trapecio">Trapecio</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="container mt-3 mb-4">
+                    <h1>Listado de ejercicios</h1>
+                    <div id="lista-ejercicios" class="row fixed-size-row">
                     </div>
                 </div>
             </div>
@@ -116,7 +119,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="idModalSeriesCrear" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="idModalSeriesCrear" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -131,12 +135,17 @@
                                     <label for="idPesoModalCrear"><b>Peso (kg):</b></label>
                                     <input type="number" id="idPesoModalCrear" name="peso" class="form-control">
                                 </div>
-								<div class="alert alert-warning mt-3" id="idAlertPesoCrear" style="display: none;">Peso inválido</div>
+                                <div class="alert alert-warning mt-3" id="idAlertPesoCrear" style="display: none;">Peso
+                                    inválido
+                                </div>
                                 <div class="form-group">
                                     <label for="idRepesModalCrear"><b>Repeticiones:</b></label>
-                                    <input type="number" id="idRepesModalCrear" name="repeticiones" class="form-control">
+                                    <input type="number" id="idRepesModalCrear" name="repeticiones"
+                                           class="form-control">
                                 </div>
-								<div class="alert alert-warning mt-3" id="idAlertRepesCrear" style="display: none;">Número de repeticiones inválido</div>
+                                <div class="alert alert-warning mt-3" id="idAlertRepesCrear" style="display: none;">
+                                    Número de repeticiones inválido
+                                </div>
                                 <input type="hidden" id="idHidden">
                             </div>
                         </div>
@@ -144,16 +153,19 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-success" onclick="crearSerie(document.getElementById('idPesoModalCrear').value, 
 								   												  document.getElementById('idRepesModalCrear').value,
-								   												  document.getElementById('idHidden').value);">Aceptar</button>
+								   												  document.getElementById('idHidden').value);">
+                    Aceptar
+                </button>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="idModalSeriesEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="idModalSeriesEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -168,12 +180,17 @@
                                     <label for="idPesoModalEditar"><b>Peso (kg):</b></label>
                                     <input type="number" id="idPesoModalEditar" name="peso" class="form-control">
                                 </div>
-								<div class="alert alert-warning mt-3" id="idAlertPesoEditar" style="display: none;">Peso inválido</div>
+                                <div class="alert alert-warning mt-3" id="idAlertPesoEditar" style="display: none;">Peso
+                                    inválido
+                                </div>
                                 <div class="form-group">
                                     <label for="idRepesModalEditar"><b>Repeticiones:</b></label>
-                                    <input type="number" id="idRepesModalEditar" name="repeticiones" class="form-control">
+                                    <input type="number" id="idRepesModalEditar" name="repeticiones"
+                                           class="form-control">
                                 </div>
-								<div class="alert alert-warning mt-3" id="idAlertRepesEditar" style="display: none;">Número de repeticiones inválido</div>
+                                <div class="alert alert-warning mt-3" id="idAlertRepesEditar" style="display: none;">
+                                    Número de repeticiones inválido
+                                </div>
                                 <input type="hidden" id="idSerieHidden"/>
                             </div>
                         </div>
@@ -181,10 +198,12 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-success" onclick="editarSerie(document.getElementById('idPesoModalEditar').value,
 																				   document.getElementById('idRepesModalEditar').value,
-																				   document.getElementById('idSerieHidden').value)">Aceptar</button>
+																				   document.getElementById('idSerieHidden').value)">
+                    Aceptar
+                </button>
             </div>
         </div>
     </div>
