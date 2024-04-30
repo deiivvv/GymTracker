@@ -24,7 +24,6 @@
                         </div>
                     </div>
                     <div class="card-body">
-						<span th:if="${mensajeError}" th:text="${mensajeError}"></span>
                         <form action="/inicio" method="post" th:object="${usuario}">
                             <div class="form-group">
                                 <label for="idUsuario"><b>Usuario:</b></label>
@@ -41,6 +40,7 @@
                         </form>
                     </div>
                 </div>
+                <div class="alert alert-warning mt-3" th:if="${mensajeError}" th:text="${mensajeError}"></div>
             </div>
         </div>
     </div>

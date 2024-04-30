@@ -7,16 +7,18 @@ function cargarEjercicios(url) {
 				listaEjercicios.appendChild(crearCard("", ""));
 			} else {
 				response.data.forEach((e) => {
-					/*const li = document.createElement('li');
-					li.innerHTML = e.nombre;*/
-					listaEjercicios.appendChild(crearCard(e.nombre,e.descripcion));
+					listaEjercicios.appendChild(crearCard(e.nombre,e.descripcion, e.id));
 				});
 			}
+
+            if(Boolean(document.getElementById("idCrearEjercicio").value)){
+                seleccionable();
+            }
 		})
 		.catch(function(error) {
 			console.error('Error al obtener los ejercicios:', error);
 		});
-};
+}
 
 function cargarEjerciciosSegunInputs() {
 	const musculo = document.getElementById('idMusculoEjercicio').value;
@@ -31,9 +33,10 @@ function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function crearCard(nombre, descripcion) {
+function crearCard(nombre, descripcion, id) {
     let cardDiv = document.createElement("div");
     cardDiv.classList.add("card", "mt-3");
+    cardDiv.id="idCard" + id;
 
     let cardBodyDiv = document.createElement("div");
     cardBodyDiv.classList.add("card-body");
@@ -52,6 +55,11 @@ function crearCard(nombre, descripcion) {
         let textElement = document.createElement("p");
         textElement.classList.add("card-text");
         textElement.textContent = descripcion;
+        
+        let hideElement = document.createElement("input");
+		hideElement.type = "hidden";
+		hideElement.id=id
+		hideElement.value = nombre;
 
         let col4Div = document.createElement("div");
         col4Div.classList.add("col-md-4");
@@ -62,6 +70,7 @@ function crearCard(nombre, descripcion) {
         imgElement.alt = nombre;
 
         col8Div.appendChild(textElement);
+        col8Div.appendChild(hideElement);
         col4Div.appendChild(imgElement);
         rowDiv.appendChild(col8Div);
         rowDiv.appendChild(col4Div);
