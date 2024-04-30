@@ -3,49 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymTracker</title>
-    <link rel="stylesheet" type="text/css" href="/css/styles_sidebar.css">
+    <title>GymTracker - Sidebar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/js/sidebar.js"></script>
 
 </head>
 <body>
-<div class="wrapper">
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Gimnasio App</h3>
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <!--/images/logo/logoVerde.png-->
+        <div class="col-md-3 d-flex justify-content-center align-items-center">
+            <img src="/images/logo/logoVerde.png" class="img-fluid" alt="Logo Gymtracker">
         </div>
-        <ul class="list-unstyled components">
-            <li class="active">
-                <a href="/inicio">Inicio</a>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <h3 class="offcanvas-title" id="offcanvasExampleLabel">GymTracker</h3>
+        </div>
+        <div class="col-md-3 d-flex justify-content-center align-items-center">
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+    </div>
+    <div class="offcanvas-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action" id="inicio">
+                <a href="/menu" class="btn">Inicio</a>
             </li>
-            <li>
-                <a href="/mis-entrenamientos">Mis entrenamientos</a>
+            <li class="list-group-item list-group-item-action" id="nueva-rutina">
+                <a href="/nueva-rutina" class="btn">Nueva rutina</a>
             </li>
-            <li>
-                <a href="/ejercicios">Ejercicios</a>
+            <li class="list-group-item list-group-item-action" id="mis-entrenamientos">
+                <a href="/mis-entrenamientos" class="btn">Mis entrenamientos</a>
             </li>
-            <li>
-                <a href="/estadisticas">Estadísticas</a>
+            <li class="list-group-item list-group-item-action" id="ejercicios">
+                <a href="/ejercicios" class="btn">Ejercicios</a>
             </li>
-            <li>
-                <a href="/perfil">Perfil</a>
+            <li class="list-group-item list-group-item-action" id="estadisticas">
+                <a href="/estadisticas" class="btn">Estadísticas</a>
             </li>
-            <li>
-                <a href="/cerrar-sesion">Salir</a>
+            <li class="list-group-item list-group-item-action" id="perfil">
+                <a href="/perfil" class="btn">Perfil</a>
+            </li>
+            <li class="list-group-item list-group-item-action" id="cerrar-sesion">
+                <a href="/cerrar-sesion" class="btn">Cerrar sesión</a>
             </li>
         </ul>
-    </nav>
-    <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
-                    <span>Mostrar Menú</span>
-                </button>
-            </div>
-        </nav>
     </div>
 </div>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script src="/js/sidebar.js"></script>
 </body>
 </html>

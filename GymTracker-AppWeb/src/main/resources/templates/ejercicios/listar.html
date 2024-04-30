@@ -10,10 +10,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <div th:replace="~{fragments/bootStrapDamago.html}"></div>
+    <div th:replace="~{fragments/sidebar.html}"></div>
     <link rel="stylesheet" type="text/css" href="/css/styles_ejercicios.css">
     <script src="/js/ejercicios.js"></script>
 </head>
 <body onload="cargarEjerciciosSegunInputs()">
+<input id="idCrearEjercicio" type="hidden" value=""/>
 <div class="container mt-3">
     <div class="row">
         <div class="col-md-12">
@@ -25,6 +27,12 @@
                         </div>
                         <div class="col-md-6 d-flex justify-content-center align-items-center">
                             <h1 class="text-center">Listado de Ejercicios</h1>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <button onclick="clase_activo()" class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                                    aria-controls="offcanvasExample">
+                                Menú
+                            </button>
                         </div>
                     </div>
                 </div>

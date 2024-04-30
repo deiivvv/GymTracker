@@ -6,17 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>GymTracker</title>
 	<link rel="shortcut icon" href="/images/logo/logoVerde.png">
-	<script src="/js/menu.js"></script>
+	<!--<script src="/js/menu.js"></script>-->
 	<div th:replace="~{fragments/bootstrap.html}"></div>
 	<style>
 		.list-group-item.active {
 			background-color: #218838;
 			border-color: #1e7e34;
         }
-		a{
-			color: black;
-		}
-		a:hover{
+
+		.btn:hover{
 			color: #fff;
 		}
 		a.active{
@@ -71,25 +69,25 @@
                     <div class="card-body">
 						<ul class="list-group text-center">
 							<li class="list-group-item list-group-item-action active">
-								<a class="active">Inicio</a>
+								<a class="btn active" >Inicio</a>
 							</li>
 							<li class="list-group-item btn-outline-success">
-								<a href="/nueva-rutina">Nueva rutina &#10133;</a>
+								<a href="/nueva-rutina" class="btn">Nueva rutina &#10133;</a>
 							</li>
 							<li class="list-group-item  btn-outline-success">
-								<a href="/mis-entrenamientos">Mis entrenamientos  &#128197;</a>
+								<a href="/mis-entrenamientos" class="btn">Mis entrenamientos  &#128197;</a>
 							</li>
 							<li class="list-group-item btn-outline-success">
-								<a href="/ejercicios">Ejercicios &#128170;</a>
+								<a href="/ejercicios" class="btn">Ejercicios &#128170;</a>
 							</li>
 							<li class="list-group-item btn-outline-success">
-								<a href="/estadisticas">Estadísticas  &#128200;</a>
+								<a href="/estadisticas" class="btn">Estadísticas  &#128200;</a>
 							</li>
 							<li class="list-group-item btn-outline-success">
-								<a href="/perfil">Perfil &#128100;</a>
+								<a href="/perfil" class="btn">Perfil &#128100;</a>
 							</li>
 							<li class="list-group-item btn-outline-success">
-								<a href="/cerrar-sesion">Cerrar sesión &#128682;</a>
+								<a href="/cerrar-sesion" class="btn">Cerrar sesión &#128682;</a>
 							</li>
 						</ul>
                     </div>

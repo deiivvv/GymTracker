@@ -12,7 +12,7 @@
 </head>
 
 <body style="background-color: lightgrey;">
-    <!--<div th:replace="fragments/sidebar.html"></div>-->
+    <div th:replace="fragments/sidebar.html"></div>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -24,6 +24,12 @@
                             </div>
                             <div class="col-md-6 d-flex justify-content-center align-items-center">
                                 <h1 class="text-center">Mi Perfil</h1>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                <button onclick="clase_activo()" class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                                        aria-controls="offcanvasExample">
+                                    Menú
+                                </button>
                             </div>
                         </div>
                     </div>

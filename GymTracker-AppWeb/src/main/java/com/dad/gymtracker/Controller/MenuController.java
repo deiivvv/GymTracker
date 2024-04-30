@@ -20,7 +20,7 @@ public class MenuController {
 	private final UsuarioService usuarioService;
 	
     @RequestMapping("/inicio")
-    public String menu(@ModelAttribute UsuarioDTO usuario,
+    public String inicioSesion(@ModelAttribute UsuarioDTO usuario,
                        HttpSession session, Model model){
 
     	UsuarioDTO usuarioDTOBD=usuarioService.buscarUsuario(usuario.getNombre(), usuario.getContrasena());
@@ -30,8 +30,13 @@ public class MenuController {
             return "/login/inicioSesion";
     	}
         session.setAttribute("idUsuario", usuarioDTOBD.getId());
-        return "menu";
+        return "redirect:/menu";
 
+    }
+
+    @GetMapping("/menu")
+    public String menu(){
+        return "menu";
     }
 
     @GetMapping("/mis-entrenamientos")

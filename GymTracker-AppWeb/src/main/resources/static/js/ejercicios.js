@@ -39,7 +39,7 @@ function crearCard(nombre, descripcion) {
     colDiv.classList.add("col-md-4");
 
     let cardDiv = document.createElement("div");
-    cardDiv.classList.add("card", "mt-3", "text-bg-light");
+    cardDiv.classList.add("card", "mt-2", "mb-2", "text-bg-light");
 
     let imgDiv=document.createElement("div");
     imgDiv.classList.add("d-flex", "justify-content-center");
