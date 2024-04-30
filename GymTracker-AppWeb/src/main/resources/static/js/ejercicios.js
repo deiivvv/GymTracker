@@ -1,22 +1,24 @@
 function cargarEjercicios(url) {
-    axios.get(url)
-        .then(function (response) {
-            const listaEjercicios = document.getElementById('lista-ejercicios');
-            listaEjercicios.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos ejercicios
-            if (response.data.length === 0) {
-                listaEjercicios.appendChild(crearCard("", ""));
-            } else {
-                response.data.forEach((e) => {
-                    /*const li = document.createElement('li');
-                    li.innerHTML = e.nombre;*/
-                    listaEjercicios.appendChild(crearCard(e.nombre, e.descripcion));
-                });
+	axios.get(url)
+		.then(function(response) {
+			const listaEjercicios = document.getElementById('lista-ejercicios');
+			listaEjercicios.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos ejercicios
+			if (response.data.length === 0) {
+				listaEjercicios.appendChild(crearCard("", ""));
+			} else {
+				response.data.forEach((e) => {
+					listaEjercicios.appendChild(crearCard(e.nombre,e.descripcion, e.id));
+				});
+			}
+
+            if(Boolean(document.getElementById("idCrearEjercicio").value)){
+                seleccionable();
             }
-        })
-        .catch(function (error) {
-            console.error('Error al obtener los ejercicios:', error);
-        });
-};
+		})
+		.catch(function(error) {
+			console.error('Error al obtener los ejercicios:', error);
+		});
+}
 
 function cargarEjerciciosSegunInputs() {
     const musculo = document.getElementById('idMusculoEjercicio').value;
