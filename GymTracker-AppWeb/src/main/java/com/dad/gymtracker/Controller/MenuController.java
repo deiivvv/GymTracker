@@ -32,6 +32,7 @@ public class MenuController {
     		model.addAttribute("usuario", new UsuarioDTO());
             return "/login/inicioSesion";
     	}
+    	
         session.setAttribute("idUsuario", usuarioDTOBD.getId());
         return "menu";
 
