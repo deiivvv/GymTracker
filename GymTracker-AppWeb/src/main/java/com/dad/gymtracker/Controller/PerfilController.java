@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 @AllArgsConstructor
 public class PerfilController {
 	
-	private final String RUTATEMPLATES= "/perfil";
+	private final String RUTATEMPLATES= "/perfil/";
     private PerfilService perfilService;
 
     @GetMapping("/perfil")
     public String mostrar(Model model, HttpSession session){
         model.addAttribute("perfilUsuario", perfilService.obtenerUsuariosConPerfil((int)session.getAttribute("idUsuario")));
-        return RUTATEMPLATES + "/mostrar";
+        return RUTATEMPLATES + "mostrar";
     }
     
     @GetMapping("/perfil/editar")
     public String editar(Model model, HttpSession session){
         model.addAttribute("perfilUsuarioDTO", perfilService.obtenerUsuariosConPerfil((int)session.getAttribute("idUsuario")));
-        return RUTATEMPLATES + "/editar";
+        return RUTATEMPLATES + "editar";
     }
     
     @PostMapping("/perfil/guardar")

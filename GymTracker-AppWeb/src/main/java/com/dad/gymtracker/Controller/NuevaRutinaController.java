@@ -9,11 +9,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class NuevaRutinaController {
 	
-	private final String RUTATEMPLATES = "/nueva-rutina";
+	private final String RUTATEMPLATES = "/nuevaRutina/";
 	
 	@GetMapping("/nueva-rutina")
 	public String crear() {
-		return RUTATEMPLATES + "/crear";
+		return RUTATEMPLATES + "crear";
 	}
 
 }
