@@ -3,10 +3,12 @@ function seleccionable(){
 	
 	document.querySelectorAll("[id^='idCard']")
 			.forEach(function(element) {
+				if(element.id!="idCardundefined"){
   					element.addEventListener('click',  function() {
                         crearEjercicio(element.id);
                     });
-			});
+                }
+	});
 }
 
 function crearEjercicio(id){

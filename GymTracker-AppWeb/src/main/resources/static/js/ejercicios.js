@@ -33,8 +33,8 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const RUTAIMAGENES="/images/logo/"
 function crearCard(nombre, descripcion, id) {
+	let  RUTAIMAGENES="/images/ejercicios/"
     let colDiv =document.createElement("div");
     colDiv.classList.add("col-md-4");
 
@@ -64,6 +64,7 @@ function crearCard(nombre, descripcion, id) {
 
     if (nombre === "" && descripcion === "") {
         descripcion = "No se ha encontrado ningún ejercicio bajo tu búsqueda";
+        RUTAIMAGENES="/images/error/"
         nombre="error";
     }
     titleElement.textContent = capitalizeFirstLetter(nombre);
