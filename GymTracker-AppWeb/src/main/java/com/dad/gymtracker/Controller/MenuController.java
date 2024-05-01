@@ -25,7 +25,7 @@ public class MenuController {
 
     	UsuarioDTO usuarioDTOBD=usuarioService.buscarUsuario(usuario.getNombre(), usuario.getContrasena());
     	if(usuarioDTOBD==null) {
-    		model.addAttribute("mensajeError", "El usuario no existe");
+    		model.addAttribute("mensajeError", "Usuario o contraseña incorrectos");
     		model.addAttribute("usuario", new UsuarioDTO());
             return "/login/inicioSesion";
     	}
