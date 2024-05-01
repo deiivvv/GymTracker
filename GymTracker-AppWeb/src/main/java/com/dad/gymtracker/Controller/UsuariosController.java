@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @AllArgsConstructor
 public class UsuariosController {
 
-    private final String RUTATEMPLATES= "/usuarios";
+    private final String RUTATEMPLATES= "/usuarios/";
     private final UsuarioService usuarioService;
 
     @GetMapping("/usuario/crear")
     public String crearUsuario(Model model){
         model.addAttribute("usuarioPerfilDTO", new UsuarioPerfilDTO());
-        return RUTATEMPLATES + "/crear";
+        return RUTATEMPLATES + "crear";
     }
 
     @PostMapping("/usuario/crear")

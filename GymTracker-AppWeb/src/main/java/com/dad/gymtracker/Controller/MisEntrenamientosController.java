@@ -13,6 +13,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MisEntrenamientosController {
 
+	private final String RUTATEMPLATES= "/misEntrenamientos/";
+	
 	private final MisEntrenamientosService misEntrenamientosService;
 
 	@GetMapping("/mis-entrenamientos")
@@ -21,6 +23,6 @@ public class MisEntrenamientosController {
 		if(!listaEntrenamientos.isEmpty()) {
 			model.addAttribute("listaEntrenamientos", listaEntrenamientos);
 		}
-		return "misEntrenamientos";
+		return RUTATEMPLATES + "listar";
 	}
 }
