@@ -34,12 +34,18 @@ function capitalizeFirstLetter(string) {
 }
 
 const RUTAIMAGENES="/images/logo/"
-function crearCard(nombre, descripcion) {
+function crearCard(nombre, descripcion, id) {
     let colDiv =document.createElement("div");
     colDiv.classList.add("col-md-4");
 
     let cardDiv = document.createElement("div");
     cardDiv.classList.add("card", "mt-2", "mb-2", "text-bg-light");
+    cardDiv.id="idCard" + id;
+
+    let inputHidden = document.createElement("input");
+    inputHidden.type="hidden"
+    inputHidden.id=id
+    inputHidden.value=nombre
 
     let imgDiv=document.createElement("div");
     imgDiv.classList.add("d-flex", "justify-content-center");
@@ -69,6 +75,7 @@ function crearCard(nombre, descripcion) {
     imgElement.alt = nombre;
 
     colDiv.appendChild(cardDiv);
+    cardDiv.appendChild(inputHidden);
     cardDiv.appendChild(imgDiv);
     imgDiv.appendChild(imgElement);
     cardDiv.appendChild(cardBodyDiv);

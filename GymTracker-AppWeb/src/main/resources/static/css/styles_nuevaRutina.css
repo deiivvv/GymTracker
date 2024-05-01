@@ -1,3 +1,21 @@
+@import url("styles_ejercicios.css");
+
 .logo{
-	max-width: 100px;
+	max-width: 37%;
+}
+
+.fixed-size-row {
+	min-width: 1100px;
+}
+
+@media only screen and (max-width: 1200px) {
+	.fixed-size-row {
+		min-width: 760px;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.fixed-size-row {
+		min-width: 200px;
+	}
 }

@@ -1,16 +1,17 @@
 body{
-	background-color: lightgray;	
-}
 
+   background-color: lightgray;
+}
 .list-group-item.active {
-	background-color: #218838;
-	border-color: #1e7e34;
+    background-color: #198754;
+    border-color: #198754;
 }
-
-.btn:hover {
-	color: #fff;
+.list-group-item:hover{
+    background-color: #198754;
 }
-
-a.active {
-	color: #fff
+.btn:hover{
+    color: #fff;
+}
+a.active{
+    color: #fff
 }

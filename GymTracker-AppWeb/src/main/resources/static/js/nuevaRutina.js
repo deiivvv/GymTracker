@@ -28,6 +28,7 @@ function crearEjercicio(id){
 let idEjercicio=0;
 function crearCardEjercicio(nombre) {
     idEjercicio++;
+    document.getElementById("idHidden").value=idEjercicio
 
     let container = document.createElement('div');
     container.classList.add("container");
@@ -193,25 +194,19 @@ function crearSerie(peso, repes, id) {
     let tdRepes = document.createElement("td");
     let tdActions = document.createElement("td");
 
-    let labelPeso = document.createElement("label");
-    labelPeso.setAttribute('for', 'idPeso');
     let inputPeso = document.createElement("input");
     inputPeso.setAttribute('id', 'idPeso');
     inputPeso.setAttribute("readonly", "");
     inputPeso.type="hidden"
     inputPeso.value = peso;
     tdPeso.innerHTML = peso;
-    labelPeso.appendChild(inputPeso);
 
-    let labelRepes = document.createElement("label");
-    labelRepes.setAttribute('for', 'idRepes');
     let inputRepes = document.createElement("input");
     inputRepes.setAttribute('id', 'idRepes');
     inputRepes.setAttribute("readonly", "");
     inputRepes.type="hidden"
     inputRepes.value = repes;
     tdRepes.innerHTML = repes
-    labelRepes.appendChild(inputRepes);
 
     let buttonEditarSerie = document.createElement('button');
     buttonEditarSerie.type = 'button';
@@ -270,8 +265,8 @@ function crearSerie(peso, repes, id) {
     serie.appendChild(tdPeso);
     serie.appendChild(tdRepes);
     serie.appendChild(tdActions);
-    serie.appendChild(labelPeso);
-    serie.appendChild(labelRepes);
+    serie.appendChild(inputPeso);
+    serie.appendChild(inputRepes);
 
     $('#idModalSeriesCrear').modal('hide');
     }
@@ -283,7 +278,7 @@ function editarSerie(peso, repes, id){
     	let tds=serie.querySelectorAll("td");
     	tds[0].innerHTML=peso;
     	tds[1].innerHTML=repes;
-    	let inputs= serie.querySelectorAll("label input");
+    	let inputs= serie.querySelectorAll("input");
     	inputs[0].value=peso;
     	inputs[1].value=repes;
 
@@ -308,11 +303,11 @@ function validacionSeries(tipo){
 	let inputPeso= document.getElementById("idPesoModal" + tipo).value;
 	let inputRepes= document.getElementById("idRepesModal" + tipo).value;
 	
-	if(inputPeso<0){
+	if(inputPeso<0 || inputPeso===""){
 		alertPeso.style="display: block";
 		valido=false;
 	}
-	if(inputRepes<1){
+	if(inputRepes<1 || inputRepes===""){
 		alertRepes.style="display: block";
 		valido= false;
 	}
