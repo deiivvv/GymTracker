@@ -1,52 +1,16 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Para evitar que las imágenes desplacen el contenido */
+body{
+	background-color: lightgray;	
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+.list-group-item.active {
+	background-color: #218838;
+	border-color: #1e7e34;
 }
 
-.menu {
-    width: 250px; /* Ancho del menú */
-    background-color: #343a40;
-    color: white;
-    padding: 20px;
+.btn:hover {
+	color: #fff;
 }
 
-.menu ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.menu ul li {
-    margin-bottom: 10px;
-}
-
-.menu ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.background-image {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: calc(50% - 125px); /* Ancho de la mitad de la pantalla menos la mitad del menú */
-    background-size: cover;
-    background-position: center;
-}
-
-.imagenHombre {
-    left: 0;
-    background-image: url("static/images/menu/hombre/hombre1.png") ;
-}
-
-.imagenMujer {
-    right: 0;
-    background-image: url("static/images/menu/hombre/hombre1.png") ;
+a.active {
+	color: #fff
 }

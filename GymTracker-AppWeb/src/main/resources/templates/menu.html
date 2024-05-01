@@ -6,52 +6,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>GymTracker</title>
 	<link rel="shortcut icon" href="/images/logo/logoVerde.png">
-	<!--<script src="/js/menu.js"></script>-->
+	
 	<div th:replace="~{fragments/bootstrap.html}"></div>
+	
+	<script src="/js/menu.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/styles_menu.css">
 	<style>
-		.list-group-item.active {
-			background-color: #218838;
-			border-color: #1e7e34;
-        }
-
-		.btn:hover{
-			color: #fff;
-		}
-		a.active{
-			color: #fff
-		}
 		
-/*.hombre {
-			grid-column: 1;
-			grid-row: 2/4;
-		}
-
-		.mujer {
-			grid-column: 3;
-			grid-row: 2/4;
-		}
-
-		img{
-			width: 100%;
-		}
-		
-		.side-image {
-			width: 100%;
-			padding: 20px;
-			text-align: center;
-		}
-		*/
 	</style> 
 </head>
 
-<body style="background-color: lightgrey;">
-	<!-- <div class="side-image hombre">
-		<img id="idImagenHombre" src="/images/menu/hombre/hombre1.png" alt="Hombre">
-	</div>
-
-	<div class="side-image mujer">
-		<img id="idImagenMujer" src="/images/menu/hombre/hombre2.png" alt="Hombre">
-	</div> -->
+<body>
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">
@@ -71,22 +36,22 @@
 							<li class="list-group-item list-group-item-action active">
 								<a class="btn active" >Inicio</a>
 							</li>
-							<li class="list-group-item btn-outline-success">
+							<li class="list-group-item btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
 								<a href="/nueva-rutina" class="btn">Nueva rutina &#10133;</a>
 							</li>
-							<li class="list-group-item  btn-outline-success">
+							<li class="list-group-item  btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
 								<a href="/mis-entrenamientos" class="btn">Mis entrenamientos  &#128197;</a>
 							</li>
-							<li class="list-group-item btn-outline-success">
+							<li class="list-group-item btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
 								<a href="/ejercicios" class="btn">Ejercicios &#128170;</a>
 							</li>
-							<li class="list-group-item btn-outline-success">
+							<li class="list-group-item btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
 								<a href="/estadisticas" class="btn">Estadísticas  &#128200;</a>
 							</li>
-							<li class="list-group-item btn-outline-success">
+							<li class="list-group-item btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
 								<a href="/perfil" class="btn">Perfil &#128100;</a>
 							</li>
-							<li class="list-group-item btn-outline-success">
+							<li class="list-group-item btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
 								<a href="/cerrar-sesion" class="btn">Cerrar sesión &#128682;</a>
 							</li>
 						</ul>
