@@ -39,11 +39,7 @@ public class MenuController {
         return "menu";
     }
 
-    @GetMapping("/mis-entrenamientos")
-    public String misEntrenamientos(Model model, HttpSession session){
-        model.addAttribute("usuario", session.getAttribute("usuario"));
-        return "misEntrenamientos";
-    }
+   
     @GetMapping("/ejercicios")
     public String ejercicios(Model model, HttpSession session){
         model.addAttribute("usuario", session.getAttribute("usuario"));
