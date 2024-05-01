@@ -57,5 +57,5 @@
 
 - **Fusionar tu rama de trabajo con la rama principal (main), solo cuando todos estén de acuerdo:**
   ```
-  git merge -m "Fusionar issue #XX con main" issue#XX
+  git merge --no-ff -m "Fusionar issue #XX con main" issue#XX
   ```
