@@ -1,51 +1,11 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-}
-
-.profile {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 400px;
-    width: 100%;
-}
-
-.profile h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.profile-info {
-    margin-bottom: 20px;
-}
-
-.info {
-    margin-bottom: 10px;
-}
-
-a {
-    display: block;
-    text-align: center;
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-a:hover {
-    background-color: #0056b3;
+@media only screen and (max-width: 768px){
+	
+	.img-fluid{
+		max-width: 30%;
+	}
+	
+	.logoCentrado{
+		display: flex;
+		justify-content: center;
+	}
 }

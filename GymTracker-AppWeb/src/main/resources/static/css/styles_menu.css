@@ -15,3 +15,20 @@ body{
 a.active{
     color: #fff
 }
+
+a{
+	padding: 2%;
+}
+
+@media only screen and (max-width: 768px){
+	
+	.img-fluid{
+		max-width: 30%;
+	}
+	
+	.logoCentrado{
+		display: flex;
+		justify-content: center;
+	}
+}
+

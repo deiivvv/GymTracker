@@ -9,6 +9,7 @@
 	
 	<div th:replace="~{fragments/bootStrapDamago.html}"></div>
 	<link rel="stylesheet" href="/css/styles_menu.css">
+	<script src="/js/menu.js"></script>
 </head>
 
 <body>
@@ -18,8 +19,8 @@
                 <div class="card shadow-lg">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-3">
-                                <img class="img-fluid" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                            <div class="col-md-3 logoCentrado">
+                                <img class="img-fluid logo" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
                             </div>
                             <div class="col-md-6 d-flex justify-content-center align-items-center">
                                 <h1 class="text-center">GymTracker</h1>
@@ -28,27 +29,13 @@
                     </div>
                     <div class="card-body">
 						<ul class="list-group text-center">
-							<li class="list-group-item list-group-item-action active">
-								<a class="btn active" >Inicio</a>
-							</li>
-							<li class="list-group-item btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
-								<a href="/nueva-rutina" class="btn">Nueva rutina &#10133;</a>
-							</li>
-							<li class="list-group-item  btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
-								<a href="/mis-entrenamientos" class="btn">Mis entrenamientos  &#128197;</a>
-							</li>
-							<li class="list-group-item btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
-								<a href="/ejercicios" class="btn">Ejercicios &#128170;</a>
-							</li>
-							<li class="list-group-item btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
-								<a href="/estadisticas" class="btn">Estadísticas  &#128200;</a>
-							</li>
-							<li class="list-group-item btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
-								<a href="/perfil" class="btn">Perfil &#128100;</a>
-							</li>
-							<li class="list-group-item btn-outline-success" onmouseover="cambioColores(this, '#fff')" onmouseout="cambioColores(this, '#000')">
-								<a href="/cerrar-sesion" class="btn">Cerrar sesión &#128682;</a>
-							</li>
+							<a class="btn btn-success p-3">Inicio</a>
+							<a href="/nueva-rutina" class="btn btn-outline-success p-3">Nueva rutina &#10133;</a>
+							<a href="/mis-entrenamientos" class="btn btn-outline-success p-3">Mis entrenamientos  &#128197;</a>
+							<a href="/ejercicios" class="btn btn-outline-success p-3">Ejercicios &#128170;</a>
+							<a href="/estadisticas" class="btn btn-outline-success p-3">Estadísticas  &#128200;</a>
+							<a href="/perfil" class="btn btn-outline-success p-3">Perfil &#128100;</a>
+							<a href="/cerrar-sesion" class="btn btn-outline-success p-3">Cerrar sesión &#128682;</a>
 						</ul>
                     </div>
                 </div>
