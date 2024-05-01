@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Listado de Ejercicios</title>
+    <link rel="shortcut icon" href="/images/logo/logoVerde.png">
+
+    <div th:replace="~{fragments/sidebar.html}"></div>
+    <link rel="stylesheet" type="text/css" href="/css/styles_ejercicios.css">
+    <script src="/js/ejercicios.js"></script>
+</head>
+<body onload="cargarEjerciciosSegunInputs()">
+<input id="idCrearEjercicio" type="hidden" value=""/>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <img src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <h1 class="text-center">Listado de Ejercicios</h1>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <button onclick="clase_activo()" class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#idSidebar"
+                                    aria-controls="sidebar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                                </svg>
+                                Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="idNombreEjercicio" class="form-label"><b>Buscar ejercicios por
+                                nombre:</b></label>
+                            <input type="text" id="idNombreEjercicio" class="form-control mb-3"
+                                   oninput="cargarEjerciciosSegunInputs()">
+                        </div>
+                        <div class="col-md-6">
+                            <select id="idEquipamientoEjercicio" class="form-select"
+                                    onchange="cargarEjerciciosSegunInputs()">
+                                <option value="" selected>Selecciona el equipamiento</option>
+                                <option value="pesas">Pesas</option>
+                                <option value="maquina">Máquina</option>
+                                <option value="polea">Polea</option>
+                                <option value="peso corporal">Peso corporal</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select id="idMusculoEjercicio" class="form-select"
+                                    onchange="cargarEjerciciosSegunInputs()">
+                                <option value="" selected>Selecciona un músculo</option>
+                                <option value="cuadriceps">Cuadriceps</option>
+                                <option value="gluteos">Gluteos</option>
+                                <option value="pectorales">Pectorales</option>
+                                <option value="triceps">Triceps</option>
+                                <option value="espalda">Espalda</option>
+                                <option value="biceps">Biceps</option>
+                                <option value="espalda baja">Espalda baja</option>
+                                <option value="isquiotibiales">Isquiotibiales</option>
+                                <option value="deltoides">Deltoides</option>
+                                <option value="abdominales">Abdominales</option>
+                                <option value="gemelos">Gemelos</option>
+                                <option value="multiples">Multiples</option>
+                                <option value="antebrazo">Antebrazo</option>
+                                <option value="trapecio">Trapecio</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mt-3 d-flex justify-content-center align-items-center">
+                    <div id="lista-ejercicios" class="row fixed-size-row">
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Sentadilla</h5>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p class="card-text">Descripción del ejercicio...</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src="sentadilla.jpg" class="img-fluid" alt="Sentadilla">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

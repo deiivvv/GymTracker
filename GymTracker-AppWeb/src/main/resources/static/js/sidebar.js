@@ -1,3 +1,7 @@
-document.getElementById('sidebarCollapse').addEventListener('click', function () {
-    document.getElementById('sidebar').classList.toggle('active');
-});
+function clase_activo(){
+    let url = window.location.href;
+    let li=document.getElementById(url.split("/")[3])
+    li.style="background-color: #218838;" +
+        "border-color: #1e7e34;";
+    li.querySelector("a").style="color: #fff;";
+}

@@ -10,7 +10,6 @@
             <basic name="altura"/>
             <basic name="edad"/>
             <basic name="genero"/>
-            <basic name="correo"/>
         </attributes>
     </entity>
     

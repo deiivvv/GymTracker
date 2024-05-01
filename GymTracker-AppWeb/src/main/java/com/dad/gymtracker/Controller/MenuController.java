@@ -8,12 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dad.gymtracker.Dto.UsuarioDTO;
-import com.dad.gymtracker.Service.PerfilService;
 import com.dad.gymtracker.Service.UsuarioService;
 
 @Controller
@@ -23,7 +20,7 @@ public class MenuController {
 	private final UsuarioService usuarioService;
 	
     @RequestMapping("/inicio")
-    public String menu(@ModelAttribute UsuarioDTO usuario,
+    public String inicioSesion(@ModelAttribute UsuarioDTO usuario,
                        HttpSession session, Model model){
 
     	UsuarioDTO usuarioDTOBD=usuarioService.buscarUsuario(usuario.getNombre(), usuario.getContrasena());
@@ -34,8 +31,13 @@ public class MenuController {
     	}
     	
         session.setAttribute("idUsuario", usuarioDTOBD.getId());
-        return "menu";
+        return "redirect:/menu";
 
+    }
+
+    @GetMapping("/menu")
+    public String menu(){
+        return "menu";
     }
 
     @GetMapping("/mis-entrenamientos")
@@ -46,7 +48,7 @@ public class MenuController {
     @GetMapping("/ejercicios")
     public String ejercicios(Model model, HttpSession session){
         model.addAttribute("usuario", session.getAttribute("usuario"));
-        return "ejercicios";
+        return "/ejercicios/listar";
     }
 
     @GetMapping("/cerrar-sesion")

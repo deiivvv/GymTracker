@@ -1,41 +1,23 @@
-/* Estilos para el contenedor de búsqueda */
-.search-container {
-    margin-bottom: 20px;
+.fixed-size-row {
+    min-width: 1300px;
 }
 
-/* Estilos para los selects */
-select {
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
+@media only screen and (max-width: 1400px) {
+    .fixed-size-row {
+        min-width: 760px;
+    }
 }
 
-/* Estilos para el input de búsqueda */
-input[type="text"] {
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+@media only screen and (max-width: 1000px) {
+    .fixed-size-row {
+        min-width: 200px;
+    }
 }
 
-/* Estilos para la lista de ejercicios */
-#lista-ejercicios {
-    list-style-type: none;
-    padding: 0;
+body{
+    background-color: lightgrey;
 }
 
-#lista-ejercicios li {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    color: #343a40; /* Cambia el color del texto para que sea visible en el fondo claro */
-}
-
-/* Ajustes para ocupar el espacio del sidebar */
-#content {
-    margin-left: 250px; /* Ancho del sidebar */
-    padding-left: 20px;
+img{
+    max-width: 37%;
 }
