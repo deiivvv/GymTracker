@@ -1,18 +1,42 @@
-body{
-    background-color: lightgrey;
+body {
+	background-color: lightgrey;
 }
 
-.contenedor{
-    transition: transform 1s ease-in-out;
-    display: flex;
+.contenedor {
+	transition: transform 1s ease-in-out;
 }
+
 .oculto {
-    order: 2;
-    transform: rotateY(180deg);
-    visibility: hidden;
+	display: none;
 }
 
-.mostrar {
-    transform: rotateY(0deg);
-    visibility: visible;
+
+.giroSiguiente {
+	animation: siguiente 5s linear 1 forwards;
+	transform: rotateY(-180deg);
+}
+
+.giroVolver{
+	animation: volver 5s linear 1 forwards;
+	transform: rotateY(180deg);
+}
+
+@keyframes siguiente {
+	0% {
+		transform: rotateY(-180deg);
+	}
+
+	100% {
+		transform: rotateY(0deg);
+	}
+}
+
+@keyframes volver {
+	0% {
+		transform: rotateY(180deg);
+	}
+
+	100% {
+		transform: rotateY(0deg);
+	}
 }
