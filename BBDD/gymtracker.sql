@@ -48,7 +48,6 @@ CREATE TABLE series (
 );
 
 CREATE TABLE ejercicios_series (
-  id INT AUTO_INCREMENT,
   id_ejercicio INT,
   id_serie INT,
   FOREIGN KEY (id_ejercicio) REFERENCES ejercicios(id)

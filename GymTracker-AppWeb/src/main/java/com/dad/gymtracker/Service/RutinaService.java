@@ -39,50 +39,65 @@ public class RutinaService {
     @Transactional
     public void crearRutina(NuevaRutinaDTO nuevaRutinaDTO, Integer idUsuario) {
         try {
-            insertarEjercicios(nuevaRutinaDTO.getEjercicios());
-            insertarRutina(idUsuario, nuevaRutinaDTO.getNombre());
+            Integer idRutina=insertarRutina(idUsuario, nuevaRutinaDTO.getNombre());
+            insertarEjercicios(idRutina,nuevaRutinaDTO.getEjercicios());
+//            insertarSeries();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    //    throws SQLException
     @Transactional
-    public void insertarEjercicios(String ejercicios) throws SQLException {
+    public Integer insertarRutina(Integer idUsuario, String nombre) throws SQLException {
+
+        String sqlInsertRutina = "INSERT INTO rutinas (id_usuario, nombre, fecha) VALUES (?, ?, CURDATE())";
+
+        entityManager.createNativeQuery(sqlInsertRutina)
+                .setParameter(1, idUsuario)
+                .setParameter(2, nombre)
+                .executeUpdate();
+
+        // Obtener el ID de la rutina recién insertada
+        Long idGenerada = (Long) entityManager.createNativeQuery("SELECT LAST_INSERT_ID()")
+                .getSingleResult();
+
+        return idGenerada.intValue();
+    }
+
+    @Transactional
+    public void insertarEjercicios(Integer idRutina,String ejercicios) throws SQLException {
         String[] ejerciciosArray = ejercicios.split(",");
 
         String sqlSelectIdExistente = "SELECT COUNT(*) FROM ejercicios WHERE id = ?";
         String sqlInsertEjercicio = "INSERT INTO ejercicios (id, nombre) VALUES (?, ?)";
+        String sqlInsertRelacion = "INSERT INTO rutinas_ejercicios (id_rutina, id_ejercicio) VALUES (?, ?)";
 
         for (String ejercicio : ejerciciosArray) {
             String[] ejercicioData = ejercicio.split("@");
-            String id = ejercicioData[0];
+            String idEjercicio = ejercicioData[0];
             String nombre = ejercicioData[1];
 
             // Verificar si la ID ya existe
             Long count = (Long) entityManager.createNativeQuery(sqlSelectIdExistente)
-                    .setParameter(1, id)
+                    .setParameter(1, idEjercicio)
                     .getSingleResult();
 
             if (count == 0) { // La ID no existe, entonces insertar el ejercicio
                 entityManager.createNativeQuery(sqlInsertEjercicio)
-                        .setParameter(1, id)
+                        .setParameter(1, idEjercicio)
                         .setParameter(2, nombre)
                         .executeUpdate();
             } else {
                 //mensaje por consola
-                log.warn("La ID " + id + " ya existe, no se insertará el ejercicio.");
+                log.warn("La ID " + idEjercicio + " ya existe, no se insertará el ejercicio.");
             }
+
+            // Insertar la relación entre la rutina y el ejercicio
+            entityManager.createNativeQuery(sqlInsertRelacion)
+                    .setParameter(1, idRutina)
+                    .setParameter(2, idEjercicio)
+                    .executeUpdate();
         }
     }
-
-    @Transactional
-    public void insertarRutina(Integer idUsuario, String nombre) throws SQLException {
-        entityManager.createNativeQuery("INSERT INTO rutinas (id_usuario, nombre, fecha) VALUES (?, ?, CURDATE())")
-                .setParameter(1, idUsuario)
-                .setParameter(2, nombre)
-                .executeUpdate();
-    }
-
 
 }
