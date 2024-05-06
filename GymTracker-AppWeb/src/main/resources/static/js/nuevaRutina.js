@@ -15,20 +15,17 @@ function crearEjercicio(id){
     let ejercicio=document.getElementById(id.replace("idCard",""));
     
     let listaEjercicios=document.getElementById("idlistaEjercicios");
-    listaEjercicios.appendChild(crearCardEjercicio(ejercicio.value));
+    listaEjercicios.appendChild(crearCardEjercicio(ejercicio));
 
-    let hideElement = document.createElement("input");
-    hideElement.type = "hidden";
-    hideElement.value = ejercicio.id;
-    listaEjercicios.appendChild(hideElement);
-    hideElement.id="ejercicio"+ejercicio.id;
     $('#idModalEjercicios').modal('hide');
-    
     $('#idModalSeriesCrear').modal('show');
 }
 
 let idEjercicio=0;
-function crearCardEjercicio(nombre) {
+function crearCardEjercicio(ejercicio) {
+    let nombre=ejercicio.value;
+    let id=ejercicio.id;
+
     idEjercicio++;
     document.getElementById("idHidden").value=idEjercicio
 
@@ -167,8 +164,15 @@ function crearCardEjercicio(nombre) {
     tdRepes.innerHTML="Repeticiones"
     tdActions.innerHTML="Acciones"
 
+    let hideElement = document.createElement("input");
+    hideElement.type = "hidden";
+    hideElement.value = id+"@"+nombre;
+    hideElement.id="IdEjercicio"+id;
+
+
     card.appendChild(cardBodyDiv);
     cardBodyDiv.appendChild(rowDiv3);
+    cardBodyDiv.appendChild(hideElement);
     rowDiv3.appendChild(colDiv3);
     colDiv3.appendChild(tableSeries);
     tableSeries.appendChild(tableSeriesHead);

@@ -11,7 +11,19 @@
     <script src="/js/ejercicios.js"></script>
     <script src="/js/nuevaRutina.js"></script>
     <link rel="stylesheet" href="/css/styles_nuevaRutina.css">
-
+    <script>
+        function crearRutina() {
+            document.getElementById("idRutinaEjercicios").value;
+            let ejercicios = document.querySelectorAll('[id^="IdEjercicio"]');
+            ejercicios.forEach(function(elemento) {
+                document.getElementById("idRutinaEjercicios").value+=elemento.value+",";
+            });
+            document.getElementById("idRutinaEjercicios").value=document.getElementById("idRutinaEjercicios").value.slice(0, -1);
+            if (document.getElementById("idRutinaEjercicios").value!== "") {
+                document.getElementById("idRutinaFormOculto").submit();
+            }
+        }
+    </script>
 </head>
 
 <body onload="cargarEjerciciosSegunInputs()">
@@ -65,7 +77,7 @@
 <input type="hidden" id="idCrearEjercicio" value="1"/>
 <!--Modal de crear rutina-->
 <!--th:object="nuevaRutina"-->
-<form action="#" method="get">
+<form id="idRutinaFormOculto" method="post" th:object="${nuevaRutinaForm}">
     <div class="modal fade" id="idModalCrearRutina" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
@@ -79,21 +91,22 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <label for="idNombreRutina">Dame el nombre de tu rutina para crearla</label>
+                            <label for="idRutinaNombre">Dame el nombre de tu rutina para crearla</label>
                             <div class="input-group mb-3">
-                                <input type="text" id="idNombreRutina" class="form-control" name="nombre"
-                                       placeholder="Nombre de la rutina">
+                                <input type="text" id="idRutinaNombre" class="form-control" name="nombre"
+                                       placeholder="Nombre de la rutina" required>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
-                    <input type="submit" class="btn btn-success" value="Crear">
+                    <input class="btn btn-success" value="Crear" onclick="crearRutina()">
                 </div>
             </div>
         </div>
     </div>
+    <input type="hidden" id="idRutinaEjercicios" name="ejercicios">
 </form>
 <!--Modal de ejercicios-->
 <div class="modal fade" id="idModalEjercicios" tabindex="-1" aria-hidden="true">
