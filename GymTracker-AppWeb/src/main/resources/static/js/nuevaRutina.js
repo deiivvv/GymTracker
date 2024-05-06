@@ -167,7 +167,7 @@ function crearCardEjercicio(ejercicio) {
     let hideElement = document.createElement("input");
     hideElement.type = "hidden";
     hideElement.value = id+"@"+nombre;
-    hideElement.id="IdEjercicio"+id;
+    hideElement.id="IdEjercicio"+idEjercicio;
 
 
     card.appendChild(cardBodyDiv);
@@ -201,15 +201,13 @@ function crearSerie(peso, repes, id) {
     let tdActions = document.createElement("td");
 
     let inputPeso = document.createElement("input");
-    inputPeso.setAttribute('id', 'idPeso');
-    inputPeso.setAttribute("readonly", "");
+    inputPeso.setAttribute('id', 'idPeso'+idSerie);
     inputPeso.type="hidden"
-    inputPeso.value = peso;
-    tdPeso.innerHTML = peso;
+    inputPeso.value =document.getElementById("IdEjercicio" + id).value.split("@")[0]+"@"+peso;//2066666666
+    tdPeso.innerHTML =peso;
 
     let inputRepes = document.createElement("input");
-    inputRepes.setAttribute('id', 'idRepes');
-    inputRepes.setAttribute("readonly", "");
+    inputRepes.setAttribute('id', 'idRepes'+idSerie);
     inputRepes.type="hidden"
     inputRepes.value = repes;
     tdRepes.innerHTML = repes
@@ -285,7 +283,7 @@ function editarSerie(peso, repes, id){
     	tds[0].innerHTML=peso;
     	tds[1].innerHTML=repes;
     	let inputs= serie.querySelectorAll("input");
-    	inputs[0].value=peso;
+    	inputs[0].value=document.getElementById("IdEjercicio" + id).value.split("@")[0]+"@"+peso;
     	inputs[1].value=repes;
 
     	$('#idModalSeriesEditar').modal('hide');
