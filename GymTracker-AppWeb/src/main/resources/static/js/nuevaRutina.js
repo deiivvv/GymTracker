@@ -21,7 +21,7 @@ function crearEjercicio(id){
     hideElement.type = "hidden";
     hideElement.value = ejercicio.id;
     listaEjercicios.appendChild(hideElement);
-    
+    hideElement.id="ejercicio"+ejercicio.id;
     $('#idModalEjercicios').modal('hide');
     
     $('#idModalSeriesCrear').modal('show');
