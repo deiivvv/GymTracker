@@ -11,24 +11,6 @@
     <script src="/js/ejercicios.js"></script>
     <script src="/js/nuevaRutina.js"></script>
     <link rel="stylesheet" href="/css/styles_nuevaRutina.css">
-    <script>
-        function crearRutina() {
-            let ejercicios = document.querySelectorAll('[id^="IdEjercicio"]');
-            ejercicios.forEach(function(elemento) {
-                document.getElementById("idRutinaEjercicios").value+=elemento.value+",";
-            });
-            document.getElementById("idRutinaEjercicios").value=document.getElementById("idRutinaEjercicios").value.slice(0, -1);
-
-            let series = document.querySelectorAll('[id^="IdPesoRepes"]');
-            series.forEach(function(elemento) {
-                document.getElementById("idRutinaSeries").value+=elemento.value+",";
-            });
-            document.getElementById("idRutinaSeries").value=document.getElementById("idRutinaSeries").value.slice(0, -1);
-            if (document.getElementById("idRutinaNombre").value!==""&&document.getElementById("idRutinaEjercicios").value!== ""&&document.getElementById("idRutinaSeries").value!== "") {
-                document.getElementById("idRutinaFormOculto").submit();
-            }
-        }
-    </script>
 </head>
 
 <body onload="cargarEjerciciosSegunInputs()">

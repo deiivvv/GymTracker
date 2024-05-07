@@ -96,11 +96,12 @@ public class RutinaService {
     }
 
     @Transactional
-    public void insertarEjercicios(Integer idRutina,String ejercicios) throws SQLException {
+    public void insertarEjercicios(Integer idRutina, String ejercicios) throws SQLException {
         String[] ejerciciosArray = ejercicios.split(",");
 
         String sqlSelectIdExistente = "SELECT COUNT(*) FROM ejercicios WHERE id = ?";
         String sqlInsertEjercicio = "INSERT INTO ejercicios (id, nombre) VALUES (?, ?)";
+        String sqlSelectRelacionExistente = "SELECT COUNT(*) FROM rutinas_ejercicios WHERE id_rutina = ? AND id_ejercicio = ?";
         String sqlInsertRelacion = "INSERT INTO rutinas_ejercicios (id_rutina, id_ejercicio) VALUES (?, ?)";
 
         for (String ejercicio : ejerciciosArray) {
@@ -108,7 +109,7 @@ public class RutinaService {
             String idEjercicio = ejercicioData[0];
             String nombre = ejercicioData[1];
 
-            // Verificar si la ID ya existe
+            // Verificar si la ID del ejercicio ya existe
             Long count = (Long) entityManager.createNativeQuery(sqlSelectIdExistente)
                     .setParameter(1, idEjercicio)
                     .getSingleResult();
@@ -119,16 +120,27 @@ public class RutinaService {
                         .setParameter(2, nombre)
                         .executeUpdate();
             } else {
-                //mensaje por consola
+                // Mensaje por consola
                 log.warn("La ID " + idEjercicio + " ya existe, no se insertará el ejercicio.");
             }
 
-            // Insertar la relación entre la rutina y el ejercicio
-            entityManager.createNativeQuery(sqlInsertRelacion)
+            // Verificar si la relación ya existe
+            Long relacionCount = (Long) entityManager.createNativeQuery(sqlSelectRelacionExistente)
                     .setParameter(1, idRutina)
                     .setParameter(2, idEjercicio)
-                    .executeUpdate();
+                    .getSingleResult();
+
+            if (relacionCount == 0) { // La relación no existe, entonces insertarla
+                entityManager.createNativeQuery(sqlInsertRelacion)
+                        .setParameter(1, idRutina)
+                        .setParameter(2, idEjercicio)
+                        .executeUpdate();
+            } else {
+                // Mensaje por consola
+                log.warn("La relación entre la rutina " + idRutina + " y el ejercicio " + idEjercicio + " ya existe, no se insertará.");
+            }
         }
     }
+
 
 }

@@ -1,3 +1,27 @@
+function crearRutina() {
+
+    let ejercicios = document.querySelectorAll('[id^="idEjercicio"]');
+    ejercicios.forEach(function(elemento) {
+        document.getElementById("idRutinaEjercicios").value+=elemento.value+",";
+    });
+    document.getElementById("idRutinaEjercicios").value=document.getElementById("idRutinaEjercicios").value.slice(0, -1);
+
+    let series = document.querySelectorAll('[id^="idPesoRepes"]');
+    series.forEach(function(elemento) {
+        document.getElementById("idRutinaSeries").value+=elemento.value+",";
+    });
+    document.getElementById("idRutinaSeries").value=document.getElementById("idRutinaSeries").value.slice(0, -1);
+
+    if (document.getElementById("idRutinaNombre").value!==""&&document.getElementById("idRutinaEjercicios").value!== ""&&document.getElementById("idRutinaSeries").value!== "") {
+        document.getElementById("idRutinaFormOculto").submit();
+    }else{
+        document.getElementById("idRutinaNombre").value= "";
+        document.getElementById("idRutinaEjercicios").value="";
+        document.getElementById("idRutinaSeries").value= "";
+        $('#idModalCrearRutina').modal('hide');
+        alert("Error al crear rutina intentalo de nuevo");
+    }
+}
 function seleccionable() {
 
     document.querySelectorAll("[id^='idCard']")
@@ -167,7 +191,7 @@ function crearCardEjercicio(ejercicio) {
     let hideElement = document.createElement("input");
     hideElement.type = "hidden";
     hideElement.value = id + "@" + nombre;
-    hideElement.id = "IdEjercicio" + idEjercicio;
+    hideElement.id = "idEjercicio" + idEjercicio;
 
 
     card.appendChild(cardBodyDiv);
@@ -206,18 +230,7 @@ function crearSerie(peso, repes, id) {
         let inputPesoRepes = document.createElement("input");
         inputPesoRepes.setAttribute('id', 'idPesoRepes' + idSerie);
         inputPesoRepes.type = "hidden"
-        inputPesoRepes.value = document.getElementById("IdEjercicio" + id).value.split("@")[0] + "@" + peso+":"+repes;
-        // let inputPeso = document.createElement("input");
-        // inputPeso.setAttribute('id', 'idPeso' + idSerie);
-        // inputPeso.type = "hidden"
-        // inputPeso.value = document.getElementById("IdEjercicio" + id).value.split("@")[0] + "@" + peso;//2066666666
-        // tdPeso.innerHTML = peso;
-        //
-        // let inputRepes = document.createElement("input");
-        // inputRepes.setAttribute('id', 'idRepes' + idSerie);
-        // inputRepes.type = "hidden"
-        // inputRepes.value = repes;
-        // tdRepes.innerHTML = repes
+        inputPesoRepes.value = document.getElementById("idEjercicio" + id).value.split("@")[0] + "@" + peso+":"+repes;
 
         let buttonEditarSerie = document.createElement('button');
         buttonEditarSerie.type = 'button';
@@ -277,8 +290,6 @@ function crearSerie(peso, repes, id) {
         serie.appendChild(tdRepes);
         serie.appendChild(tdActions);
         serie.appendChild(inputPesoRepes);
-        // serie.appendChild(inputPeso);
-        // serie.appendChild(inputRepes);
 
         $('#idModalSeriesCrear').modal('hide');
     }
@@ -295,7 +306,7 @@ function editarSerie(peso, repes, id) {
         tds[0].innerHTML = peso;
         tds[1].innerHTML = repes;
         let inputs = serie.querySelectorAll("input");
-        inputs[0].value = document.getElementById("IdEjercicio" + tbodyId).value.split("@")[0] + "@" + peso+":"+repes;
+        inputs[0].value = document.getElementById("idEjercicio" + tbodyId).value.split("@")[0] + "@" + peso+":"+repes;
 
         $('#idModalSeriesEditar').modal('hide');
     }
@@ -318,11 +329,12 @@ function validacionSeries(tipo) {
     let inputPeso = document.getElementById("idPesoModal" + tipo).value;
     let inputRepes = document.getElementById("idRepesModal" + tipo).value;
 
-    if (inputPeso < 0 || inputPeso === "") {
+    if (inputPeso < 0 || inputPeso === ""||inputPeso>1100) {
         alertPeso.style = "display: block";
         valido = false;
     }
-    if (inputRepes < 1 || inputRepes === "") {
+    let regex = /[,.]/g;
+    if (inputRepes < 1 || inputRepes === "" || regex.test(inputRepes)||inputRepes>999) {
         alertRepes.style = "display: block";
         valido = false;
     }
