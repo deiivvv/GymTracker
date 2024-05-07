@@ -13,13 +13,18 @@
     <link rel="stylesheet" href="/css/styles_nuevaRutina.css">
     <script>
         function crearRutina() {
-            document.getElementById("idRutinaEjercicios").value;
             let ejercicios = document.querySelectorAll('[id^="IdEjercicio"]');
             ejercicios.forEach(function(elemento) {
                 document.getElementById("idRutinaEjercicios").value+=elemento.value+",";
             });
             document.getElementById("idRutinaEjercicios").value=document.getElementById("idRutinaEjercicios").value.slice(0, -1);
-            if (document.getElementById("idRutinaEjercicios").value!== "") {
+
+            let series = document.querySelectorAll('[id^="IdPesoRepes"]');
+            series.forEach(function(elemento) {
+                document.getElementById("idRutinaSeries").value+=elemento.value+",";
+            });
+            document.getElementById("idRutinaSeries").value=document.getElementById("idRutinaSeries").value.slice(0, -1);
+            if (document.getElementById("idRutinaNombre").value!==""&&document.getElementById("idRutinaEjercicios").value!== ""&&document.getElementById("idRutinaSeries").value!== "") {
                 document.getElementById("idRutinaFormOculto").submit();
             }
         }
@@ -107,6 +112,7 @@
         </div>
     </div>
     <input type="hidden" id="idRutinaEjercicios" name="ejercicios">
+    <input type="hidden" id="idRutinaSeries" name="series">
 </form>
 <!--Modal de ejercicios-->
 <div class="modal fade" id="idModalEjercicios" tabindex="-1" aria-hidden="true">

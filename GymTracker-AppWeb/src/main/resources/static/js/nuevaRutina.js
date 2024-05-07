@@ -201,17 +201,23 @@ function crearSerie(peso, repes, id) {
         let tdRepes = document.createElement("td");
         let tdActions = document.createElement("td");
 
-        let inputPeso = document.createElement("input");
-        inputPeso.setAttribute('id', 'idPeso' + idSerie);
-        inputPeso.type = "hidden"
-        inputPeso.value = document.getElementById("IdEjercicio" + id).value.split("@")[0] + "@" + peso;//2066666666
         tdPeso.innerHTML = peso;
-
-        let inputRepes = document.createElement("input");
-        inputRepes.setAttribute('id', 'idRepes' + idSerie);
-        inputRepes.type = "hidden"
-        inputRepes.value = repes;
         tdRepes.innerHTML = repes
+        let inputPesoRepes = document.createElement("input");
+        inputPesoRepes.setAttribute('id', 'idPesoRepes' + idSerie);
+        inputPesoRepes.type = "hidden"
+        inputPesoRepes.value = document.getElementById("IdEjercicio" + id).value.split("@")[0] + "@" + peso+":"+repes;
+        // let inputPeso = document.createElement("input");
+        // inputPeso.setAttribute('id', 'idPeso' + idSerie);
+        // inputPeso.type = "hidden"
+        // inputPeso.value = document.getElementById("IdEjercicio" + id).value.split("@")[0] + "@" + peso;//2066666666
+        // tdPeso.innerHTML = peso;
+        //
+        // let inputRepes = document.createElement("input");
+        // inputRepes.setAttribute('id', 'idRepes' + idSerie);
+        // inputRepes.type = "hidden"
+        // inputRepes.value = repes;
+        // tdRepes.innerHTML = repes
 
         let buttonEditarSerie = document.createElement('button');
         buttonEditarSerie.type = 'button';
@@ -270,8 +276,9 @@ function crearSerie(peso, repes, id) {
         serie.appendChild(tdPeso);
         serie.appendChild(tdRepes);
         serie.appendChild(tdActions);
-        serie.appendChild(inputPeso);
-        serie.appendChild(inputRepes);
+        serie.appendChild(inputPesoRepes);
+        // serie.appendChild(inputPeso);
+        // serie.appendChild(inputRepes);
 
         $('#idModalSeriesCrear').modal('hide');
     }
@@ -288,8 +295,7 @@ function editarSerie(peso, repes, id) {
         tds[0].innerHTML = peso;
         tds[1].innerHTML = repes;
         let inputs = serie.querySelectorAll("input");
-        inputs[0].value = document.getElementById("IdEjercicio" + tbodyId).value.split("@")[0] + "@" + peso;
-        inputs[1].value = repes;
+        inputs[0].value = document.getElementById("IdEjercicio" + tbodyId).value.split("@")[0] + "@" + peso+":"+repes;
 
         $('#idModalSeriesEditar').modal('hide');
     }

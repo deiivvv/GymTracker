@@ -41,9 +41,40 @@ public class RutinaService {
         try {
             Integer idRutina=insertarRutina(idUsuario, nuevaRutinaDTO.getNombre());
             insertarEjercicios(idRutina,nuevaRutinaDTO.getEjercicios());
-//            insertarSeries();
+            insertarSeries(nuevaRutinaDTO.getSeries());
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+    @Transactional
+    public void insertarSeries(String series){
+        String sqlInsertSerie = "INSERT INTO series (id_ejercicio, peso, repes) VALUES (?, ?, ?)";
+        String sqlInsertEjercicioSerie = "INSERT INTO ejercicios_series (id_ejercicio, id_serie) VALUES(?,?)";
+
+        String[] seriesArray = series.split(",");
+
+        for (String serie : seriesArray) {
+            String[] partes = serie.split("@|:");
+            int idEjercicio = Integer.parseInt(partes[0]);
+            float peso = Float.parseFloat(partes[1]);
+            int repes = Integer.parseInt(partes[2]);
+
+            // Insertar la serie
+            entityManager.createNativeQuery(sqlInsertSerie)
+                    .setParameter(1, idEjercicio)
+                    .setParameter(2, peso)
+                    .setParameter(3, repes)
+                    .executeUpdate();
+
+            // Obtener el ID de la serie recién insertada
+            Long idSerie = (Long)entityManager.createNativeQuery("SELECT LAST_INSERT_ID()")
+                    .getSingleResult();
+
+            // Establecer la relación entre el ejercicio y la serie
+            entityManager.createNativeQuery(sqlInsertEjercicioSerie)
+                    .setParameter(1, idEjercicio)
+                    .setParameter(2, idSerie)
+                    .executeUpdate();
         }
     }
 
