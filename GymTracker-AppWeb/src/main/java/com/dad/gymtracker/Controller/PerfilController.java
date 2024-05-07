@@ -20,6 +20,7 @@ public class PerfilController {
     @GetMapping("/perfil")
     public String mostrar(Model model, HttpSession session){
         model.addAttribute("perfilUsuario", perfilService.obtenerUsuariosConPerfil((int)session.getAttribute("idUsuario")));
+        model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
         return RUTATEMPLATES + "mostrar";
     }
     

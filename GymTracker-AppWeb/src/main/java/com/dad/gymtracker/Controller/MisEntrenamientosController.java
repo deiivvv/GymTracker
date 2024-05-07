@@ -20,6 +20,7 @@ public class MisEntrenamientosController {
 	@GetMapping("/mis-entrenamientos")
 	public String misEntrenamientos(Model model, HttpSession session) {
 		List<MisEntrenamientosDTO> listaEntrenamientos =misEntrenamientosService.buscarEntrenamientosById((int) session.getAttribute("idUsuario"));
+		model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
 		if(!listaEntrenamientos.isEmpty()) {
 			model.addAttribute("listaEntrenamientos", listaEntrenamientos);
 		}

@@ -12,12 +12,12 @@ body {
 
 
 .giroSiguiente {
-	animation: siguiente 5s linear 1 forwards;
+	animation: siguiente 2s linear 1 forwards;
 	transform: rotateY(-180deg);
 }
 
 .giroVolver{
-	animation: volver 5s linear 1 forwards;
+	animation: volver 2s linear 1 forwards;
 	transform: rotateY(180deg);
 }
 

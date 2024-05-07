@@ -30,12 +30,14 @@ public class MenuController {
             return "/login/inicioSesion";
     	}
         session.setAttribute("idUsuario", usuarioDTOBD.getId());
+        session.setAttribute("rolUsuario", usuarioDTOBD.getRol());
         return "redirect:/menu";
 
     }
 
     @GetMapping("/menu")
-    public String menu(){
+    public String menu(Model model, HttpSession session){
+        model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
         return "menu";
     }
 

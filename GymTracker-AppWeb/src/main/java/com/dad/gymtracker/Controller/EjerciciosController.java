@@ -16,6 +16,7 @@ public class EjerciciosController {
     @GetMapping("/ejercicios")
     public String ejercicios(Model model, HttpSession session){
         model.addAttribute("usuario", session.getAttribute("usuario"));
+        model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
         return RUTATEMPLATES + "listar";
     }
 }
