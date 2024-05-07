@@ -47,8 +47,8 @@ public class RutinaService {
         }
     }
     @Transactional
-    public void insertarSeries(String series){
-        String sqlInsertSerie = "INSERT INTO series (id_ejercicio, peso, repes) VALUES (?, ?, ?)";
+    public void insertarSeries(String series) throws SQLException{
+        String sqlInsertSerie = "INSERT INTO series (peso, repes) VALUES (?, ?)";
         String sqlInsertEjercicioSerie = "INSERT INTO ejercicios_series (id_ejercicio, id_serie) VALUES(?,?)";
 
         String[] seriesArray = series.split(",");
@@ -61,9 +61,8 @@ public class RutinaService {
 
             // Insertar la serie
             entityManager.createNativeQuery(sqlInsertSerie)
-                    .setParameter(1, idEjercicio)
-                    .setParameter(2, peso)
-                    .setParameter(3, repes)
+                    .setParameter(1, peso)
+                    .setParameter(2, repes)
                     .executeUpdate();
 
             // Obtener el ID de la serie recién insertada

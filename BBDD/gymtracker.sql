@@ -39,11 +39,8 @@ CREATE TABLE ejercicios (
 
 CREATE TABLE series (
   id INT AUTO_INCREMENT,
-  id_ejercicio INT,
   peso FLOAT,
   repes INT,
-  FOREIGN KEY (id_ejercicio) REFERENCES ejercicios(id)
-    ON DELETE CASCADE,
   PRIMARY KEY (id)
 );
 
@@ -83,14 +80,14 @@ INSERT INTO ejercicios (nombre) VALUES ('press militar');
 SET @id_press_militar = LAST_INSERT_ID();
 
 -- Insertar series para el ejercicio 'press banca'
-INSERT INTO series (id_ejercicio, peso, repes) VALUES
-(@id_press_banca, 50, 20),
-(@id_press_banca, 100, 1);
+INSERT INTO series (peso, repes) VALUES
+(50, 20),
+(100, 1);
 
 -- Insertar series para el ejercicio 'press militar'
-INSERT INTO series (id_ejercicio, peso, repes) VALUES
-(@id_press_militar, 20, 20),
-(@id_press_militar, 40, 1);
+INSERT INTO series (peso, repes) VALUES
+(20, 20),
+(40, 1);
 
 -- Insertar rutina 'pechito' asociada al usuario 'damago'
 INSERT INTO rutinas (id_usuario, nombre, fecha) VALUES ((SELECT id FROM usuarios WHERE nombre = 'damago'), 'pechito', CURDATE());
