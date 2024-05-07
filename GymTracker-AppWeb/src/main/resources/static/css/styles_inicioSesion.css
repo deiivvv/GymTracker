@@ -1,3 +1,6 @@
 body{
 	background-color: lightgrey;
 }
+.logo{
+	max-width: 37%;
+}
