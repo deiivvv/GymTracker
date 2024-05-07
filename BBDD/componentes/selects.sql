@@ -13,8 +13,5 @@ SELECT * FROM ejercicios;
 -- Tabla series
 SELECT * FROM series;
 
--- Tabla ejercicios_series
-SELECT * FROM ejercicios_series;
-
--- Tabla rutinas_ejercicios
-SELECT * FROM rutinas_ejercicios;
+-- Tabla rutinas_ejercicios_series
+SELECT * FROM rutinas_ejercicios_series;

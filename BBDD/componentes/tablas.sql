@@ -44,22 +44,15 @@ CREATE TABLE series (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE ejercicios_series (
-  id_ejercicio INT,
-  id_serie INT,
-  FOREIGN KEY (id_ejercicio) REFERENCES ejercicios(id)
-    ON DELETE CASCADE,
-  FOREIGN KEY (id_serie) REFERENCES series(id)
-    ON DELETE CASCADE,
-    PRIMARY KEY (id_ejercicio, id_serie)
-);
-
-CREATE TABLE rutinas_ejercicios (
+CREATE TABLE rutinas_ejercicios_series (
   id_rutina INT,
   id_ejercicio INT,
+  id_serie INT,
   FOREIGN KEY (id_rutina) REFERENCES rutinas(id)
     ON DELETE CASCADE,
   FOREIGN KEY (id_ejercicio) REFERENCES ejercicios(id)
     ON DELETE CASCADE,
-  PRIMARY KEY (id_rutina, id_ejercicio)
+  FOREIGN KEY (id_serie) REFERENCES series(id)
+    ON DELETE CASCADE,
+  PRIMARY KEY (id_rutina, id_ejercicio, id_serie)
 );
