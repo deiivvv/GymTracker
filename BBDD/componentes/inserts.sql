@@ -16,12 +16,12 @@ INSERT INTO ejercicios (nombre) VALUES ('press militar');
 SET @id_press_militar = LAST_INSERT_ID();
 
 -- Insertar series para el ejercicio 'press banca'
-INSERT INTO series (id_ejercicio, peso, num_repes) VALUES
+INSERT INTO series (id_ejercicio, peso, repes) VALUES
 (@id_press_banca, 50, 20),
 (@id_press_banca, 100, 1);
 
 -- Insertar series para el ejercicio 'press militar'
-INSERT INTO series (id_ejercicio, peso, num_repes) VALUES
+INSERT INTO series (id_ejercicio, peso, repes) VALUES
 (@id_press_militar, 20, 20),
 (@id_press_militar, 40, 1);
 
@@ -36,10 +36,10 @@ INSERT INTO rutinas_ejercicios (id_rutina, id_ejercicio) VALUES
 -- Insertar relaciones entre ejercicios y series
 -- Para el ejercicio 'press banca'
 INSERT INTO ejercicios_series (id_ejercicio, id_serie) VALUES
-(@id_press_banca, (SELECT id FROM series WHERE id_ejercicio = @id_press_banca AND peso = 50 AND num_repes = 20)),
-(@id_press_banca, (SELECT id FROM series WHERE id_ejercicio = @id_press_banca AND peso = 100 AND num_repes = 1));
+(@id_press_banca, (SELECT id FROM series WHERE id_ejercicio = @id_press_banca AND peso = 50 AND repes = 20)),
+(@id_press_banca, (SELECT id FROM series WHERE id_ejercicio = @id_press_banca AND peso = 100 AND repes = 1));
 
 -- Para el ejercicio 'press militar'
 INSERT INTO ejercicios_series (id_ejercicio, id_serie) VALUES
-(@id_press_militar, (SELECT id FROM series WHERE id_ejercicio = @id_press_militar AND peso = 20 AND num_repes = 20)),
-(@id_press_militar, (SELECT id FROM series WHERE id_ejercicio = @id_press_militar AND peso = 40 AND num_repes = 1));
+(@id_press_militar, (SELECT id FROM series WHERE id_ejercicio = @id_press_militar AND peso = 20 AND repes = 20)),
+(@id_press_militar, (SELECT id FROM series WHERE id_ejercicio = @id_press_militar AND peso = 40 AND repes = 1));
