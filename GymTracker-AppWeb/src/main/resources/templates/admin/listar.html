@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis entrenamientos - GymTracker</title>
+    <link rel="shortcut icon" href="/images/logo/logoVerde.png">
+
+    <div th:replace="~{fragments/sidebar.html}"></div>
+    <link rel="stylesheet" href="/css/styles_admin.css">
+    <script src="/js/admin.js"></script>
+</head>
+
+<body>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-xl">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3 d-flex align-items-center justify-content-center">
+                            <img class="img-fluid logo" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <h1 class="text-center">Lista de usuarios</h1>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <button onclick="clase_activo()" class="btn btn-success" type="button"
+                                    data-bs-toggle="offcanvas" data-bs-target="#idSidebar" aria-controls="sidebar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-list" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                                </svg>
+                                Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 table-responsive">
+                            <table class="table table-hover text-center">
+                                <thead style="color:#fff; background-color:#000">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Usuario</th>
+                                    <th>Rol</th>
+                                    <th>Acciones</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="usuario:${listaUsuarios}">
+                                    <td th:text="${usuario.id}"></td>
+                                    <td th:text="${usuario.nombre}"></td>
+                                    <td th:text="${usuario.rol}"></td>
+                                    <td>
+                                        <button onclick="marcarUsuario(this, 'cambiarRol')" type="button"
+                                                class="btn btn-outline-primary mr-1"
+                                                data-bs-toggle="modal" data-bs-target="#idModalCambiarRol">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                      d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
+                                            </svg>
+                                        </button>
+                                        <button onclick="marcarUsuario(this, 'acceso')" type="button" class="btn btn-success">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+                                                <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15zM11 2h.5a.5.5 0 0 1 .5.5V15h-1zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1"/>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="idModalCambiarRol" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="flex-grow-1 text-center m-0">Cambiar rol</h1>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="container mt-3">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <form id="idFormRol" action="/admin/cambiar-rol" method="post">
+                                    <input onclick="cambiarRol(this.value)" type="button"
+                                           class="btn btn-outline-success" value="usuario">
+                                    <input onclick="cambiarRol(this.value)" type="button"
+                                           class="btn btn-outline-primary" value="administrador">
+                                    <input onclick="cambiarRol(this.value)" type="button" class="btn btn-outline-danger"
+                                           value="bloqueado">
+                                    <input id="idUsuarioHidden" type="hidden" name="id">
+                                    <input id="idRolHidden" type="hidden" name="rol">
+                                    <input id="idAccionHidden" type="hidden" name="accion">
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

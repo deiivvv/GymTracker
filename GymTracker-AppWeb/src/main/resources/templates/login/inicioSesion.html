@@ -16,7 +16,7 @@
                 <div class="card shadow-lg">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 logoCentrado">
                                 <img class="img-fluid logo" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
                             </div>
                             <div class="col-md-6 d-flex justify-content-center align-items-center">
@@ -41,7 +41,8 @@
                         </form>
                     </div>
                 </div>
-                <div class="alert alert-warning mt-3" th:if="${mensajeError}" th:text="${mensajeError}"></div>
+                <div class="alert alert-warning mt-3" th:if="${mensajeErrorWarning}" th:text="${mensajeErrorWarning}"></div>
+                <div class="alert alert-danger mt-3" th:if="${mensajeErrorDanger}" th:text="${mensajeErrorDanger}"></div>
             </div>
         </div>
     </div>

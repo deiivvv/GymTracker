@@ -1,6 +1,15 @@
 body{
 	background-color: lightgrey;
 }
-.logo{
-	max-width: 37%;
+
+@media only screen and (max-width: 768px){
+
+	.img-fluid{
+		max-width: 30%;
+	}
+
+	.logoCentrado{
+		display: flex;
+		justify-content: center;
+	}
 }
