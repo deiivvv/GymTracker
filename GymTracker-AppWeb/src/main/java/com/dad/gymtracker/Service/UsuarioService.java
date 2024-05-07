@@ -24,10 +24,17 @@ public class UsuarioService {
     @Transactional
     public void crearUsuario(UsuarioDTO usarioDTO, PerfilDTO perfilUsuarioDTO) {
         String sqlInsertUsuario = "INSERT INTO usuarios (nombre, contrasena, rol)" +
-                " VALUES (?, ?, 'usuario');";
+                " VALUES (?, ?, ?);";
 
-        entityManager.createNativeQuery(sqlInsertUsuario).setParameter(1, usarioDTO.getNombre())
+        String rol="usuario";
+        if(usarioDTO.getRol()!=null) {
+        	rol=usarioDTO.getRol();
+        }
+
+        entityManager.createNativeQuery(sqlInsertUsuario)
+        		.setParameter(1, usarioDTO.getNombre())
                 .setParameter(2, usarioDTO.getContrasena())
+                .setParameter(3, rol)
                 .executeUpdate();
 
         String sqlInsertPeril = "INSERT INTO perfil (altura, edad, peso, genero, id_usuario)" +
@@ -35,7 +42,8 @@ public class UsuarioService {
                 " WHERE id =" +
                 " (select LAST_INSERT_ID())));";
 
-        entityManager.createNativeQuery(sqlInsertPeril).setParameter(1, perfilUsuarioDTO.getAltura())
+        entityManager.createNativeQuery(sqlInsertPeril)
+        		.setParameter(1, perfilUsuarioDTO.getAltura())
                 .setParameter(2, perfilUsuarioDTO.getEdad())
                 .setParameter(3, perfilUsuarioDTO.getPeso())
                 .setParameter(4, perfilUsuarioDTO.getGenero())
