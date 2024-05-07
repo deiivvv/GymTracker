@@ -41,21 +41,20 @@ CREATE TABLE series (
   id INT AUTO_INCREMENT,
   id_ejercicio INT,
   peso FLOAT,
-  num_repes INT,
+  repes INT,
   FOREIGN KEY (id_ejercicio) REFERENCES ejercicios(id)
     ON DELETE CASCADE,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE ejercicios_series (
-  id INT AUTO_INCREMENT,
   id_ejercicio INT,
   id_serie INT,
   FOREIGN KEY (id_ejercicio) REFERENCES ejercicios(id)
     ON DELETE CASCADE,
   FOREIGN KEY (id_serie) REFERENCES series(id)
     ON DELETE CASCADE,
-  PRIMARY KEY (id)
+    PRIMARY KEY (id_ejercicio, id_serie)
 );
 
 CREATE TABLE rutinas_ejercicios (
