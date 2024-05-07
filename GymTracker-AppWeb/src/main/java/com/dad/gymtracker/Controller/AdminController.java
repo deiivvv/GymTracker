@@ -38,8 +38,10 @@ public class AdminController {
             usuarioService.cambiarRol(id, rol);
             if(session.getAttribute("idUsuario") == id){
                 session.setAttribute("rolUsuario", rol);
-                if(session.getAttribute("rolUsuario")!="administrador"){
+                if(rol.equals("usuario")){
                     return "redirect:/menu";
+                }else if(rol.equals("bloqueado")){
+                    return "redirect:/";
                 }
             }
             return "redirect:/admin";
