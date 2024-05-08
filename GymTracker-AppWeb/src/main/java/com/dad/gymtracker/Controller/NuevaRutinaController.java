@@ -19,6 +19,7 @@ public class NuevaRutinaController {
 
 	@GetMapping("/nueva-rutina")
 	public String crear(Model model, HttpSession session) {
+		if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
 		model.addAttribute("nuevaRutinaForm",new NuevaRutinaDTO());
 		model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
 		return RUTATEMPLATES + "crear";

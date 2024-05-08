@@ -22,7 +22,6 @@ public class MenuController {
     @RequestMapping("/inicio")
     public String inicioSesion(@ModelAttribute UsuarioDTO usuario,
                        HttpSession session, Model model){
-
     	UsuarioDTO usuarioDTOBD=usuarioService.buscarUsuarioByNombreAndContrasena(usuario.getNombre(), usuario.getContrasena());
     	if(usuarioDTOBD==null) {
     		model.addAttribute("mensajeErrorWarning", "Usuario o contraseña incorrectos");
@@ -41,6 +40,7 @@ public class MenuController {
 
     @GetMapping("/menu")
     public String menu(Model model, HttpSession session){
+        if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
         return "menu";
     }

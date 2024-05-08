@@ -27,6 +27,8 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String administrarUsuarios(Model model, HttpSession session) {
+        if(session.getAttribute("idUsuario")==null || session.getAttribute("rolUsuario")!="administrador") return "redirect:/cerrar-sesion";
+
         List<UsuarioDTO> listaUsuarios =usuarioService.buscarAllUsuarios();
         model.addAttribute("idUsuario", session.getAttribute("idUsuario"));
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));

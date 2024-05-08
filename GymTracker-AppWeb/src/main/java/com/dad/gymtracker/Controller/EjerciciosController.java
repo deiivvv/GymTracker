@@ -15,6 +15,7 @@ public class EjerciciosController {
 	
     @GetMapping("/ejercicios")
     public String ejercicios(Model model, HttpSession session){
+        if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
         model.addAttribute("usuario", session.getAttribute("usuario"));
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
         return RUTATEMPLATES + "listar";

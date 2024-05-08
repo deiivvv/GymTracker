@@ -19,6 +19,7 @@ public class PerfilController {
 
     @GetMapping("/perfil")
     public String mostrar(Model model, HttpSession session){
+        if(session.getAttribute("idUsuario")==null) return "redirect:/";
         model.addAttribute("perfilUsuario", perfilService.obtenerUsuariosConPerfil((int)session.getAttribute("idUsuario")));
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
         return RUTATEMPLATES + "mostrar";
@@ -26,6 +27,7 @@ public class PerfilController {
     
     @GetMapping("/perfil/editar")
     public String editar(Model model, HttpSession session){
+        if(session.getAttribute("idUsuario")==null) return "redirect:/";
         model.addAttribute("perfilUsuarioDTO", perfilService.obtenerUsuariosConPerfil((int)session.getAttribute("idUsuario")));
         return RUTATEMPLATES + "editar";
     }
@@ -40,6 +42,7 @@ public class PerfilController {
     
     @GetMapping("/perfil/eliminar")
     public String eliminar(HttpSession session){
+        if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
     	perfilService.borrarUsuario((int) session.getAttribute("idUsuario"));
         return "redirect:/cerrar-sesion";
     }

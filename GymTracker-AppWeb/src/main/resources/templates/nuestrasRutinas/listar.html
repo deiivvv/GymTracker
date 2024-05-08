@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis entrenamientos - GymTracker</title>
+    <link rel="shortcut icon" href="/images/logo/logoVerde.png">
+
+    <div th:replace="~{fragments/sidebar.html}"></div>
+    <link rel="stylesheet" href="/css/styles_misEntrenamientos.css">
+</head>
+
+<body>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-xl">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3 d-flex align-items-center justify-content-center">
+                            <img class="img-fluid logo" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <h1 class="text-center">Nuestras rutinas</h1>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <button onclick="clase_activo()" class="btn btn-success" type="button"
+                                    data-bs-toggle="offcanvas" data-bs-target="#idSidebar" aria-controls="sidebar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-list" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                                </svg>
+                                Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3 order-md-1 mb-3 d-flex justify-content-center align-items-center">
+                            <a type="button" href="/nueva-rutina" class="btn btn-outline-success">Nueva rutina</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 order-md-1 mb-3">
+                            <div class="list-group text-center" th:unless="${listaEntrenamientos}">
+                                <a href="/nueva-rutina" class="btn btn-outline-success p-3">Estamos preparando las mejores rutinas para ti. Mientras tanto, pulsa aquí para crear una.</a>
+                            </div>
+
+                            <div class="list-group text-center" th:each="entrenamiento:${listaEntrenamientos}">
+                                <a href="/nueva-rutina" class="btn btn-outline-success p-3 mb-3"
+                                   th:text="${entrenamiento.nombre + ' - ' + entrenamiento.fecha}"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
