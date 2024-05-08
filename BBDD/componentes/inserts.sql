@@ -1,6 +1,7 @@
 
 USE gymtracker;
 
+
 -- Insertar usuario ficticio 'damago' y su perfil
 INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('damago', 'contrasena123', 'usuario');
 INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_ID(), 'Masculino', 25, 180, 75);
@@ -16,30 +17,40 @@ INSERT INTO ejercicios (nombre) VALUES ('press militar');
 SET @id_press_militar = LAST_INSERT_ID();
 
 -- Insertar series para el ejercicio 'press banca'
-INSERT INTO series (id_ejercicio, peso, repes) VALUES
-(@id_press_banca, 50, 20),
-(@id_press_banca, 100, 1);
+INSERT INTO series (peso, repes) VALUES
+(50, 20);
+-- Obtener el ID de la serie insertada para 'press banca'
+SET @id_serie_press_banca_1 = LAST_INSERT_ID();
+
+INSERT INTO series (peso, repes) VALUES
+(100, 1);
+-- Obtener el ID de la serie insertada para 'press banca'
+SET @id_serie_press_banca_2 = LAST_INSERT_ID();
 
 -- Insertar series para el ejercicio 'press militar'
-INSERT INTO series (id_ejercicio, peso, repes) VALUES
-(@id_press_militar, 20, 20),
-(@id_press_militar, 40, 1);
+INSERT INTO series (peso, repes) VALUES
+(20, 20);
+-- Obtener el ID de la serie insertada para 'press militar'
+SET @id_serie_press_militar_1 = LAST_INSERT_ID();
+
+INSERT INTO series (peso, repes) VALUES
+(40, 1);
+-- Obtener el ID de la serie insertada para 'press militar'
+SET @id_serie_press_militar_2 = LAST_INSERT_ID();
 
 -- Insertar rutina 'pechito' asociada al usuario 'damago'
 INSERT INTO rutinas (id_usuario, nombre, fecha) VALUES ((SELECT id FROM usuarios WHERE nombre = 'damago'), 'pechito', CURDATE());
+-- Obtener el ID de la rutina 'pechito' insertada
+SET @id_rutina_pechito = LAST_INSERT_ID();
 
--- Asociar ejercicios a la rutina 'pechito'
-INSERT INTO rutinas_ejercicios (id_rutina, id_ejercicio) VALUES
-((SELECT id FROM rutinas WHERE nombre = 'pechito'), @id_press_banca),
-((SELECT id FROM rutinas WHERE nombre = 'pechito'), @id_press_militar);
+-- Insertar relaciones entre ejercicios y series en la tabla rutinas_ejercicios_series
 
--- Insertar relaciones entre ejercicios y series
 -- Para el ejercicio 'press banca'
-INSERT INTO ejercicios_series (id_ejercicio, id_serie) VALUES
-(@id_press_banca, (SELECT id FROM series WHERE id_ejercicio = @id_press_banca AND peso = 50 AND repes = 20)),
-(@id_press_banca, (SELECT id FROM series WHERE id_ejercicio = @id_press_banca AND peso = 100 AND repes = 1));
+INSERT INTO rutinas_ejercicios_series (id_rutina, id_ejercicio, id_serie) VALUES
+(@id_rutina_pechito, @id_press_banca, @id_serie_press_banca_1),
+(@id_rutina_pechito, @id_press_banca, @id_serie_press_banca_2);
 
 -- Para el ejercicio 'press militar'
-INSERT INTO ejercicios_series (id_ejercicio, id_serie) VALUES
-(@id_press_militar, (SELECT id FROM series WHERE id_ejercicio = @id_press_militar AND peso = 20 AND repes = 20)),
-(@id_press_militar, (SELECT id FROM series WHERE id_ejercicio = @id_press_militar AND peso = 40 AND repes = 1));
+INSERT INTO rutinas_ejercicios_series (id_rutina, id_ejercicio, id_serie) VALUES
+(@id_rutina_pechito, @id_press_militar, @id_serie_press_militar_1),
+(@id_rutina_pechito, @id_press_militar, @id_serie_press_militar_2);
