@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <form onsubmit="return comprobarNombre(event)" action="/usuario/crear" method="post" th:object="${usuarioPerfilDTO}" id="idFormCrearUsuario">
+    <form onsubmit="return validar(event, 'crear')" action="/usuario/crear" method="post" th:object="${usuarioPerfilDTO}" id="idFormCrearUsuario">
         <div class="row justify-content-center contenedor" id="idContenedor1">
             <div class="col-md-6">
                 <div class="card shadow-lg">
@@ -51,9 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-warning mt-3" id="idAlertNombreUsuario" style="display: none">
-                    Nombre de usuario ya en uso
-                </div>
+                <div class="alert alert-warning mt-3" id="idAlertCrearUsuario" style="display: none"></div>
             </div>
         </div>
 
@@ -87,14 +85,14 @@
                                 </select>
                             </div>
                             <div class="text-center">
-                                <input type="button" class="btn btn-success" value="Siguiente" onclick="siguiente(2)"/>
+                                <input type="button" class="btn btn-success" value="Siguiente" onclick="validarEdadAndGenero('siguiente')"/>
                                 <input type="button" class="btn btn-outline-success" onclick="volver(2)"
                                        value="Volver"/>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-primary mt-3" role="alert">
+                <div class="alert alert-primary mt-3" role="alert" id="idAlertPerfil1">
                     No olvides que no es necesario que completes tu perfil en este momento, pero recuerda actualizarlo
                     más tarde.
                 </div>
@@ -126,7 +124,7 @@
                                 <input type="number" id="idAltura" name="altura" th:field="*{perfilDTO.altura}"
                                        class="form-control">
                             </div>
-                            <div class="text-center">
+                             <div class="text-center">
                                 <input type="submit" class="btn btn-success" value="Crear"/>
                                 <input type="button" class="btn btn-outline-success" onclick="volver(3)"
                                        value="Volver"/>
@@ -134,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="alert alert-primary mt-3" role="alert">
+                <div class="alert alert-primary mt-3" role="alert" id="idAlertPerfil2">
                     No olvides que no es necesario que completes tu perfil en este momento, pero recuerda actualizarlo
                     más tarde.
                 </div>

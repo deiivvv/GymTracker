@@ -41,12 +41,13 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-6 order-md-1">
+                        <div class="col-3 order-md-1 mb-3 d-flex justify-content-center align-items-center">
                             <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                                     data-bs-target="#idModalEjercicios">Añadir Ejercicio
                             </button>
                         </div>
-                        <div class="col-6 order-md-2 d-flex justify-content-end">
+                        <div class="col-6 order-md-2 mb-3"></div>
+                        <div class="col-3 order-md-3 mb-3 d-flex justify-content-center align-items-center">
                             <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                     data-bs-target="#idModalCrearRutina">Terminar
                             </button>
@@ -63,7 +64,6 @@
 
 <input type="hidden" id="idCrearEjercicio" value="1"/>
 <!--Modal de crear rutina-->
-<!--th:object="nuevaRutina"-->
 <form id="idRutinaFormOculto" method="post" th:object="${nuevaRutinaForm}">
     <div class="modal fade" id="idModalCrearRutina" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -82,6 +82,14 @@
                             <div class="input-group mb-3">
                                 <input type="text" id="idRutinaNombre" class="form-control" name="nombre"
                                        placeholder="Nombre de la rutina" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-warning mt-3" id="idAlertNombreRutina"
+                                 style="display: none">
+                                Nombre de usuario ya en uso
                             </div>
                         </div>
                     </div>
@@ -130,7 +138,7 @@
                     <div class="col-md-6">
                         <select id="idEquipamientoEjercicio" class="form-select"
                                 onchange="cargarEjerciciosSegunInputs()">
-                            <option value="" selected>Selecciona el equipamiento</option>
+                            <option value="" selected>Todos los equipamientos</option>
                             <option value="pesas">Pesas</option>
                             <option value="maquina">Máquina</option>
                             <option value="polea">Polea</option>
@@ -140,7 +148,7 @@
                     <div class="col-md-6">
                         <select id="idMusculoEjercicio" class="form-select"
                                 onchange="cargarEjerciciosSegunInputs()">
-                            <option value="" selected>Selecciona un músculo</option>
+                            <option value="" selected>Todos los músculos</option>
                             <option value="cuadriceps">Cuadriceps</option>
                             <option value="gluteos">Gluteos</option>
                             <option value="pectorales">Pectorales</option>

@@ -36,9 +36,9 @@ function comprobarNombre(event){
         .then(function (response) {
             let usuarioExiste = response.data;
             if (usuarioExiste) {
-                document.getElementById("idAlertNombreUsuario").style="display: block";
+                document.getElementById("idAlertCrearUsuario").style="display: block";
             }else{
-                document.getElementById("idAlertNombreUsuario").style="display: none";
+                document.getElementById("idAlertCrearUsuario").style="display: none";
                 document.getElementById("idFormCrearUsuario").submit();
             }
         })

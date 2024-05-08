@@ -63,13 +63,13 @@
                                         <td th:text="${usuario.id}"></td>
                                         <td th:text="${usuario.nombre}"></td>
                                         <td th:if="${usuario.rol=='usuario'}">
-                                            <span class="btn btn-outline-success">usuario</span>
+                                            <span class="btn btn-outline-success disabled">usuario</span>
                                         </td>
                                         <td th:if="${usuario.rol=='administrador'}">
-                                            <span class="btn btn-outline-primary">administrador</span>
+                                            <span class="btn btn-outline-primary disabled">administrador</span>
                                         </td>
                                         <td th:if="${usuario.rol=='bloqueado'}">
-                                            <span class="btn btn-outline-danger">bloqueado</span>
+                                            <span class="btn btn-outline-danger disabled">bloqueado</span>
                                         </td>
                                         <td>
                                             <button onclick="marcarUsuario(this, 'cambiarRol')" type="button"
@@ -161,7 +161,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="alert alert-warning mt-3" id="idAlertNombreUsuario"
+                                            <div class="alert alert-warning mt-3" id="idAlertCrearUsuario"
                                                  style="display: none">
                                                 Nombre de usuario ya en uso
                                             </div>
@@ -232,7 +232,7 @@
                     quieres continuar?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" onclick="eliminar()" class="btn btn-danger">Eliminar cuenta</button>
             </div>
         </div>

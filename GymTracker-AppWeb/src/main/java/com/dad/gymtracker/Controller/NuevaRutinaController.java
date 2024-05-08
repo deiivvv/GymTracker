@@ -28,6 +28,6 @@ public class NuevaRutinaController {
 	public String crear(@ModelAttribute NuevaRutinaDTO nuevaRutinaDTO, HttpSession session) {
 		Integer idUsuario = (Integer) session.getAttribute("idUsuario");
 		rutinaService.crearRutina(nuevaRutinaDTO,idUsuario);
-		return "redirect:/nueva-rutina";
+		return "redirect:/mis-entrenamientos";
 	}
 }

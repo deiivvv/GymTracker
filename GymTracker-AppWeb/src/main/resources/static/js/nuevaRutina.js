@@ -1,4 +1,5 @@
 function crearRutina() {
+    document.getElementById("idAlertNombreRutina").style="display:none";
 
     let ejercicios = document.querySelectorAll('[id^="idEjercicio"]');
     ejercicios.forEach(function(elemento) {
@@ -12,14 +13,25 @@ function crearRutina() {
     });
     document.getElementById("idRutinaSeries").value=document.getElementById("idRutinaSeries").value.slice(0, -1);
 
+
+
+
     if (document.getElementById("idRutinaNombre").value!==""&&document.getElementById("idRutinaEjercicios").value!== ""&&document.getElementById("idRutinaSeries").value!== "") {
+        $('#idModalCrearRutina').modal('hide');
         document.getElementById("idRutinaFormOculto").submit();
     }else{
+        let error=""
+        if(document.getElementById("idRutinaEjercicios").value==="" || document.getElementById("idRutinaSeries").value===""){
+            error="Debes completar la rutina antes de terminar";
+        }else{
+            error="El nombre de la rutina es obligatorio";
+        }
+        document.getElementById("idAlertNombreRutina").innerHTML=error
+        document.getElementById("idAlertNombreRutina").style="display:block";
+
         document.getElementById("idRutinaNombre").value= "";
         document.getElementById("idRutinaEjercicios").value="";
         document.getElementById("idRutinaSeries").value= "";
-        $('#idModalCrearRutina').modal('hide');
-        alert("Error al crear rutina intentalo de nuevo");
     }
 }
 function seleccionable() {
