@@ -40,19 +40,13 @@ public class AdminController {
     @PostMapping("/admin/accion")
     public String accion(@RequestParam Integer id,
                              @RequestParam String rol,
-                             @RequestParam String accion,
-                             HttpSession session){
-    	 session.setAttribute("rolUsuario", rol);
-    	switch(accion) {
-    		case "cambiarRol":
-    			return "redirect:/admin/cambiar-rol?id="+id+"&rol="+rol;
-    		case "acceso":
-    			return "redirect:/admin/acceso?id="+id;
-    		case "eliminar":
-    			return "redirect:/admin/eliminar?id="+id;
-    		default:
-    			return null;
-    	}
+                             @RequestParam String accion){
+        return switch (accion) {
+            case "cambiarRol" -> "redirect:/admin/cambiar-rol?id=" + id + "&rol=" + rol;
+            case "acceso" -> "redirect:/admin/acceso?id=" + id+"&rol="+rol;
+            case "eliminar" -> "redirect:/admin/eliminar?id=" + id;
+            default -> null;
+        };
     }
     
     @GetMapping("/admin/cambiar-rol")
@@ -60,6 +54,7 @@ public class AdminController {
     						 @RequestParam String rol, HttpSession session) {
     	 usuarioService.cambiarRol(id, rol);
          if(session.getAttribute("idUsuario") == id){
+             session.setAttribute("rolUsuario", rol);
              if(rol.equals("usuario")){
                  return "redirect:/menu";
              }else if(rol.equals("bloqueado")){
@@ -70,7 +65,9 @@ public class AdminController {
     }
     
     @GetMapping("/admin/acceso")
-    public String acceso(@RequestParam Integer id, HttpSession session){
+    public String acceso(@RequestParam Integer id,
+                         @RequestParam String rol, HttpSession session){
+        session.setAttribute("rolUsuario", rol);
     	session.setAttribute("idUsuario", id);
     	return "redirect:/menu";
     }
