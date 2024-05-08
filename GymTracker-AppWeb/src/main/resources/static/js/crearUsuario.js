@@ -25,3 +25,25 @@ function volver(numPagina) {
     }, 10);
 }
 
+function comprobarUsuarioAceptar(){
+
+    let nombre = document.getElementById("idNombre").value;
+
+    axios.get('/usuario/comprobar', {
+        params: {
+            nombre: nombre
+        }
+    })
+        .then(function (response) {
+            let usuarioExiste = response.data;
+            if (usuarioExiste) {
+                document.getElementById("idAlertNombreUsuario").style="display: block";
+            }else{
+                document.getElementById("idAlertNombreUsuario").style="display: none";
+                siguiente(1)
+            }
+        })
+        .catch(function (error) {
+            console.error("Error al hacer la solicitud:", error);
+        });
+}
