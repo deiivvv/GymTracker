@@ -21,7 +21,7 @@ public class NuestrasRutinasController {
 	@GetMapping("/nuestras-rutinas")
 	public String nuestrasRutinas(Model model, HttpSession session) {
 		if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
-		List<MisEntrenamientosDTO> listaEntrenamientos =rutinaService.buscarEntrenamientosById(0);
+		List<MisEntrenamientosDTO> listaEntrenamientos =rutinaService.buscarEntrenamientosById(-1);
 		model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
 		if(!listaEntrenamientos.isEmpty()) {
 			model.addAttribute("listaEntrenamientos", listaEntrenamientos);
