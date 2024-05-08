@@ -13,9 +13,6 @@ function crearRutina() {
     });
     document.getElementById("idRutinaSeries").value=document.getElementById("idRutinaSeries").value.slice(0, -1);
 
-
-
-
     if (document.getElementById("idRutinaNombre").value!==""&&document.getElementById("idRutinaEjercicios").value!== ""&&document.getElementById("idRutinaSeries").value!== "") {
         $('#idModalCrearRutina').modal('hide');
         document.getElementById("idRutinaFormOculto").submit();
@@ -53,7 +50,7 @@ function crearEjercicio(id) {
     listaEjercicios.appendChild(crearCardEjercicio(ejercicio));
 
     $('#idModalEjercicios').modal('hide');
-    $('#idModalSeriesCrear').modal('show');
+    //$('#idModalSeriesCrear').modal('show');
 }
 
 let idEjercicio = 0;
@@ -205,7 +202,6 @@ function crearCardEjercicio(ejercicio) {
     hideElement.value = id + "@" + nombre;
     hideElement.id = "idEjercicio" + idEjercicio;
 
-
     card.appendChild(cardBodyDiv);
     cardBodyDiv.appendChild(rowDiv3);
     cardBodyDiv.appendChild(hideElement);
@@ -351,4 +347,34 @@ function validacionSeries(tipo) {
         valido = false;
     }
     return valido;
+}
+
+function listarRutina(){
+    document.getElementById("idRutinaNombre").value=document.getElementById("idNombreHidden").value
+    let ejercicios=document.getElementById("idEjerciciosHidden").value.split(",");
+    let series=document.getElementById("idSeriesHidden").value.split(",");
+
+	let i=0;
+    ejercicios.forEach((e)=>{
+		let idEjercicio=e.replace(/@.*/g, "")
+        crearEjercicio("idCard" + idEjercicio)
+        i++;
+
+        series.forEach((s)=>{
+            let separadorA=s.split("@")
+            let idEjercicioSerie=separadorA[0]
+            let separadorPuntos=separadorA[1].split(":")
+            let peso=separadorPuntos[0]
+            let repes=separadorPuntos[1]
+            
+            if(idEjercicio===idEjercicioSerie){
+                document.getElementById("idPesoModalCrear").value=peso;
+                document.getElementById("idRepesModalCrear").value=repes;
+                crearSerie(peso, repes, i);
+            }
+        });
+    });
+
+    
+   
 }

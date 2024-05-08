@@ -4,7 +4,12 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.dad.gymtracker.Dto.MisEntrenamientosDTO;
+import com.dad.gymtracker.Dto.NuevaRutinaDTO;
 import com.dad.gymtracker.Service.RutinaService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;

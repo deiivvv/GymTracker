@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @AllArgsConstructor
@@ -30,5 +31,19 @@ public class NuevaRutinaController {
 		Integer idUsuario = (Integer) session.getAttribute("idUsuario");
 		rutinaService.crearRutina(nuevaRutinaDTO,idUsuario);
 		return "redirect:/mis-entrenamientos";
+	}
+	
+	@GetMapping("/mis-entrenamientos/listar")
+	public String listarRutina(@RequestParam Integer id,
+										Model model, HttpSession session) {
+		if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
+		NuevaRutinaDTO nuevaRutinaDTO =rutinaService.buscarRutinaById(id);
+		model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
+		if(nuevaRutinaDTO!=null) {
+			model.addAttribute("nombre", nuevaRutinaDTO.getNombre());
+			model.addAttribute("ejercicios", nuevaRutinaDTO.getEjercicios());
+			model.addAttribute("series", nuevaRutinaDTO.getSeries());
+		}
+		return RUTATEMPLATES + "listar";
 	}
 }

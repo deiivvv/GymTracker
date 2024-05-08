@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.dad.gymtracker.Dto.NuevaRutinaDTO;
+import com.dad.gymtracker.Dto.PerfilDTO;
+
 import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,30 @@ public class RutinaService {
                         .fecha(t.getFecha())
                         .build())
                 .collect(Collectors.toList());
+    }
+    
+    public NuevaRutinaDTO buscarRutinaById(int id) {
+    	String sqlBuscarRutina = "SELECT rutinas.nombre AS nombre_rutina, " +
+                "GROUP_CONCAT(DISTINCT CONCAT(ejercicios.id, '@', ejercicios.nombre) SEPARATOR ',') AS ejercicios, " +
+                "GROUP_CONCAT(CONCAT(ejercicios.id, '@', series.peso, ':', series.repes) SEPARATOR ',') AS series " +
+                "FROM rutinas " +
+                "JOIN rutinas_ejercicios_series ON rutinas.id = rutinas_ejercicios_series.id_rutina " +
+                "JOIN ejercicios ON rutinas_ejercicios_series.id_ejercicio = ejercicios.id " +
+                "JOIN series ON rutinas_ejercicios_series.id_serie = series.id " +
+                "WHERE rutinas.id = ? " +
+                "GROUP BY rutinas.id";
+
+
+
+    	NuevaRutinaDTO resultado = (NuevaRutinaDTO) entityManager.createNativeQuery(sqlBuscarRutina, NuevaRutinaDTO.class)
+                .setParameter(1, id)
+                .getSingleResult();
+
+        return NuevaRutinaDTO.builder()
+				.nombre(resultado.getNombre())
+				.ejercicios(resultado.getEjercicios())
+				.series(resultado.getSeries())
+				.build();
     }
 
     @Transactional

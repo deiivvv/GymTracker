@@ -1,4 +1,4 @@
-function cargarEjercicios(url) {
+function cargarEjercicios(url, callback) {
 	axios.get(url)
 		.then(function(response) {
 			const listaEjercicios = document.getElementById('lista-ejercicios');
@@ -14,19 +14,23 @@ function cargarEjercicios(url) {
             if(Boolean(document.getElementById("idCrearEjercicio").value)){
                 seleccionable();
             }
+            
+            callback();
 		})
 		.catch(function(error) {
 			console.error('Error al obtener los ejercicios:', error);
 		});
+		
+
 }
 
-function cargarEjerciciosSegunInputs() {
+function cargarEjerciciosSegunInputs(callback) {
     const musculo = document.getElementById('idMusculoEjercicio').value;
     const equipamiento = document.getElementById('idEquipamientoEjercicio').value;
     const nombre = document.getElementById('idNombreEjercicio').value.toLowerCase();
 
     const url = `http://localhost:8081/ejercicios/buscar?nombre=${nombre}&musculo=${musculo}&equipamiento=${equipamiento}`;
-    cargarEjercicios(url);
+    cargarEjercicios(url, callback);    
 }
 
 function capitalizeFirstLetter(string) {

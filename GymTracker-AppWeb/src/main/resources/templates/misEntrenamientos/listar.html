@@ -49,10 +49,9 @@
                                 <a href="/nueva-rutina" class="btn btn-outline-success p-3">No tienes ninguna rutina.
                                     Pulsa aqui para crear una.</a>
                             </div>
-
                             <div class="list-group text-center" th:each="entrenamiento:${listaEntrenamientos}">
-                                <a href="/nueva-rutina" class="btn btn-outline-success p-3 mb-3"
-                                   th:text="${entrenamiento.nombre + ' - ' + entrenamiento.fecha}"></a>
+									<a th:href="@{/mis-entrenamientos/listar(id=${entrenamiento.id})}" class="btn btn-outline-success p-3 mb-3"
+									                                   th:text="${entrenamiento.nombre + ' - ' + entrenamiento.fecha}"></a>	
                             </div>
                         </div>
                     </div>
