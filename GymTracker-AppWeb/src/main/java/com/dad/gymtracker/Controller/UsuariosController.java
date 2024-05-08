@@ -6,9 +6,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
@@ -28,6 +26,15 @@ public class UsuariosController {
     public String crearUsuario(@ModelAttribute UsuarioPerfilDTO usuarioPerfilDTO){
         usuarioService.crearUsuario(usuarioPerfilDTO.getUsuarioDTO(), usuarioPerfilDTO.getPerfilDTO());
         return "redirect:/";
+    }
+
+    @GetMapping("/usuario/comprobar")
+    @ResponseBody
+    public boolean comprobarUsuario(@RequestParam String nombre){
+        if(usuarioService.buscarUsuarioByNombre(nombre)==null){
+            return false;
+        };
+        return true;
     }
 
 }

@@ -23,7 +23,7 @@ public class MenuController {
     public String inicioSesion(@ModelAttribute UsuarioDTO usuario,
                        HttpSession session, Model model){
 
-    	UsuarioDTO usuarioDTOBD=usuarioService.buscarUsuario(usuario.getNombre(), usuario.getContrasena());
+    	UsuarioDTO usuarioDTOBD=usuarioService.buscarUsuarioByNombreAndContrasena(usuario.getNombre(), usuario.getContrasena());
     	if(usuarioDTOBD==null) {
     		model.addAttribute("mensajeErrorWarning", "Usuario o contraseña incorrectos");
     		model.addAttribute("usuario", new UsuarioDTO());

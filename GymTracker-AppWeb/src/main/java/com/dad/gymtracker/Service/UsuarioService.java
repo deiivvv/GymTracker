@@ -49,8 +49,25 @@ public class UsuarioService {
                 .setParameter(4, perfilUsuarioDTO.getGenero())
                 .executeUpdate();
     }
-    
-    public UsuarioDTO buscarUsuario(String nombre, String contrasena) {
+    public UsuarioDTO buscarUsuarioByNombre(String nombre){
+        String sqlBuscarUsuario = "SELECT id, nombre, contrasena, rol FROM usuarios WHERE nombre = ?";
+        try {
+            UsuarioDTO resultado = (UsuarioDTO) entityManager.createNativeQuery(sqlBuscarUsuario, UsuarioDTO.class)
+                    .setParameter(1, nombre)
+                    .getSingleResult();
+
+            return UsuarioDTO.builder()
+                    .id(resultado.getId())
+                    .nombre(resultado.getNombre())
+                    .contrasena(resultado.getContrasena())
+                    .rol(resultado.getRol())
+                    .build();
+        } catch (NoResultException e) {
+            return null; // Devuelve null si no se encuentra ningún usuario
+        }
+    }
+
+    public UsuarioDTO buscarUsuarioByNombreAndContrasena(String nombre, String contrasena) {
         String sqlBuscarUsuario = "SELECT id, nombre, contrasena, rol FROM usuarios WHERE nombre = ? AND contrasena = ?";
 
         try {

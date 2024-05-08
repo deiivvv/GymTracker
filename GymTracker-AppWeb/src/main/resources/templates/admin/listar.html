@@ -62,7 +62,15 @@
 											<tr th:each="usuario:${listaUsuarios}">
 												<td th:text="${usuario.id}"></td>
 												<td th:text="${usuario.nombre}"></td>
-												<td th:text="${usuario.rol}"></td>
+												<td th:if="${usuario.rol=='usuario'}" >
+													<span class="btn btn-outline-success">Usuario</span>
+												</td>
+												<td th:if="${usuario.rol=='administrador'}">
+													<span class="btn btn-outline-primary">Administrador</span>
+												</td>
+												<td th:if="${usuario.rol=='bloqueado'}">
+													<span class="btn btn-outline-danger">Bloqueado</span>
+												</td>
 												<td>
 													<button onclick="marcarUsuario(this, 'cambiarRol')" type="button"
 														class="btn btn-primary" data-bs-toggle="modal"
@@ -114,8 +122,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<form id="idFormCrearUsuario" action="/admin/crear-usuario" method="post" th:object="${newUsuario}">
+		<form onsubmit="return comprobarNombre(event)" id="idFormCrearUsuario" action="/admin/crear-usuario" method="post" th:object="${newUsuario}">
 			<div class="modal fade" id="idCrearUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 				aria-hidden="true">
 				<div class="modal-dialog modal-lg modal-dialog-centered">
@@ -150,6 +159,13 @@
 														<option value="bloqueado">Bloqueado</option>
 													</select>
 												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="alert alert-warning mt-3" id="idAlertNombreUsuario" style="display: none">
+															Nombre de usuario ya en uso
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -162,7 +178,6 @@
 							<input type="submit" class="btn btn-success" name="botonUsuario" id="idBotonUsuario"
 								value="Aceptar">
 						</div>
-
 					</div>
 				</div>
 			</div>

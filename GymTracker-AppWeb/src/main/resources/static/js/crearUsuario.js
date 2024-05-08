@@ -24,4 +24,4 @@ function volver(numPagina) {
     	contenedorAnterior.classList.add('giroVolver');
     }, 10);
 }
- 	
+

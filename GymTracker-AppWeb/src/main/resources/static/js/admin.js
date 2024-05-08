@@ -22,3 +22,27 @@ function marcarUsuario(boton, accion) {
 function eliminar(){
 	 document.getElementById("idFormRol").submit();
 }
+
+function comprobarNombre(event){
+    event.preventDefault();
+
+    let nombre = document.getElementById("idNombre").value;
+
+    axios.get('/usuario/comprobar', {
+        params: {
+            nombre: nombre
+        }
+    })
+        .then(function (response) {
+            let usuarioExiste = response.data;
+            if (usuarioExiste) {
+                document.getElementById("idAlertNombreUsuario").style="display: block";
+            }else{
+                document.getElementById("idAlertNombreUsuario").style="display: none";
+                document.getElementById("idFormCrearUsuario").submit();
+            }
+        })
+        .catch(function (error) {
+            console.error("Error al hacer la solicitud:", error);
+        });
+}
