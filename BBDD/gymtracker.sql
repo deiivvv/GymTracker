@@ -58,7 +58,13 @@ CREATE TABLE rutinas_ejercicios_series (
 );
 
 -- Insertar usuario ficticio 'damago' y su perfil
-INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('damago', 'contrasena123', 'usuario');
+INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('damago', 'damago', 'usuario');
+INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_ID(), 'Masculino', 25, 180, 75);
+
+INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('alvaro', 'alvaro', 'administrador');
+INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_ID(), 'Masculino', 25, 180, 75);
+
+INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('david', 'david', 'bloqueado');
 INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_ID(), 'Masculino', 25, 180, 75);
 
 -- Insertar ejercicio 'press banca'
