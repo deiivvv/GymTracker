@@ -26,14 +26,16 @@ function volver(numPagina) {
 }
 
 function comprobarUsuarioAceptar() {
-
-    document.getElementById("idAlertCrearUsuario").style = "display: none";
+ 	document.getElementById("idAlertCrearUsuario").classList.add("alert-primary");
+    document.getElementById("idAlertCrearUsuario").classList.remove("alert-warning");
+    document.getElementById("idAlertCrearUsuario").innerHTML = "No olvides que no es necesario que completes tu perfil en este momento, pero recuerda actualizarlo más tarde. Pulsa enter para omitirlo.";
 
     let nombre = document.getElementById("idNombre").value;
     let contrasena = document.getElementById("idContrasena").value;
 
     if (nombre.trim() === "" || contrasena.trim() === "") {
-        document.getElementById("idAlertCrearUsuario").style = "display: block";
+		document.getElementById("idAlertCrearUsuario").classList.remove("alert-primary");
+    	document.getElementById("idAlertCrearUsuario").classList.add("alert-warning");
         document.getElementById("idAlertCrearUsuario").innerHTML = "Debes rellenar todos los campos";
     } else {
         axios.get('/usuario/comprobar', {
@@ -44,7 +46,8 @@ function comprobarUsuarioAceptar() {
             .then(function (response) {
                 let usuarioExiste = response.data;
                 if (usuarioExiste) {
-                    document.getElementById("idAlertCrearUsuario").style = "display: block";
+					document.getElementById("idAlertCrearUsuario").classList.remove("alert-primary");
+    				document.getElementById("idAlertCrearUsuario").classList.add("alert-warning");
                     document.getElementById("idAlertCrearUsuario").innerHTML = "Nombre de usuario ya en uso";
                 } else {
                     siguiente(1)
@@ -97,6 +100,7 @@ function validarPesoAndAltura(){
         return true;
     }
 }
+
 function validar(event, accion) {
     event.preventDefault();
 
