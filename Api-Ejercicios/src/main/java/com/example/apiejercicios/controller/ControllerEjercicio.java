@@ -1,4 +1,4 @@
-package com.example.apiejercicios.Controller;
+package com.example.apiejercicios.controller;
 
 import com.example.apiejercicios.orm.EjercicioORM;
 import com.example.apiejercicios.repositorio.RepositoryEjercicio;
