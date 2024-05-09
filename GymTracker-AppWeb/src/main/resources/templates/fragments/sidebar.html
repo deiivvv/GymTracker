@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymTracker - Sidebar</title>
-    <div th:replace="~{fragments/bootstrap.html}"></div>
-    <script src="/js/sidebar.js"></script>
-</head>
-<body>
-<div class="offcanvas offcanvas-start" tabindex="-1" id="idSidebar" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-        <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <img src="/images/logo/logoVerde.png" class="img-fluid" alt="Logo Gymtracker">
-        </div>
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
-            <h3 class="offcanvas-title" id="offcanvasExampleLabel">GymTracker</h3>
-        </div>
-        <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
 
-    </div>
-    <div class="offcanvas-body">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-action" id="inicio">
-                <a href="/menu" class="btn w-100 text-start">Inicio</a>
-            </li>
-            <li  th:if="${rolUsuario == 'administrador'}" class="list-group-item list-group-item-action bg-primary" id="admin">
-                <a href="/admin" class="btn w-100 text-start text-white">Administrar usuarios</a>
-            </li>
-            <li class="list-group-item list-group-item-action" id="nueva-rutina">
-                <a href="/nueva-rutina" class="btn w-100 text-start">Nueva rutina</a>
-            </li>
-            <li class="list-group-item list-group-item-action" id="mis-entrenamientos">
-                <a href="/mis-entrenamientos" class="btn w-100 text-start">Mis entrenamientos</a>
-            </li>
-            <li class="list-group-item list-group-item-action" id="ejercicios">
-                <a href="/ejercicios" class="btn w-100 text-start">Ejercicios</a>
-            </li>
-            <li class="list-group-item list-group-item-action" id="nuestras-rutinas">
-                <a href="/nuestras-rutinas" class="btn w-100 text-start">Nuestras rutinas</a>
-            </li>
-            <li class="list-group-item list-group-item-action" id="perfil">
-                <a href="/perfil" class="btn w-100 text-start">Perfil</a>
-            </li>
-            <li class="list-group-item list-group-item-action" id="cerrar-sesion">
-                <a href="/cerrar-sesion" class="btn w-100 text-start">Cerrar sesión</a>
-            </li>
-        </ul>
-    </div>
-</div>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GymTracker - Sidebar</title>
+	<div th:replace="~{fragments/bootstrap.html}"></div>
+	<script src="/js/sidebar.js"></script>
+</head>
+
+<body>
+	<div class="offcanvas offcanvas-start" tabindex="-1" id="idSidebar" aria-labelledby="offcanvasExampleLabel">
+		<div class="offcanvas-header">
+			<div class="col-md-3 d-flex justify-content-center align-items-center">
+				<img src="/images/logo/logoVerde.png" class="img-fluid" alt="Logo Gymtracker">
+			</div>
+			<div class="col-md-6 d-flex justify-content-center align-items-center">
+				<h3 class="offcanvas-title" id="offcanvasExampleLabel">GymTracker</h3>
+			</div>
+			<div class="col-md-3 d-flex justify-content-center align-items-center">
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+
+		</div>
+		<div class="offcanvas-body">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item list-group-item-action" id="inicio">
+					<a href="/menu" class="btn w-100 text-start">Inicio</a>
+				</li>
+				<li th:if="${rolUsuario == 'administrador'}" class="list-group-item list-group-item-action bg-primary"
+					id="admin">
+					<a href="/admin" class="btn w-100 text-start text-white">Administrar usuarios</a>
+				</li>
+				<li class="list-group-item list-group-item-action" id="nueva-rutina">
+					<a href="/nueva-rutina" class="btn w-100 text-start">Nueva rutina</a>
+				</li>
+				<li class="list-group-item list-group-item-action" id="mis-entrenamientos">
+					<a href="/mis-entrenamientos" class="btn w-100 text-start">Mis entrenamientos</a>
+				</li>
+				<li class="list-group-item list-group-item-action" id="ejercicios">
+					<a href="/ejercicios" class="btn w-100 text-start">Ejercicios</a>
+				</li>
+				<li class="list-group-item list-group-item-action" id="nuestras-rutinas">
+					<a href="/nuestras-rutinas" class="btn w-100 text-start">Nuestras rutinas</a>
+				</li>
+				<li class="list-group-item list-group-item-action" id="calendario">
+					<a href="/calendario" class="btn w-100 text-start">Calendario</a>
+				</li>
+				<li class="list-group-item list-group-item-action" id="perfil">
+					<a href="/perfil" class="btn w-100 text-start">Perfil</a>
+				</li>
+				<li class="list-group-item list-group-item-action" id="cerrar-sesion">
+					<a href="/cerrar-sesion" class="btn w-100 text-start">Cerrar sesión</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 </body>
+
 </html>

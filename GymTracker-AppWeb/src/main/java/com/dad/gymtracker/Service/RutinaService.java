@@ -61,7 +61,7 @@ public class RutinaService {
 				.series(resultado.getSeries())
 				.build();
     }
-
+    
     @Transactional
     public void crearRutina(NuevaRutinaDTO nuevaRutinaDTO, Integer idUsuario) {
         try {

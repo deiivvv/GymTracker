@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis entrenamientos - GymTracker</title>
+    <link rel="shortcut icon" href="/images/logo/logoVerde.png">
+
+    <div th:replace="~{fragments/sidebar.html}"></div>
+    <link rel="stylesheet" href="/css/styles_misEntrenamientos.css">
+	<script src="/js/calendario.js"></script>
+</head>
+
+<style>
+#idCalendario th,
+#idCalendario td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+#idCalendario th {
+  background-color: #f2f2f2;
+}
+</style>
+
+<body onload="onloadCargarCalendario()">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-xl">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3 d-flex align-items-center justify-content-center">
+                            <img class="img-fluid logo" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <h1 class="text-center">Calendario</h1>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <button onclick="clase_activo()" class="btn btn-success" type="button"
+                                    data-bs-toggle="offcanvas" data-bs-target="#idSidebar" aria-controls="sidebar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-list" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                                </svg>
+                                Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="idCalendario" class="row"></div>
+                    <input type="hidden" id="idFechas" th:value="${fechas}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
