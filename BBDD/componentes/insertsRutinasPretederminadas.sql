@@ -3,7 +3,7 @@ insert into usuarios(id, nombre, contrasena, rol) values (-1, 'usuario_rutinas',
 
 SET @id_usuario = -1;
 
-insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, "Pecha y Trícepes", "2004-01-16");
+insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, "Pecho y Trícepes", "2004-01-16");
 SET @id_rutina = LAST_INSERT_ID();
 
 insert into ejercicios(id, nombre) values
