@@ -1,6 +1,6 @@
 package com.dad.gymtracker.Service;
 
-import com.dad.gymtracker.Dto.MisEntrenamientosDTO;
+
 import com.dad.gymtracker.Dto.PerfilDTO;
 import com.dad.gymtracker.Dto.UsuarioDTO;
 import jakarta.persistence.EntityManager;
@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +33,7 @@ public class UsuarioService {
         	rol=usarioDTO.getRol();
         }
 
+        usarioDTO.setContrasena(hashContrasena(usarioDTO.getContrasena()));
         entityManager.createNativeQuery(sqlInsertUsuario)
         		.setParameter(1, usarioDTO.getNombre())
                 .setParameter(2, usarioDTO.getContrasena())
@@ -115,6 +118,23 @@ public class UsuarioService {
                 .setParameter(1, rol)
                 .setParameter(2, id)
                 .executeUpdate();
+    }
+
+    public String hashContrasena(String contrasena){
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = digest.digest(contrasena.getBytes());
+
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
 

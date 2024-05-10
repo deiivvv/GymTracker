@@ -24,6 +24,7 @@ public class UsuariosController {
 
     @PostMapping("/usuario/crear")
     public String crearUsuario(@ModelAttribute UsuarioPerfilDTO usuarioPerfilDTO){
+        usuarioPerfilDTO.getUsuarioDTO().setContrasena(usuarioService.hashContrasena(usuarioPerfilDTO.getUsuarioDTO().getContrasena()));
         usuarioService.crearUsuario(usuarioPerfilDTO.getUsuarioDTO(), usuarioPerfilDTO.getPerfilDTO());
         return "redirect:/";
     }
@@ -31,12 +32,8 @@ public class UsuariosController {
     @GetMapping("/usuario/comprobar")
     @ResponseBody
     public boolean comprobarUsuario(@RequestParam String nombre){
-        if(usuarioService.buscarUsuarioByNombre(nombre)==null){
-            return false;
-        };
-        return true;
+        return !(usuarioService.buscarUsuarioByNombre(nombre)==null);
     }
-
 }
 
 
