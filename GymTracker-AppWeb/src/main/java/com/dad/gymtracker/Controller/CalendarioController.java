@@ -22,7 +22,11 @@ private final CalendarioService calendarioService;
         if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
         model.addAttribute("idUsuario", session.getAttribute("idUsuario"));
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
-        model.addAttribute("fechas", ((MisEntrenamientosDTO) calendarioService.buscarFechasById((int) session.getAttribute("idUsuario"))).getFecha());
+
+        MisEntrenamientosDTO fechas= calendarioService.buscarFechasById((int) session.getAttribute("idUsuario"));
+        if(fechas!=null){
+            model.addAttribute("fechas", fechas.getFecha());
+        }
         return RUTATEMPLATES + "listar";
     }
 	

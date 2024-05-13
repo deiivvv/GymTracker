@@ -43,6 +43,7 @@ function comprobarNombre(event){
                 document.getElementById("idAlertCrearUsuario").classList.remove("alert-primary");
     			document.getElementById("idAlertCrearUsuario").classList.add("alert-warning");
         		document.getElementById("idAlertCrearUsuario").innerHTML = "Nombre de usuario ya en uso"
+                document.getElementById("idAlertCrearUsuario").style="display:block"
             }else{
                 document.getElementById("idAlertCrearUsuario").classList.add("alert-primary");
     			document.getElementById("idAlertCrearUsuario").classList.remove("alert-warning");

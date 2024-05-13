@@ -26,6 +26,7 @@ public class CalendarioService {
 	                .setParameter(1, id)
 	                .getSingleResult();
 
+			if(resultado==null) return null;
 	        return MisEntrenamientosDTO.builder()
 	        		.id(resultado.getId())
 	        		.nombre(resultado.getNombre())

@@ -68,7 +68,7 @@ function validarEdadAndGenero(accion){
     let genero = document.getElementById("idGenero").value;
 
     let opcionesGenero = ["Sin especificar", "Masculino", "Femenino"]
-    if(edad < 0 || edad>120 || !opcionesGenero.includes(genero)){
+    if(edad=== ""  || edad < 0 || edad>120 || !opcionesGenero.includes(genero)){
         document.getElementById("idAlertPerfil1").innerHTML = "Campos inválidos";
         document.getElementById("idAlertPerfil1").classList.remove("alert-primary");
         document.getElementById("idAlertPerfil1").classList.add("alert-warning");
@@ -90,7 +90,7 @@ function validarPesoAndAltura(){
     let peso = document.getElementById("idPeso").value;
     let altura = document.getElementById("idAltura").value;
 
-    if(peso < 0 || peso>200 || altura < 0 || altura > 300 ){
+    if(peso === "" || peso < 0 || peso>200 || altura=== "" || altura < 0 || altura > 300 ){
         document.getElementById("idAlertPerfil2").style = "display: block";
         document.getElementById("idAlertPerfil2").innerHTML = "Campos inválidos";
         document.getElementById("idAlertPerfil2").classList.remove("alert-primary");

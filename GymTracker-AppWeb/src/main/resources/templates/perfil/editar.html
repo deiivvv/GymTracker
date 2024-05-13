@@ -9,6 +9,10 @@
 
     <div th:replace="~{fragments/bootstrap.html}"></div>
 	<link rel="stylesheet" href="/css/styles_perfil.css">
+    <script src="/js/admin.js"></script>
+    <script src="/js/crearUsuario.js"></script>
+    <script src="/js/modificarUsuario.js"></script>
+
 </head>
 
 <body>
@@ -27,31 +31,32 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="/perfil/guardar" method="post" th:object="${perfilUsuarioDTO}">
+                        <form onsubmit="validarModificacion(event)" action="/perfil/guardar" method="post" th:object="${perfilUsuarioDTO}" id="idFormCrearUsuario">
                             <div class="form-group">
                                 <label for="idNombre"><b>Nombre:</b></label>
                                 <input type="text" id="idNombre" name="nombre" th:field="*{nombre}"
-                                    class="form-control">
+                                    class="form-control" maxlength="30">
+                                <input type="hidden" id="idNombreAntiguo" th:value="*{nombre}">
                             </div>
                             <div class="form-group">
                                 <label for="idEdad"><b>Edad:</b></label>
-                                <input type="number" id="idEdad" name="edad" th:field="*{edad}" class="form-control">
+                                <input type="number" id="idEdad" name="edad" th:field="*{edad}" class="form-control" min="0" max="120">
                             </div>
                             <div class="form-group">
                                 <label for="idGenero"><b>Género:</b></label>
                                 <select id="idGenero" name="genero" th:field="*{genero}" class="form-control">
-									<option value="Sin especificar">Seleccione su género</option>
+									<option value="Sin especificar">Sin especificar</option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Femenino">Femenino</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="idPeso"><b>Peso (kg):</b></label>
-                                <input type="number" id="idPeso" name="peso" th:field="*{peso}" class="form-control">
+                                <input type="number" id="idPeso" name="peso" th:field="*{peso}" class="form-control" min="0" max="200">
                             </div>
                             <div class="form-group">
                                 <label for="idAltura"><b>Altura (cm): </b></label>
-                                <input type="number" id="idAltura" name="altura" th:field="*{altura}"
+                                <input type="number" id="idAltura" name="altura" th:field="*{altura}" min="0" max="300"
                                     class="form-control">
                             </div>
                             <div class="text-center">
@@ -63,6 +68,9 @@
                         </form>
                     </div>
                 </div>
+                <div class="alert alert-primary mt-3" id="idAlertCrearUsuario">No olvides que no es necesario que completes tu perfil en este momento, pero recuerda actualizarlo más tarde.</div>
+                <div class="alert alert-primary mt-3" id="idAlertPerfil1" style="display: none">Campos inválidos</div>
+                <div class="alert alert-primary mt-3" id="idAlertPerfil2" style="display: none">Campos inválidos</div>
             </div>
         </div>
     </div>
