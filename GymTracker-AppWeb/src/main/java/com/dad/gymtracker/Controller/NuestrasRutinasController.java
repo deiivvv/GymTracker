@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class NuestrasRutinasController {
 
-	private final String RUTATEMPLATES= "/nuestrasRutinas/";
+	private final String RUTATEMPLATES= "nuestrasRutinas/";
 	
 	private final RutinaService rutinaService;
 

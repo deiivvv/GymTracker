@@ -26,11 +26,11 @@ public class MenuController {
     	if(usuarioDTOBD==null) {
     		model.addAttribute("mensajeErrorWarning", "Usuario o contraseña incorrectos");
     		model.addAttribute("usuario", new UsuarioDTO());
-            return "/login/inicioSesion";
+            return "login/inicioSesion";
     	}else if(usuarioDTOBD.getRol().equals("bloqueado")){
             model.addAttribute("mensajeErrorDanger", "Usuario bloqueado");
             model.addAttribute("usuario", new UsuarioDTO());
-            return "/login/inicioSesion";
+            return "login/inicioSesion";
         }
         session.setAttribute("idUsuario", usuarioDTOBD.getId());
         session.setAttribute("rolUsuario", usuarioDTOBD.getRol());

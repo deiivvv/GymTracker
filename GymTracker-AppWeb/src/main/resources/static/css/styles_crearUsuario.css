@@ -2,6 +2,19 @@ body {
 	background-color: lightgrey;
 }
 
+@media only screen and (max-width: 768px){
+
+	.img-fluid{
+		max-width: 30%;
+	}
+
+	.logoCentrado{
+		display: flex;
+		justify-content: center;
+	}
+}
+
+
 .contenedor {
 	transition: transform 1s ease-in-out;
 }

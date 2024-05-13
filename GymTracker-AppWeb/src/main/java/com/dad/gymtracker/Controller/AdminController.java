@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AdminController {
 
-    private final String RUTATEMPLAES = "/admin/";
+    private final String RUTATEMPLAES = "admin/";
     private final UsuarioService usuarioService;
     private final PerfilService perfilService;
 

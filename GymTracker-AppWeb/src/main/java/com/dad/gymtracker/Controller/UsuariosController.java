@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class UsuariosController {
 
-    private final String RUTATEMPLATES= "/usuarios/";
+    private final String RUTATEMPLATES= "usuarios/";
     private final UsuarioService usuarioService;
 
     @GetMapping("/usuario/crear")
