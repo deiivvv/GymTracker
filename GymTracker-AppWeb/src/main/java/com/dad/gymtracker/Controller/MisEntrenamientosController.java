@@ -18,7 +18,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MisEntrenamientosController {
 
-	private final String RUTATEMPLATES= "/misEntrenamientos/";
+	private final String RUTATEMPLATES= "misEntrenamientos/";
 	
 	private final RutinaService rutinaService;
 

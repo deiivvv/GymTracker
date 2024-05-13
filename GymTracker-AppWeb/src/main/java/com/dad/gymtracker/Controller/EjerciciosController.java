@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class EjerciciosController {
 
-	private final String RUTATEMPLATES= "/ejercicios/";
+	private final String RUTATEMPLATES= "ejercicios/";
 	
     @GetMapping("/ejercicios")
     public String ejercicios(Model model, HttpSession session){

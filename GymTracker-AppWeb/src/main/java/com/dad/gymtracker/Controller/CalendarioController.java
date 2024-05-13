@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CalendarioController {
 
-private final String RUTATEMPLATES= "/calendario/";
+private final String RUTATEMPLATES= "calendario/";
 private final CalendarioService calendarioService; 
 	
     @GetMapping("/calendario")

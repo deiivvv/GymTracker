@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @AllArgsConstructor
 public class PerfilController {
 	
-	private final String RUTATEMPLATES= "/perfil/";
+	private final String RUTATEMPLATES= "perfil/";
     private PerfilService perfilService;
 
     @GetMapping("/perfil")

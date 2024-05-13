@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class NuevaRutinaController {
 
 	private final RutinaService rutinaService;
-	private final String RUTATEMPLATES = "/nuevaRutina/";
+	private final String RUTATEMPLATES = "nuevaRutina/";
 
 	@GetMapping("/nueva-rutina")
 	public String crear(Model model, HttpSession session) {

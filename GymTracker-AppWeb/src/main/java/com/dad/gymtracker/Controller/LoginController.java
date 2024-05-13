@@ -10,7 +10,7 @@ import com.dad.gymtracker.Dto.UsuarioDTO;
 @Controller
 public class LoginController {
 	
-	private final String RUTATEMPLAES="/login/";
+	private final String RUTATEMPLAES="login/";
 	
 	@GetMapping("/")
     public String inicioSesion(Model model){
