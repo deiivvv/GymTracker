@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - GymTracker</title>
+    <link rel="shortcut icon" href="/images/logo/logoVerde.png">
+
+    <div th:replace="~{fragments/bootstrap.html}"></div>
+    <link rel="stylesheet" href="/css/styles_inicioSesion.css">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3 logoCentrado">
+                            <img class="img-fluid logo" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <h1 class="text-center">GymTracker</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <form action="/inicio" method="post" th:object="${usuario}">
+                            <div class="form-group">
+                                <label for="idUsuario"><b>Usuario:</b></label>
+                                <input type="text" id="idUsuario" name="nombre" th:field="*{nombre}"
+                                       class="form-control" placeholder="Nombre de usuario" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="idContrasena"><b>Contraseña:</b></label>
+                                <input type="password" id="idContrasena" class="form-control" name="contrasena"
+                                       th:field="*{contrasena}" placeholder="**************" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success mr-2">Iniciar Sesión</button>
+                                <a href="/usuario/crear" class="btn btn-outline-success">Crear usuario</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-warning mt-3" th:if="${mensajeErrorWarning}" th:text="${mensajeErrorWarning}"></div>
+            <div class="alert alert-danger mt-3" th:if="${mensajeErrorDanger}" th:text="${mensajeErrorDanger}"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
