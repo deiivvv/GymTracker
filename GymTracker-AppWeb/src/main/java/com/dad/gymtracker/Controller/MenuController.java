@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +40,7 @@ public class MenuController {
     }
 
     @GetMapping("/menu")
+    @PreAuthorize("hasAuthority('READ')")
     public String menu(Model model, HttpSession session){
         if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));

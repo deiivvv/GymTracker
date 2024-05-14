@@ -9,15 +9,17 @@ import com.dad.gymtracker.Service.CalendarioService;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/calendario")
 public class CalendarioController {
 
 private final String RUTATEMPLATES= "calendario/";
 private final CalendarioService calendarioService; 
 	
-    @GetMapping("/calendario")
+    @GetMapping
     public String calendario(Model model, HttpSession session){
         if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
         model.addAttribute("idUsuario", session.getAttribute("idUsuario"));

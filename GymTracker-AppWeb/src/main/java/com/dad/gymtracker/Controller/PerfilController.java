@@ -9,15 +9,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/perfil")
 public class PerfilController {
 	
 	private final String RUTATEMPLATES= "perfil/";
     private PerfilService perfilService;
 
-    @GetMapping("/perfil")
+    @GetMapping
     public String mostrar(Model model, HttpSession session){
         if(session.getAttribute("idUsuario")==null) return "redirect:/";
         model.addAttribute("perfilUsuario", perfilService.obtenerUsuariosConPerfil((int)session.getAttribute("idUsuario")));
@@ -25,14 +27,14 @@ public class PerfilController {
         return RUTATEMPLATES + "mostrar";
     }
     
-    @GetMapping("/perfil/editar")
+    @GetMapping("/editar")
     public String editar(Model model, HttpSession session){
         if(session.getAttribute("idUsuario")==null) return "redirect:/";
         model.addAttribute("perfilUsuarioDTO", perfilService.obtenerUsuariosConPerfil((int)session.getAttribute("idUsuario")));
         return RUTATEMPLATES + "editar";
     }
     
-    @PostMapping("/perfil/guardar")
+    @PostMapping("/guardar")
     public String editar(@ModelAttribute PerfilDTO perfilDTO,
     					HttpSession session){
     	perfilDTO.setId((int)session.getAttribute("idUsuario"));
@@ -40,7 +42,7 @@ public class PerfilController {
         return "redirect:/perfil";
     }
     
-    @GetMapping("/perfil/eliminar")
+    @GetMapping("/eliminar")
     public String eliminar(HttpSession session){
         if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
     	perfilService.borrarUsuario((int) session.getAttribute("idUsuario"));
