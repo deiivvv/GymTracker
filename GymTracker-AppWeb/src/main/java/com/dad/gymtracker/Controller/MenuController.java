@@ -19,8 +19,9 @@ import com.dad.gymtracker.Service.UsuarioService;
 public class MenuController {
 
 	private final UsuarioService usuarioService;
-	
+
     @RequestMapping("/inicio")
+    @PreAuthorize("permitAll()")
     public String inicioSesion(@ModelAttribute UsuarioDTO usuario,
                        HttpSession session, Model model){
     	UsuarioDTO usuarioDTOBD=usuarioService.buscarUsuarioByNombreAndContrasena(usuario.getNombre(), usuario.getContrasena());
@@ -40,9 +41,9 @@ public class MenuController {
     }
 
     @GetMapping("/menu")
-    @PreAuthorize("hasAuthority('READ')")
+//    @PreAuthorize("hasAuthority('READ')")
     public String menu(Model model, HttpSession session){
-        if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
+//        if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
         return "menu";
     }

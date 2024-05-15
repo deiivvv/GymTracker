@@ -22,14 +22,14 @@ public class SecurityConfig {
 
     private final UsuarioService usuarioService;
 
-    @Bean
+	@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .anyRequest().authenticated()
+                                .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults());
+                .formLogin(login -> login.loginPage("/login"));
 
         return http.build();
     }
