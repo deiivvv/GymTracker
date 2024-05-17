@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="card-body">
                     <div class="col-md-12">
-                        <form action="/inicio" method="post" th:object="${usuario}">
+                        <form action="/login" method="post" th:object="${usuarioDTO}">
                             <div class="form-group">
                                 <label for="idUsuario"><b>Usuario:</b></label>
                                 <input type="text" id="idUsuario" name="nombre" th:field="*{nombre}"

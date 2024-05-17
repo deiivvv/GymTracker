@@ -12,14 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 //@RequestMapping("/")
 public class LoginController {
-	
+    //    @PreAuthorize("permitAll()")
 	private final String RUTATEMPLAES="login/";
-    @GetMapping(value="/", produces = "text/html")
-//    @PreAuthorize("permitAll()")
+    @GetMapping("/")
     public String inicioSesion(Model model){
-		model.addAttribute("usuario", new UsuarioDTO());
+		model.addAttribute("usuarioDTO", new UsuarioDTO());
         return RUTATEMPLAES + "inicioSesion";
     }
-    
-   
+
+
 }

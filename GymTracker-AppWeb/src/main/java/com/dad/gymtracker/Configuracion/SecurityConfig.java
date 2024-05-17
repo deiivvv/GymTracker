@@ -1,13 +1,13 @@
 package com.dad.gymtracker.Configuracion;
 
 
-
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,24 +27,29 @@ public class SecurityConfig {
 
     private final UsuarioService usuarioService;
 
-	@Bean
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                		.requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                		 .requestMatchers("/inicio/**").hasAnyRole("USER", "ADMIN")
-                		  
+                        .requestMatchers("/", "/usuario/crear", "/css/**", "/images/**", "/fragments/**").permitAll()
                         .anyRequest().authenticated()
-                                
                 )
-                .httpBasic(Customizer.withDefaults())
                 .formLogin(login -> login
-                		.loginPage("/")
+                        .loginPage("/")
+                        .loginProcessingUrl("/login")
+                        .usernameParameter("nombre")
+                        .passwordParameter("contrasena")
+                        .successForwardUrl("/menu")
+                        .failureUrl("/?error=true")
                         .permitAll())
-        		.logout(logout -> logout
-        				.logoutSuccessUrl("/")
-        				.permitAll()
-        		);
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/?logout=true")
+                        .permitAll())
+                .csrf(AbstractHttpConfigurer::disable)
+                .exceptionHandling(exceptionHandling -> exceptionHandling
+                        .accessDeniedPage("/403"));
 
         return http.build();
     }
@@ -52,8 +57,8 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         List<UsuarioDTO> usuarioDTOList = usuarioService.buscarAllUsuarios();
-        List<UserDetails> userDetails= new ArrayList<>();
-        for(UsuarioDTO usuarioDTO : usuarioDTOList){
+        List<UserDetails> userDetails = new ArrayList<>();
+        for (UsuarioDTO usuarioDTO : usuarioDTOList) {
             UserDetails user = User.withDefaultPasswordEncoder()
                     .username(usuarioDTO.getNombre())
                     .password(usuarioDTO.getContrasena())
