@@ -136,7 +136,7 @@ insert into rutinas_ejercicios_series(id_rutina, id_ejercicio, id_serie) values
 (@id_rutina, 43, @id_serie_pulldown_2),
 (@id_rutina, 43, @id_serie_pulldown_3);
 
--- Insertar usuario ficticio 'damago' y su perfil
+-- Insertar usuarios ficticios y sus perfiles
 INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('damago', 'damago', 'usuario');
 INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_ID(), 'Masculino', 25, 180, 75);
 
