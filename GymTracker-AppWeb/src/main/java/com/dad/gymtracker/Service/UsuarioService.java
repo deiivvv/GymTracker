@@ -163,10 +163,11 @@ public class UsuarioService {
     @Transactional
     public void cambiarContrasena(int id, String contrasena) {
         try {
+            String encodedPassword = passwordEncoder.encode(contrasena);
             // Actualizar la contraseña en la base de datos
             String sqlCambiarContrasena = "UPDATE usuarios SET contrasena = ? WHERE id = ?";
             entityManager.createNativeQuery(sqlCambiarContrasena)
-                    .setParameter(1, contrasena)
+                    .setParameter(1, encodedPassword)
                     .setParameter(2, id)
                     .executeUpdate();
 
@@ -180,9 +181,8 @@ public class UsuarioService {
             String rolUsuario = (String) result[1];
 
             // Actualizar la contraseña en el InMemoryUserDetailsManager
-            UserDetails user = User.withDefaultPasswordEncoder()
-                    .username(nombreUsuario)
-                    .password(contrasena)
+            UserDetails user = User.withUsername(nombreUsuario)
+                    .password(encodedPassword)
                     .roles(rolUsuario.toUpperCase())
                     .build();
 
