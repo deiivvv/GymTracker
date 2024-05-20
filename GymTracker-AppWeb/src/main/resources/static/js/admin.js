@@ -1,6 +1,11 @@
 function cambiarRol(rol) {
     document.getElementById("idRolHidden").value = rol;
-    document.getElementById("idFormRol").submit();
+    document.getElementById("idForm").submit();
+}
+
+function cambiarContrasena(contrasena) {
+    document.getElementById("idContrasenaHidden").value = contrasena;
+    document.getElementById("idForm").submit();
 }
 
 function marcarUsuario(boton, accion) {
@@ -14,13 +19,13 @@ function marcarUsuario(boton, accion) {
 		let tdRol = row.querySelector('td:nth-child(3)');
 		let rol = tdRol.innerText;
 		document.getElementById("idRolHidden").value = rol;
-        document.getElementById("idFormRol").submit();
+        document.getElementById("idForm").submit();
     }
 
 }
 
 function eliminar(){
-	 document.getElementById("idFormRol").submit();
+	 document.getElementById("idForm").submit();
 }
 
 function comprobarNombre(event){

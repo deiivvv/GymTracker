@@ -118,6 +118,25 @@ public class UsuarioService {
         }
     }
 
+    public UsuarioDTO buscarUsuarioById(int id) {
+        String sqlBuscarUsuario = "SELECT id, nombre, contrasena, rol FROM usuarios WHERE id = ?";
+
+        try {
+            UsuarioDTO resultado = (UsuarioDTO) entityManager.createNativeQuery(sqlBuscarUsuario, UsuarioDTO.class)
+                    .setParameter(1, id)
+                    .getSingleResult();
+
+            return UsuarioDTO.builder()
+                    .id(resultado.getId())
+                    .nombre(resultado.getNombre())
+                    .contrasena(resultado.getContrasena())
+                    .rol(resultado.getRol())
+                    .build();
+        } catch (NoResultException e) {
+            return null; // Devuelve null si no se encuentra ningún usuario
+        }
+    }
+
     public List<UsuarioDTO> buscarAllUsuarios() {
         String sqlBuscarAllUsuarios = "SELECT id, nombre, contrasena, rol FROM usuarios ORDER BY id";
 
@@ -147,6 +166,40 @@ public class UsuarioService {
                 .setParameter(2, id)
                 .executeUpdate();
     }
+
+    @Transactional
+    public void cambiarContrasena(int id, String contrasena) {
+        try {
+            // Actualizar la contraseña en la base de datos
+            String sqlCambiarContrasena = "UPDATE usuarios SET contrasena = ? WHERE id = ?";
+            entityManager.createNativeQuery(sqlCambiarContrasena)
+                    .setParameter(1, contrasena)
+                    .setParameter(2, id)
+                    .executeUpdate();
+
+            // Recuperar el nombre de usuario basado en el ID
+            String sqlObtenerNombre = "SELECT nombre, rol FROM usuarios WHERE id = ?";
+            Object[] result = (Object[]) entityManager.createNativeQuery(sqlObtenerNombre)
+                    .setParameter(1, id)
+                    .getSingleResult();
+
+            String nombreUsuario = (String) result[0];
+            String rolUsuario = (String) result[1];
+
+            // Actualizar la contraseña en el InMemoryUserDetailsManager
+            UserDetails user = User.withDefaultPasswordEncoder()
+                    .username(nombreUsuario)
+                    .password(contrasena)
+                    .roles(rolUsuario.toUpperCase())
+                    .build();
+
+            inMemoryUserDetailsManager.updateUser(user);
+
+        } catch (Exception e) {
+            log.error("Error al cambiar la contraseña: {}", e.getMessage());
+        }
+    }
+
 
 
 }
