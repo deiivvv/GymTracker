@@ -1,23 +1,16 @@
 package com.dad.gymtracker.Service;
 
-import com.dad.gymtracker.Dto.MisEntrenamientosDTO;
 import com.dad.gymtracker.Dto.PerfilDTO;
 import com.dad.gymtracker.Dto.UsuarioDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
-
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,11 +27,13 @@ public class UsuarioService {
     @PersistenceContext
     private EntityManager entityManager;
     private final InMemoryUserDetailsManager inMemoryUserDetailsManager;
-    private final AuthenticationManager authenticationManager;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public void crearUsuario(UsuarioDTO usuarioDTO, PerfilDTO perfilUsuarioDTO) {
         try {
+            String encodedPassword = passwordEncoder.encode(usuarioDTO.getContrasena());
+
             String sqlInsertUsuario = "INSERT INTO usuarios (nombre, contrasena, rol)" +
                     " VALUES (?, ?, ?);";
 
@@ -49,14 +44,13 @@ public class UsuarioService {
 
             entityManager.createNativeQuery(sqlInsertUsuario)
                     .setParameter(1, usuarioDTO.getNombre())
-                    .setParameter(2, usuarioDTO.getContrasena())
+                    .setParameter(2, encodedPassword)
                     .setParameter(3, rol)
                     .executeUpdate();
 
             String sqlInsertPerfil = "INSERT INTO perfil (altura, edad, peso, genero, id_usuario)" +
                     " VALUES (?, ?, ?, ?, (SELECT id FROM usuarios" +
-                    " WHERE id =" +
-                    " (select LAST_INSERT_ID())));";
+                    " WHERE id =(select LAST_INSERT_ID())));";
 
             entityManager.createNativeQuery(sqlInsertPerfil)
                     .setParameter(1, perfilUsuarioDTO.getAltura())
@@ -66,9 +60,8 @@ public class UsuarioService {
                     .executeUpdate();
 
             // Crear UserDetails para el nuevo usuario (Spring Security)
-            UserDetails user = User.withDefaultPasswordEncoder()
-                    .username(usuarioDTO.getNombre())
-                    .password(usuarioDTO.getContrasena())
+            UserDetails user = User.withUsername(usuarioDTO.getNombre())
+                    .password(encodedPassword)
                     .roles(rol.toUpperCase())
                     .build();
 
