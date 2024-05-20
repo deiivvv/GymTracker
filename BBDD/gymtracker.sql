@@ -146,15 +146,12 @@ INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_
 INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('david', 'david', 'bloqueado');
 INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_ID(), 'Masculino', 25, 180, 75);
 
--- Insertar ejercicio 'sentadillas'
-INSERT INTO ejercicios (nombre) VALUES ('sentadillas');
--- Obtener el ID del ejercicio 'sentadillas' insertado
-SET @id_sentadillas = LAST_INSERT_ID();
 
--- Insertar ejercicio 'press banca'
-INSERT INTO ejercicios (nombre) VALUES ('press de banca');
+-- Obtener el ID del ejercicio 'sentadillas' insertado
+SET @id_sentadillas = 1;
+
 -- Obtener el ID del ejercicio 'press banca' insertado
-SET @id_press_banca = LAST_INSERT_ID();
+SET @id_press_banca = 2;
 
 -- Insertar series para el ejercicio 'sentadillas'
 INSERT INTO series (peso, repes) VALUES
