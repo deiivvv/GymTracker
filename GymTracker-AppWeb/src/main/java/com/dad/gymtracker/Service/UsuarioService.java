@@ -7,7 +7,18 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,38 +28,58 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
+@AllArgsConstructor
 public class UsuarioService {
 
     @PersistenceContext
     private EntityManager entityManager;
+    private final InMemoryUserDetailsManager inMemoryUserDetailsManager;
+    private final AuthenticationManager authenticationManager;
+
     @Transactional
-    public void crearUsuario(UsuarioDTO usarioDTO, PerfilDTO perfilUsuarioDTO) {
-        String sqlInsertUsuario = "INSERT INTO usuarios (nombre, contrasena, rol)" +
-                " VALUES (?, ?, ?);";
+    public void crearUsuario(UsuarioDTO usuarioDTO, PerfilDTO perfilUsuarioDTO) {
+        try {
+            String sqlInsertUsuario = "INSERT INTO usuarios (nombre, contrasena, rol)" +
+                    " VALUES (?, ?, ?);";
 
-        String rol="usuario";
-        if(usarioDTO.getRol()!=null) {
-        	rol=usarioDTO.getRol();
+            String rol = "usuario";
+            if (usuarioDTO.getRol() != null) {
+                rol = usuarioDTO.getRol();
+            }
+
+            entityManager.createNativeQuery(sqlInsertUsuario)
+                    .setParameter(1, usuarioDTO.getNombre())
+                    .setParameter(2, usuarioDTO.getContrasena())
+                    .setParameter(3, rol)
+                    .executeUpdate();
+
+            String sqlInsertPerfil = "INSERT INTO perfil (altura, edad, peso, genero, id_usuario)" +
+                    " VALUES (?, ?, ?, ?, (SELECT id FROM usuarios" +
+                    " WHERE id =" +
+                    " (select LAST_INSERT_ID())));";
+
+            entityManager.createNativeQuery(sqlInsertPerfil)
+                    .setParameter(1, perfilUsuarioDTO.getAltura())
+                    .setParameter(2, perfilUsuarioDTO.getEdad())
+                    .setParameter(3, perfilUsuarioDTO.getPeso())
+                    .setParameter(4, perfilUsuarioDTO.getGenero())
+                    .executeUpdate();
+
+            // Crear UserDetails para el nuevo usuario (Spring Security)
+            UserDetails user = User.withDefaultPasswordEncoder()
+                    .username(usuarioDTO.getNombre())
+                    .password(usuarioDTO.getContrasena())
+                    .roles(rol.toUpperCase())
+                    .build();
+
+            // Agregar el nuevo usuario al InMemoryUserDetailsManager
+            inMemoryUserDetailsManager.createUser(user);
+
+        } catch (Exception e) {
+            log.error("Error al crear el usuario: {}", e.getMessage());
         }
-
-        entityManager.createNativeQuery(sqlInsertUsuario)
-        		.setParameter(1, usarioDTO.getNombre())
-                .setParameter(2, usarioDTO.getContrasena())
-                .setParameter(3, rol)
-                .executeUpdate();
-
-        String sqlInsertPeril = "INSERT INTO perfil (altura, edad, peso, genero, id_usuario)" +
-                " VALUES (?, ?, ?, ?, (SELECT id FROM usuarios" +
-                " WHERE id =" +
-                " (select LAST_INSERT_ID())));";
-
-        entityManager.createNativeQuery(sqlInsertPeril)
-        		.setParameter(1, perfilUsuarioDTO.getAltura())
-                .setParameter(2, perfilUsuarioDTO.getEdad())
-                .setParameter(3, perfilUsuarioDTO.getPeso())
-                .setParameter(4, perfilUsuarioDTO.getGenero())
-                .executeUpdate();
     }
+
     public UsuarioDTO buscarUsuarioByNombre(String nombre){
         String sqlBuscarUsuario = "SELECT id, nombre, contrasena, rol FROM usuarios WHERE nombre = ?";
         try {

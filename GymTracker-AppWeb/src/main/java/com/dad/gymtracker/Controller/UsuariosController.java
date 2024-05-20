@@ -32,10 +32,7 @@ public class UsuariosController {
     @GetMapping("/comprobar")
     @ResponseBody
     public boolean comprobarUsuario(@RequestParam String nombre){
-        if(usuarioService.buscarUsuarioByNombre(nombre)==null){
-            return false;
-        };
-        return true;
+        return usuarioService.buscarUsuarioByNombre(nombre)!=null;
     }
 
 }

@@ -70,7 +70,7 @@ public class AdminController {
                          @RequestParam String rol, HttpSession session){
         session.setAttribute("rolUsuario", rol);
     	session.setAttribute("idUsuario", id);
-    	return "redirect:/menu";
+    	return "redirect:/menu?admin=true";
     }
     
     @GetMapping("/eliminar")
