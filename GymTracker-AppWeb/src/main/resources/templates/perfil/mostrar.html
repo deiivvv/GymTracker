@@ -5,65 +5,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - GymTracker</title>
-	<link rel="shortcut icon" href="/images/logo/logoVerde.png">
-	
+    <link rel="shortcut icon" href="/images/logo/logoVerde.png">
+
     <div th:replace="~{fragments/sidebar.html}"></div>
-	<link rel="stylesheet" href="/css/styles_perfil.css">
+    <link rel="stylesheet" href="/css/styles_perfil.css">
+    <script src="/js/modificarUsuario.js"></script>
 </head>
 
 <body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow-lg">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-md-3 logoCentrado">
-                                <img class="img-fluid" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
-                            </div>
-                            <div class="col-md-6 d-flex justify-content-center align-items-center">
-                                <h1 class="text-center">Mi Perfil</h1>
-                            </div>
-                            <div class="col-md-3 d-flex justify-content-center align-items-center">
-                                <button onclick="clase_activo()" class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#idSidebar"
-                                        aria-controls="sidebar">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-                                    </svg>
-                                    Menú
-                                </button>
-                            </div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3 logoCentrado">
+                            <img class="img-fluid" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <h1 class="text-center">Mi Perfil</h1>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <button onclick="clase_activo()" class="btn btn-success" type="button"
+                                    data-bs-toggle="offcanvas" data-bs-target="#idSidebar"
+                                    aria-controls="sidebar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-list" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                                </svg>
+                                Menú
+                            </button>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="idNombre"><b>Nombre:</b></label>
-                            <input th:field="*{perfilUsuario.nombre}" id="idNombre" class="form-control" readonly/>
-                        </div>
-                        <div class="form-group">
-                            <label for="idEdad"><b>Edad:</b></label>
-                            <input th:field="*{perfilUsuario.edad}" id="idEdad" class="form-control" readonly/>
-                        </div>
-                        <div class="form-group">
-                            <label for="idGenero"><b>Género:</b></label>
-                            <input th:field="*{perfilUsuario.genero}" id="idGenero" class="form-control" readonly/>
-                        </div>
-                        <div class="form-group">
-                            <label for="idPeso"><b>Peso (kg):</b></label>
-                            <input th:field="*{perfilUsuario.peso}" id="idPeso" class="form-control" readonly/>
-                        </div>
-                        <div class="form-group">
-                            <label for="idAltura"><b>Altura (cm): </b></label>
-                            <input th:field="*{perfilUsuario.altura}" id="idAltura" class="form-control" readonly/>
-                        </div>
-                        <div class="text-center">
-                            <a href="/perfil/editar" class="btn btn-success">Editar Perfil</a>
-                        </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="idNombre"><b>Nombre:</b></label>
+                        <input th:field="*{perfilUsuario.nombre}" id="idNombre" class="form-control" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label for="idEdad"><b>Edad:</b></label>
+                        <input th:field="*{perfilUsuario.edad}" id="idEdad" class="form-control" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label for="idGenero"><b>Género:</b></label>
+                        <input th:field="*{perfilUsuario.genero}" id="idGenero" class="form-control" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label for="idPeso"><b>Peso (kg):</b></label>
+                        <input th:field="*{perfilUsuario.peso}" id="idPeso" class="form-control" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label for="idAltura"><b>Altura (cm): </b></label>
+                        <input th:field="*{perfilUsuario.altura}" id="idAltura" class="form-control" readonly/>
+                    </div>
+                    <div class="text-center">
+                        <a href="/perfil/editar" class="btn btn-success">Editar Perfil</a>
+                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                                data-bs-target="#idModalContrasena">Cambiar contraseña
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="idModalContrasena" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">¿Estás seguro de que quieres cambiar tu contraseña?</h3>
+            </div>
+            <div class="modal-body">
+                <label for="idContrasena"><b>Escribe tu contraseña actual</b></label>
+                <input id="idContrasena" class="form-control" type="password" name="contrasena">
+                <div class="alert alert-warning mt-3" id="idAlertContrasena" style="display: none">Contraseña inválida
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-success" onclick="comprobarContrasena()">Aceptar</button>
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="idModalNewContrasena" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="/perfil/cambiando-contrasena" method="get">
+                <div class="modal-header">
+                    <h3 class="modal-title">Crea tu nueva contraseña</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="idNewContrasena"><b>Nueva contraseña</b></label>
+                        <input oninput="compararNewContrasena()" id="idNewContrasena" class="form-control" type="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="idNewContrasena2"><b>Repite la nueva contraseña</b></label>
+                        <input oninput="compararNewContrasena()" id="idNewContrasena2" class="form-control" type="password" name="contrasena" required>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="submit" id="idBotonAceptarContrasena" class="btn btn-success">Aceptar</button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

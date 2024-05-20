@@ -40,16 +40,25 @@ public class AdminController {
 
     @PostMapping("/accion")
     public String accion(@RequestParam Integer id,
-                             @RequestParam String rol,
-                             @RequestParam String accion){
+                         @RequestParam String rol,
+                         @RequestParam String contrasena,
+                         @RequestParam String accion){
         return switch (accion) {
             case "cambiarRol" -> "redirect:/admin/cambiar-rol?id=" + id + "&rol=" + rol;
             case "acceso" -> "redirect:/admin/acceso?id=" + id+"&rol="+rol;
             case "eliminar" -> "redirect:/admin/eliminar?id=" + id;
+            case "cambiarContrasena" -> "redirect:/admin/cambiar-contrasena?id=" + id + "&contrasena=" + contrasena;
             default -> null;
         };
     }
-    
+
+    @GetMapping("/cambiar-contrasena")
+    public String cambiarContrasena(@RequestParam Integer id,
+                                    @RequestParam String contrasena) {
+        usuarioService.cambiarContrasena(id, contrasena);
+        return "redirect:/admin";
+    }
+
     @GetMapping("/cambiar-rol")
     public String cambiarRol(@RequestParam Integer id,
     						 @RequestParam String rol, HttpSession session) {
