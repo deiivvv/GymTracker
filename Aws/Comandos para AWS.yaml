@@ -1,0 +1,24 @@
+Comandos para AWS
+
+- conectarse por ssh
+    desde Gymtracker/Aws/Claves
+    ssh -i "gymtracker.pem" ec2-user@ec2-44-223-254-24.compute-1.amazonaws.com
+
+- Copiar archivos
+    desde Gymtracker/Aws
+    scp -i .\Claves/gymtracker.pem .\Jars\GymTracker-0.0.1-SNAPSHOT.jar .\Jars\Api-Ejercicios-0.0.1-SNAPSHOT.jar ec2-user@ec2-44-223-254-24.compute-1.amazonaws.com:/home/ec2-user/gymtracker/
+
+    { scp -i .\Claves/gymtracker.pem .\Jars\GymTracker-0.0.1-SNAPSHOT.jar ec2-user@ec2-44-223-254-24.compute-1.amazonaws.com:/home/ec2-user/gymtracker/
+      scp -i .\Claves/gymtracker.pem .\Jars\Api-Ejercicios-0.0.1-SNAPSHOT.jar ec2-user@ec2-44-223-254-24.compute-1.amazonaws.com:/home/ec2-user/gymtracker/ }   
+
+- Crear scripts
+  - sudo vim gymtracker.sh
+  - sudo vim stop_gymtracker.sh
+
+- Ejecutar scripts
+    desde /gymtracker
+    bash ./gymtracker.sh
+    bash ./stop_gymtracker.sh
+
+- Ver procesos levantados
+    ps -ef | grep java
