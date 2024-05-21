@@ -7,25 +7,24 @@ import com.dad.gymtracker.Service.PerfilService;
 import com.dad.gymtracker.Service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/admin")
+@PreAuthorize("hasAuthority('CREATE')")
 public class AdminController {
 
     private final String RUTATEMPLAES = "admin/";
     private final UsuarioService usuarioService;
     private final PerfilService perfilService;
 
-    @GetMapping("/admin")
+    @GetMapping
     public String administrarUsuarios(Model model, HttpSession session) {
         if(session.getAttribute("idUsuario")==null || !(session.getAttribute("rolUsuario").equals("administrador"))) return "redirect:/cerrar-sesion";
 
@@ -39,19 +38,28 @@ public class AdminController {
         return RUTATEMPLAES + "listar";
     }
 
-    @PostMapping("/admin/accion")
+    @PostMapping("/accion")
     public String accion(@RequestParam Integer id,
-                             @RequestParam String rol,
-                             @RequestParam String accion){
+                         @RequestParam String rol,
+                         @RequestParam String contrasena,
+                         @RequestParam String accion){
         return switch (accion) {
             case "cambiarRol" -> "redirect:/admin/cambiar-rol?id=" + id + "&rol=" + rol;
             case "acceso" -> "redirect:/admin/acceso?id=" + id+"&rol="+rol;
             case "eliminar" -> "redirect:/admin/eliminar?id=" + id;
+            case "cambiarContrasena" -> "redirect:/admin/cambiar-contrasena?id=" + id + "&contrasena=" + contrasena;
             default -> null;
         };
     }
-    
-    @GetMapping("/admin/cambiar-rol")
+
+    @GetMapping("/cambiar-contrasena")
+    public String cambiarContrasena(@RequestParam Integer id,
+                                    @RequestParam String contrasena) {
+        usuarioService.cambiarContrasena(id, contrasena);
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/cambiar-rol")
     public String cambiarRol(@RequestParam Integer id,
     						 @RequestParam String rol, HttpSession session) {
     	 usuarioService.cambiarRol(id, rol);
@@ -66,15 +74,15 @@ public class AdminController {
          return "redirect:/admin";
     }
     
-    @GetMapping("/admin/acceso")
+    @GetMapping("/acceso")
     public String acceso(@RequestParam Integer id,
                          @RequestParam String rol, HttpSession session){
         session.setAttribute("rolUsuario", rol);
     	session.setAttribute("idUsuario", id);
-    	return "redirect:/menu";
+    	return "redirect:/menu?admin=true";
     }
     
-    @GetMapping("/admin/eliminar")
+    @GetMapping("/eliminar")
     public String eliminar(@RequestParam Integer id, HttpSession session){
     	perfilService.borrarUsuario(id);
     	if(session.getAttribute("idUsuario") == id){
@@ -84,7 +92,7 @@ public class AdminController {
         
     }
     
-    @PostMapping("/admin/crear-usuario")
+    @PostMapping("/crear-usuario")
     public String crearUsuario(@ModelAttribute UsuarioDTO newUsuario) {
     	PerfilDTO perfilDto= PerfilDTO.builder()
     								.nombre(newUsuario.getNombre())

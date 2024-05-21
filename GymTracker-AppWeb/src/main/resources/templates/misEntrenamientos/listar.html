@@ -50,7 +50,7 @@
                                     Pulsa aqui para crear una.</a>
                             </div>
                             <div class="list-group text-center" th:each="entrenamiento:${listaEntrenamientos}">
-									<a th:href="@{/mis-entrenamientos/listar(id=${entrenamiento.id})}" class="btn btn-outline-success p-3 mb-3"
+									<a th:href="@{/mis-entrenamientos/mostrar(id=${entrenamiento.id})}" class="btn btn-outline-success p-3 mb-3"
 									                                   th:text="${entrenamiento.nombre + ' - ' + entrenamiento.fecha}"></a>	
                             </div>
                         </div>
