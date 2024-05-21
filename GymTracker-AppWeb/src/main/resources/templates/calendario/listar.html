@@ -4,25 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis entrenamientos - GymTracker</title>
+    <title>Calendario - GymTracker</title>
     <link rel="shortcut icon" href="/images/logo/logoVerde.png">
 
     <div th:replace="~{fragments/sidebar.html}"></div>
-    <link rel="stylesheet" href="/css/styles_misEntrenamientos.css">
+    <link rel="stylesheet" href="/css/styles_calendario.css">
 	<script src="/js/calendario.js"></script>
 </head>
-
-<style>
-#idCalendario th,
-#idCalendario td {
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-#idCalendario th {
-  background-color: #f2f2f2;
-}
-</style>
 
 <body onload="onloadCargarCalendario()">
 <div class="container mt-5">
@@ -32,7 +20,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-3 d-flex align-items-center justify-content-center">
-                            <img class="img-fluid logo" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                            <img class="img-fluid logo" loading="lazy" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
                         </div>
                         <div class="col-md-6 d-flex justify-content-center align-items-center">
                             <h1 class="text-center">Calendario</h1>

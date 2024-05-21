@@ -4,8 +4,8 @@ body{
 
 @media only screen and (max-width: 768px){
 	
-	.img-fluid{
-		max-width: 30%;
+	.logo{
+		max-width: 37%;
 	}
 	
 	.logoCentrado{
