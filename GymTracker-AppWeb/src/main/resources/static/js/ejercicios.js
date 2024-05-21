@@ -29,6 +29,7 @@ function cargarEjerciciosSegunInputs(callback) {
     const equipamiento = document.getElementById('idEquipamientoEjercicio').value;
     const nombre = document.getElementById('idNombreEjercicio').value.toLowerCase();
 
+    //const url = `http://gymtracker.duckdns.org:8081/ejercicios/buscar?nombre=${nombre}&musculo=${musculo}&equipamiento=${equipamiento}`;
     const url = `http://localhost:8081/ejercicios/buscar?nombre=${nombre}&musculo=${musculo}&equipamiento=${equipamiento}`;
     cargarEjercicios(url, callback);    
 }
@@ -73,9 +74,7 @@ function crearCard(nombre, descripcion, id) {
     }
     titleElement.textContent = capitalizeFirstLetter(nombre);
     textElement.textContent = descripcion;
-    ///////////////////////
-    nombre="logoVerde";
-    ///////////////////////
+    imgElement.loading="lazy";
     imgElement.src = RUTAIMAGENES + nombre + ".png";
     imgElement.alt = nombre;
 

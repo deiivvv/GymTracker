@@ -1,0 +1,17 @@
+body{
+    background-color: lightgrey;
+}
+
+.logo {
+	max-width: 37%;
+}
+
+#idCalendario th,
+#idCalendario td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#idCalendario th {
+    background-color: #f2f2f2;
+}
