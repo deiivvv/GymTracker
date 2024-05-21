@@ -48,4 +48,4 @@ INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('c
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('elevaciones laterales con polea baja', 'deltoides', 'Ejercicio para el desarrollo de los hombros', 'polea');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('elevaciones de gemelos sentado', 'gemelos', 'Ejercicio para los musculos de la pantorrilla', 'maquina');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('chin-ups', 'espalda, biceps', 'Ejercicio para la espalda y biceps', 'peso corporal');
-INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('flexiones en escalera', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'peso corporal');
+INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('flexiones inclinadas', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'peso corporal');
