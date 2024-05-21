@@ -7,7 +7,7 @@ SET @id_usuario = -1;
 
 -- Rutina1:Pecho y Tríceps
 
-insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, "Pecho y Trícepes", "2004-01-16");
+insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, "Pecho y Tríceps", "2004-01-16");
 SET @id_rutina_1 = LAST_INSERT_ID();
 
 insert into ejercicios(id, nombre) values
