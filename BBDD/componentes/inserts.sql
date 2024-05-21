@@ -55,7 +55,7 @@ insert into rutinas_ejercicios_series(id_rutina, id_ejercicio, id_serie) values
 
 -- Rutina3:Piernas y Glúteos:
 
-insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, "Espalda y Bíceps", "2004-11-5");
+insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, "Piernas y Glúteos", "2004-11-2");
 SET @id_rutina_3 = LAST_INSERT_ID();
 
 insert into ejercicios(id, nombre) values
