@@ -86,6 +86,17 @@ public class PerfilService {
 	@Transactional
 	public void borrarUsuario(int idUsuario) {
 		try {
+			// Borrar series asosiaciadas al usuario
+			String deleteSeriesSql = "DELETE FROM series " +
+					"WHERE id IN (" +
+					"    SELECT rs.id_serie " +
+					"    FROM rutinas_ejercicios_series rs " +
+					"    JOIN rutinas r ON rs.id_rutina = r.id " +
+					"    WHERE r.id_usuario = ? )";
+			entityManager.createNativeQuery(deleteSeriesSql)
+					.setParameter(1, idUsuario)
+					.executeUpdate();
+
 			// Recuperar el nombre de usuario basado en el ID
 			String sqlObtenerNombre = "SELECT nombre FROM usuarios WHERE id = ?";
 			String nombreUsuario = (String) entityManager.createNativeQuery(sqlObtenerNombre)
