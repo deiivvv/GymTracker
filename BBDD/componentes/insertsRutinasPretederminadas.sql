@@ -1,6 +1,7 @@
 -- Usuario para rutinas pretederminadas
 
-insert into usuarios(id, nombre, contrasena, rol) values (-1, 'usuario_rutinas', 'usuario_rutinas', 'bloqueado');
+-- -u usuario_rutinas -p dad
+insert into usuarios(id, nombre, contrasena, rol) values (-1, 'usuario_rutinas', '$2a$10$5zV7bNha4hEX5P5d7MM8W.Da1BIri3C1j9O/1rbFRj37AoCbxzzyS', 'bloqueado');
 SET @id_usuario = -1;
 
 -- Rutina1:Pecho y Tríceps

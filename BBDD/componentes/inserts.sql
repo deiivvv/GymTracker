@@ -2,7 +2,8 @@ USE gymtracker;
 
 -- Usuario para rutinas pretederminadas
 
-insert into usuarios(id, nombre, contrasena, rol) values (-1, 'usuario_rutinas', 'usuario_rutinas', 'bloqueado');
+-- -u usuario_rutinas -p dad
+insert into usuarios(id, nombre, contrasena, rol) values (-1, 'usuario_rutinas', '$2a$10$5zV7bNha4hEX5P5d7MM8W.Da1BIri3C1j9O/1rbFRj37AoCbxzzyS', 'bloqueado');
 SET @id_usuario = -1;
 
 -- Rutina1:Pecho y Tríceps
@@ -78,13 +79,15 @@ insert into rutinas_ejercicios_series(id_rutina, id_ejercicio, id_serie) values
 (@id_rutina_3, 13, @id_serie_3);
 
 -- Insertar usuarios ficticios y sus perfiles
-INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('damago', 'damago', 'usuario');
-INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_ID(), 'Masculino', 25, 180, 75);
 
-INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('alvaro', 'alvaro', 'administrador');
+-- -u damago -p damago
+INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('damago', '$2a$10$.xAAp7NQisTV9EzB.cKdP.Ha5Q.v1OP2TpgupH8r9rSSAhG2N1l9O', 'usuario');
 INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_ID(), 'Masculino', 25, 180, 75);
-
-INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('david', 'david', 'bloqueado');
+-- -u alvaro -p alvaro
+INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('alvaro', '$2a$10$1n/jJ/6C7J4QwEW24ywaxOWVhkbS.YabwmNbLq49zmNiwhwVG/UWu', 'administrador');
+INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_ID(), 'Masculino', 25, 180, 75);
+-- -u david -p david
+INSERT INTO usuarios (nombre, contrasena, rol) VALUES ('david', '$2a$10$Vw0oGAx6fBQ6wpmIKPMN/.Y43tgNT/WUoM2a33XqdX7l7R1EE2DKS', 'bloqueado');
 INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_ID(), 'Masculino', 25, 180, 75);
 
 
