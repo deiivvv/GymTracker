@@ -103,4 +103,10 @@ public class AdminController {
     	usuarioService.crearUsuario(newUsuario, perfilDto);
     	return "redirect:/admin";
     }
+
+    @GetMapping("/usuarios")
+    @ResponseBody
+    public List<UsuarioDTO> filtrarUsuarios(@RequestParam String rol){
+        return usuarioService.buscarUsuariosByRol(rol);
+    }
 }
