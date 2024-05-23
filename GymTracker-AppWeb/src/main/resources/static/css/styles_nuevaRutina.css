@@ -1,6 +1,6 @@
 @import url("styles_ejercicios.css");
 
-.logo{
+.logo, .ejercicio{
 	max-width: 37%;
 }
 

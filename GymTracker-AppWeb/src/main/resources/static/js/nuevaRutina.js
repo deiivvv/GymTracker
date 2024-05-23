@@ -85,8 +85,8 @@ function crearCardEjercicio(ejercicio) {
     imageColDiv.classList.add('col-md-3');
 
     let image = document.createElement('img');
-    image.src = nombre + '.jpg';
-    image.classList.add('img-fluid');
+    image.src = '/images/ejercicios/'+ nombre + '.png';
+    image.classList.add('img-fluid', 'ejercicio');
     image.alt = nombre;
 
     let titleColDiv = document.createElement('div');
