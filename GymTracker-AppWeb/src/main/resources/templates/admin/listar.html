@@ -21,7 +21,8 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-3 d-flex align-items-center justify-content-center">
-                            <img class="img-fluid logo" loading="lazy" src="/images/logo/logoVerde.png" alt="Logo Gymtracker">
+                            <img class="img-fluid logo" loading="lazy" src="/images/logo/logoVerde.png"
+                                 alt="Logo Gymtracker">
                         </div>
                         <div class="col-md-6 d-flex justify-content-center align-items-center">
                             <h1 class="text-center">Lista de usuarios</h1>
@@ -47,6 +48,15 @@
                                 Crear usuario
                             </button>
                         </div>
+                        <div class="col-md-6 d-flex mb-3 justify-content-center align-items-center"></div>
+                        <div class="col-md-3 d-flex mb-3 justify-content-center align-items-center">
+                            <select id="idSelectRoles" class="btn border-success" onchange="selectoption(this)">
+                                <option class="text-secondary" value="todos">Todos los usuarios</option>
+                                <option class="text-primary" value="administrador">Administrador</option>
+                                <option class="text-success" value="usuario">Usuario</option>
+                                <option class="text-danger" value="bloqueado">Bloqueado</option>
+                            </select>
+                        </div>
                         <div class="row">
                             <div class="col-md-12 table-responsive">
                                 <table class="table table-hover text-center">
@@ -65,17 +75,17 @@
                                         <td th:text="${usuario.nombre}"></td>
                                         <td th:if="${usuario.rol=='usuario'}">
                                             <span class="btn btn-outline-success"
-                                                  onclick="marcarUsuario(this, 'cambiarRol')"data-bs-toggle="modal"
+                                                  onclick="marcarUsuario(this, 'cambiarRol')" data-bs-toggle="modal"
                                                   data-bs-target="#idModalCambiarRol">usuario</span>
                                         </td>
                                         <td th:if="${usuario.rol=='administrador'}">
                                             <span class="btn btn-outline-primary"
-                                                  onclick="marcarUsuario(this, 'cambiarRol')"data-bs-toggle="modal"
+                                                  onclick="marcarUsuario(this, 'cambiarRol')" data-bs-toggle="modal"
                                                   data-bs-target="#idModalCambiarRol">administrador</span>
                                         </td>
                                         <td th:if="${usuario.rol=='bloqueado'}">
                                             <span class="btn btn-outline-danger"
-                                                  onclick="marcarUsuario(this, 'cambiarRol')"data-bs-toggle="modal"
+                                                  onclick="marcarUsuario(this, 'cambiarRol')" data-bs-toggle="modal"
                                                   data-bs-target="#idModalCambiarRol">bloqueado</span>
 
                                         </td>
@@ -83,7 +93,8 @@
                                             <button onclick="marcarUsuario(this, 'cambiarContrasena')" type="button"
                                                     class="btn btn-primary" data-bs-toggle="modal"
                                                     data-bs-target="#idModalNewContrasena">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
                                                     <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2M2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
                                                 </svg>
                                             </button>
@@ -120,6 +131,23 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                <nav class="d-flex justify-content-end">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link text-success" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item" ><a class="page-link text-success" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link text-success" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link text-success" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link text-success" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -256,15 +284,19 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="idNewContrasena"><b>Nueva contraseña</b></label>
-                        <input oninput="compararNewContrasena()" id="idNewContrasena" class="form-control" type="password" required>
+                        <input oninput="compararNewContrasena()" id="idNewContrasena" class="form-control"
+                               type="password" required>
                     </div>
                     <div class="form-group">
                         <label for="idNewContrasena2"><b>Repite la nueva contraseña</b></label>
-                        <input oninput="compararNewContrasena()" id="idNewContrasena2" class="form-control" type="password" name="contrasena" required>
+                        <input oninput="compararNewContrasena()" id="idNewContrasena2" class="form-control"
+                               type="password" name="contrasena" required>
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button onclick="cambiarContrasena(document.getElementById('idNewContrasena').value)" type="button" id="idBotonAceptarContrasena" class="btn btn-success">Aceptar</button>
+                    <button onclick="cambiarContrasena(document.getElementById('idNewContrasena').value)" type="button"
+                            id="idBotonAceptarContrasena" class="btn btn-success">Aceptar
+                    </button>
                     <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </form>

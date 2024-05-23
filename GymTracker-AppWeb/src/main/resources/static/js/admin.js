@@ -61,3 +61,25 @@ function comprobarNombre(event){
             console.error("Error al hacer la solicitud:", error);
         });
 }
+
+function selectoption(s){
+    s.classList = 'btn';
+    switch (s.value){
+        case "todos":
+            s.classList.add('border-success');
+            s.classList.add('text-secondary');
+            break;
+        case "administrador":
+            s.classList.add('border-primary');
+            s.classList.add('text-primary');
+            break;
+        case "usuario":
+            s.classList.add('border-success');
+            s.classList.add('text-success');
+            break;
+        case "bloqueado":
+            s.classList.add('border-danger');
+            s.classList.add('text-danger');
+            break;
+    }
+}
