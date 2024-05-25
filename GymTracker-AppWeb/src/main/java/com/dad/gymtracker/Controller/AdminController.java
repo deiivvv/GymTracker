@@ -31,6 +31,8 @@ public class AdminController {
         List<UsuarioDTO> listaUsuarios =usuarioService.buscarAllUsuarios();
         model.addAttribute("idUsuario", session.getAttribute("idUsuario"));
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
+        model.addAttribute("rol", "%");
+        model.addAttribute("pag", 1);
         model.addAttribute("newUsuario", new UsuarioDTO());
         if(!listaUsuarios.isEmpty()) {
             model.addAttribute("listaUsuarios", listaUsuarios);

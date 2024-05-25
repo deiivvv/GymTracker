@@ -135,7 +135,7 @@
                                 <nav class="d-flex justify-content-end">
                                     <ul class="pagination">
                                         <li class="page-item">
-                                            <a id="idFirstPag" onclick="cambiarPagina(1)" class="page-link text-success" href="#" aria-label="Previous">
+                                            <a id="idFirstPag" onclick="cambiarPagina(1)" class="page-link text-success" aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                             </a>
                                         </li>
@@ -145,7 +145,7 @@
                                             <li class="page-item"><a class="page-link text-success" href="#">3</a></li>
                                         </div>
                                         <li class="page-item">
-                                            <a id="idLastPag" onclick="cambiarPagina(document.getElementById('idNumUltimaPag').value)" class="page-link text-success" href="#" aria-label="Next">
+                                            <a id="idLastPag" onclick="cambiarPagina(document.getElementById('idNumUltimaPag').value)" class="page-link text-success" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
                                                 <input id="idNumUltimaPag" type="hidden"></a>
                                             </a>
@@ -219,6 +219,9 @@
             </div>
         </div>
     </div>
+
+    <input type="hidden" id="idRolHidden" name="rol" th:value="${rol}">
+    <input type="hidden" id="idPagHidden" name="pag" th:value="${pag}">
 </form>
 
 <div class="modal fade" id="idModalCambiarRol" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

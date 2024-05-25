@@ -198,7 +198,7 @@ function usuariosIniciales(){
             temp = [];
         }
     });
-    cambiarPagina(1);
+    cambiarPagina(document.getElementById("idPagHidden").value);
 }
 
 function paginacion(){
@@ -264,4 +264,14 @@ function cambiarPagina(num){
     pagActual=parseInt(num);
     paginacion()
     usuariosPaginados()
+    if(pagActual===pagInicial){
+        document.getElementById("idFirstPag").style="visibility: hidden"
+    }else{
+        document.getElementById("idFirstPag").style="visibility: visible"
+    }
+    if(pagActual===pagFinal){
+        document.getElementById("idLastPag").style="visibility: hidden"
+    }else{
+        document.getElementById("idLastPag").style="visibility: visible"
+    }
 }
