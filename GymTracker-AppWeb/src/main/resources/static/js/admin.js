@@ -170,6 +170,7 @@ function selectOption(rol) {
                     tr.appendChild(tdAcciones);
                     tr.appendChild(tdUsuario);
                 }
+                usuariosIniciales();
             } else {
                 tr.innerHTML="No se encuentran usuarios " + usuario.rol;
             }
@@ -177,4 +178,90 @@ function selectOption(rol) {
         .catch(function (error) {
             console.error("Error al hacer la solicitud:", error);
         });
+}
+
+let pagInicial=1;
+let pagFinal=1;
+let pagActual=1;
+let usuarios=[]
+let usu=[]
+function usuariosIniciales(){
+    usu=[];
+    usuarios=document.querySelectorAll('#idBodyUsuarios tr');
+    pagFinal= Math.ceil(usuarios.length/5);
+    document.getElementById("idNumUltimaPag").value=pagFinal;
+    let temp = [];
+    usuarios.forEach((usuario, index) => {
+        temp.push(usuario);
+        if ((index + 1) % 5 === 0 || index === usuarios.length - 1) {
+            usu.push(temp);
+            temp = [];
+        }
+    });
+    cambiarPagina(1);
+}
+
+function paginacion(){
+    let boolean=true;
+    let li=document.querySelectorAll(`#idDivPaginas li`)
+    li.forEach((l)=>{
+        l.remove();
+    });
+
+    if(pagInicial===pagActual){
+        boolean=false;
+        document.getElementById("idFirstPag").disabled="true";
+        for(let i= pagInicial; i<pagActual+3 && i<=pagFinal; i++){
+            crearLi(i);
+        }    
+    }
+    if(pagFinal===pagActual){
+        boolean=false;
+        document.getElementById("idLastPag").disabled="true";
+        let resta=2;
+        if(pagFinal===2){resta=1;}
+        for(let i= pagActual-resta; i<pagActual+1 && i>=pagInicial; i++){
+            crearLi(i);
+        }
+    }
+    if(boolean){
+        for(let i= pagActual-1; i<=(pagActual+1); i++){
+            crearLi(i);
+        }
+    }
+}
+
+function crearLi(num){
+    let divPaginas=document.getElementById("idDivPaginas");
+    let newLi=document.createElement("li");
+    newLi.classList.add("page-item", "d-inline-block");
+    let newA=document.createElement("a");
+    if(num===pagActual){
+        newA.classList.add("page-link", "text-white", "bg-success");    
+    }else{
+        newA.classList.add("page-link", "text-success");
+    }
+    newA.addEventListener("click", () => {
+        cambiarPagina(newA.innerHTML);
+    });
+    newA.innerHTML=num
+    divPaginas.appendChild(newLi);
+    newLi.appendChild(newA);    
+}
+
+function usuariosPaginados(){
+    let bodyUsuarios=document.getElementById("idBodyUsuarios");
+    let limpiarusuarios=document.querySelectorAll("#idBodyUsuarios tr")
+    limpiarusuarios.forEach((l)=>{
+        l.remove();
+    });
+    usu[pagActual-1].forEach((u)=>{
+        bodyUsuarios.appendChild(u);
+    });
+}
+
+function cambiarPagina(num){
+    pagActual=parseInt(num);
+    paginacion()
+    usuariosPaginados()
 }

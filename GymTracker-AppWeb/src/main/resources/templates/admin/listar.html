@@ -13,7 +13,7 @@
     <script src="/js/modificarUsuario.js"></script>
 </head>
 
-<body>
+<body onload="usuariosIniciales()">
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-xl">
@@ -48,8 +48,8 @@
                                 Crear usuario
                             </button>
                         </div>
-                        <div class="col-md-6 d-flex mb-3 justify-content-center align-items-center"></div>
-                        <div class="col-md-3 d-flex mb-3 justify-content-center align-items-center">
+                        <div class="col-md-5 d-flex mb-3 justify-content-center align-items-center"></div>
+                        <div class="col-md-4 d-flex mb-3 justify-content-center align-items-center">
                             <select id="idSelectRoles" class="btn border-success" onchange="selectOption(this)">
                                 <option class="text-secondary" value="%">Todos los usuarios</option>
                                 <option class="text-primary" value="administrador">Administrador</option>
@@ -135,16 +135,19 @@
                                 <nav class="d-flex justify-content-end">
                                     <ul class="pagination">
                                         <li class="page-item">
-                                            <a class="page-link text-success" href="#" aria-label="Previous">
+                                            <a id="idFirstPag" onclick="cambiarPagina(1)" class="page-link text-success" href="#" aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                             </a>
                                         </li>
-                                        <li class="page-item" ><a class="page-link text-success" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link text-success" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link text-success" href="#">3</a></li>
+                                        <div id="idDivPaginas">
+                                            <li class="page-item" ><a class="page-link text-success" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link text-success" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link text-success" href="#">3</a></li>
+                                        </div>
                                         <li class="page-item">
-                                            <a class="page-link text-success" href="#" aria-label="Next">
+                                            <a id="idLastPag" onclick="cambiarPagina(document.getElementById('idNumUltimaPag').value)" class="page-link text-success" href="#" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
+                                                <input id="idNumUltimaPag" type="hidden"></a>
                                             </a>
                                         </li>
                                     </ul>
