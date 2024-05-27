@@ -51,10 +51,10 @@
                         <div class="col-md-5 d-flex mb-3 justify-content-center align-items-center"></div>
                         <div class="col-md-4 d-flex mb-3 justify-content-center align-items-center">
                             <select id="idSelectRoles" class="btn border-success" onchange="selectOption(this)">
-                                <option class="text-secondary" value="%">Todos los usuarios</option>
-                                <option class="text-primary" value="administrador">Administrador</option>
-                                <option class="text-success" value="usuario">Usuario</option>
-                                <option class="text-danger" value="bloqueado">Bloqueado</option>
+                                <option class="text-secondary" value="%" th:selected="${Srol=='todos'}">Todos los usuarios</option>
+                                <option class="text-primary" value="administrador" th:selected="${Srol=='administrador'}">Administrador</option>
+                                <option class="text-success" value="usuario" th:selected="${Srol=='usuario'}">Usuario</option>
+                                <option class="text-danger" value="bloqueado" th:selected="${Srol=='bloqueado'}">Bloqueado</option>
                             </select>
                         </div>
                         <input id="idUsuario" type="hidden" th:value="${idUsuario}">
@@ -219,9 +219,6 @@
             </div>
         </div>
     </div>
-
-    <input type="hidden" id="idRolHidden" name="rol" th:value="${rol}">
-    <input type="hidden" id="idPagHidden" name="pag" th:value="${pag}">
 </form>
 
 <div class="modal fade" id="idModalCambiarRol" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -247,6 +244,9 @@
                                     <input id="idRolHidden" type="hidden" name="rol">
                                     <input id="idAccionHidden" type="hidden" name="accion">
                                     <input id="idContrasenaHidden" type="hidden" name="contrasena">
+									
+									<input type="hidden" id="idSRolHidden" name="Srol" th:value="${Srol}">
+									<input type="hidden" id="idPagHidden" name="pag" th:value="${pag}">
                                 </form>
                             </div>
                         </div>

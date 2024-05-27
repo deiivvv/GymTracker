@@ -63,6 +63,8 @@ function comprobarNombre(event) {
 }
 
 function selectOption(rol) {
+	document.getElementById("idSRolHidden").value=rol.value;
+	document.getElementById("idPagHidden").value=1;
 	rol.classList = 'btn';
 	switch (rol.value) {
 		case "%":
@@ -198,7 +200,9 @@ function usuariosIniciales() {
 			temp = [];
 		}
 	});
-	cambiarPagina(document.getElementById("idPagHidden").value);
+	let num=document.getElementById("idPagHidden").value
+	if(num>pagFinal) num-=1;
+	cambiarPagina(num);
 }
 
 function paginacion() {
@@ -263,6 +267,7 @@ function usuariosPaginados() {
 }
 
 function cambiarPagina(num) {
+	document.getElementById("idPagHidden").value=num;
 	pagActual = parseInt(num);
 	paginacion();
 	usuariosPaginados()
