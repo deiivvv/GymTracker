@@ -25,12 +25,16 @@ public class AdminController {
     private final PerfilService perfilService;
 
     @GetMapping
-    public String administrarUsuarios(Model model, HttpSession session) {
+    public String administrarUsuarios(@RequestParam(defaultValue = "%") String Srol,
+    								  @RequestParam(defaultValue = "1") Integer pag,
+    								  Model model, HttpSession session) {
         if(session.getAttribute("idUsuario")==null || !(session.getAttribute("rolUsuario").equals("administrador"))) return "redirect:/cerrar-sesion";
-
-        List<UsuarioDTO> listaUsuarios =usuarioService.buscarAllUsuarios();
+        model.addAttribute("Srol", Srol);
+        if(Srol.equals("todos")) {Srol="%";};
+        List<UsuarioDTO> listaUsuarios =usuarioService.buscarUsuariosByRol(Srol);
         model.addAttribute("idUsuario", session.getAttribute("idUsuario"));
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
+        model.addAttribute("pag", pag);
         model.addAttribute("newUsuario", new UsuarioDTO());
         if(!listaUsuarios.isEmpty()) {
             model.addAttribute("listaUsuarios", listaUsuarios);
@@ -42,26 +46,33 @@ public class AdminController {
     public String accion(@RequestParam Integer id,
                          @RequestParam String rol,
                          @RequestParam String contrasena,
-                         @RequestParam String accion){
+                         @RequestParam String accion,
+                         @RequestParam String Srol,
+                         @RequestParam Integer pag){
+    	if(Srol.equals("%")){Srol="todos";}
         return switch (accion) {
-            case "cambiarRol" -> "redirect:/admin/cambiar-rol?id=" + id + "&rol=" + rol;
-            case "acceso" -> "redirect:/admin/acceso?id=" + id+"&rol="+rol;
-            case "eliminar" -> "redirect:/admin/eliminar?id=" + id;
-            case "cambiarContrasena" -> "redirect:/admin/cambiar-contrasena?id=" + id + "&contrasena=" + contrasena;
+            case "cambiarRol" -> "redirect:/admin/cambiar-rol?id=" + id + "&rol=" + rol + "&Srol=" + Srol + "&pag=" + pag;
+            case "acceso" -> "redirect:/admin/acceso?id=" + id+"&rol="+rol + "&Srol=" + Srol + "&pag=" + pag;
+            case "eliminar" -> "redirect:/admin/eliminar?id=" + id + "&Srol=" + Srol + "&pag=" + pag;
+            case "cambiarContrasena" -> "redirect:/admin/cambiar-contrasena?id=" + id + "&contrasena=" + contrasena + "&Srol=" + Srol + "&pag=" + pag; 
             default -> null;
         };
     }
 
     @GetMapping("/cambiar-contrasena")
     public String cambiarContrasena(@RequestParam Integer id,
-                                    @RequestParam String contrasena) {
+                                    @RequestParam String contrasena,
+                                    @RequestParam String Srol,
+                                    @RequestParam Integer pag) {
         usuarioService.cambiarContrasena(id, contrasena);
-        return "redirect:/admin";
+        return "redirect:/admin?Srol=" + Srol + "&pag=" + pag;
     }
 
     @GetMapping("/cambiar-rol")
     public String cambiarRol(@RequestParam Integer id,
-    						 @RequestParam String rol, HttpSession session) {
+    						 @RequestParam String rol,
+    						 @RequestParam String Srol,
+                             @RequestParam Integer pag, HttpSession session) {
     	 usuarioService.cambiarRol(id, rol);
          if(session.getAttribute("idUsuario") == id){
              session.setAttribute("rolUsuario", rol);
@@ -71,24 +82,28 @@ public class AdminController {
                  return "redirect:/";
              }
          }
-         return "redirect:/admin";
+         return "redirect:/admin?Srol=" + Srol + "&pag=" + pag;
     }
     
     @GetMapping("/acceso")
     public String acceso(@RequestParam Integer id,
-                         @RequestParam String rol, HttpSession session){
+                         @RequestParam String rol,
+                         @RequestParam String Srol,
+                         @RequestParam Integer pag, HttpSession session){
         session.setAttribute("rolUsuario", rol);
     	session.setAttribute("idUsuario", id);
     	return "redirect:/menu?admin=true";
     }
     
     @GetMapping("/eliminar")
-    public String eliminar(@RequestParam Integer id, HttpSession session){
+    public String eliminar(@RequestParam Integer id, 
+    					   @RequestParam String Srol,
+    					   @RequestParam Integer pag, HttpSession session){
     	perfilService.borrarUsuario(id);
     	if(session.getAttribute("idUsuario") == id){
     		return "redirect:/cerrar-sesion";
     	}
-    	return "redirect:/admin";
+    	return "redirect:/admin?Srol=" + Srol + "&pag=" + pag;
         
     }
     
@@ -102,5 +117,11 @@ public class AdminController {
     								.genero("Sin especificar").build();
     	usuarioService.crearUsuario(newUsuario, perfilDto);
     	return "redirect:/admin";
+    }
+
+    @GetMapping("/usuarios")
+    @ResponseBody
+    public List<UsuarioDTO> filtrarUsuarios(@RequestParam String rol){
+        return usuarioService.buscarUsuariosByRol(rol);
     }
 }

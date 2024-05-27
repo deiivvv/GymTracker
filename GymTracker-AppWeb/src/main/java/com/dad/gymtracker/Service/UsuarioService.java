@@ -73,7 +73,7 @@ public class UsuarioService {
         }
     }
 
-    public UsuarioDTO buscarUsuarioByNombre(String nombre){
+    public UsuarioDTO buscarUsuarioByNombre(String nombre) {
         String sqlBuscarUsuario = "SELECT id, nombre, contrasena, rol FROM usuarios WHERE nombre = ?";
         try {
             UsuarioDTO resultado = (UsuarioDTO) entityManager.createNativeQuery(sqlBuscarUsuario, UsuarioDTO.class)
@@ -134,7 +134,28 @@ public class UsuarioService {
         String sqlBuscarAllUsuarios = "SELECT id, nombre, contrasena, rol FROM usuarios ORDER BY id";
 
         try {
-            List<UsuarioDTO> resultado =entityManager.createNativeQuery(sqlBuscarAllUsuarios, UsuarioDTO.class)
+            List<UsuarioDTO> resultado = entityManager.createNativeQuery(sqlBuscarAllUsuarios, UsuarioDTO.class)
+                    .getResultList();
+
+            return resultado.stream()
+                    .map(t -> UsuarioDTO.builder()
+                            .id(t.getId())
+                            .nombre(t.getNombre())
+                            .contrasena(t.getContrasena())
+                            .rol(t.getRol())
+                            .build())
+                    .collect(Collectors.toList());
+        } catch (NoResultException e) {
+            return null; // Devuelve null si no se encuentra ningún usuario
+        }
+    }
+
+    public List<UsuarioDTO> buscarUsuariosByRol(String rol) {
+        String sqlBuscarUsuariosByRol = "SELECT id, nombre, contrasena, rol FROM usuarios WHERE rol like ? ORDER BY id";
+
+        try {
+            List<UsuarioDTO> resultado = entityManager.createNativeQuery(sqlBuscarUsuariosByRol, UsuarioDTO.class)
+                    .setParameter(1, rol)
                     .getResultList();
 
             return resultado.stream()
@@ -151,7 +172,7 @@ public class UsuarioService {
     }
 
     @Transactional
-    public void cambiarRol(int id,String rol){
+    public void cambiarRol(int id, String rol) {
         String sqlCambiarRolUsuario = "UPDATE usuarios" + " SET rol = ?" + " WHERE id = ?";
 
         entityManager.createNativeQuery(sqlCambiarRolUsuario)
@@ -192,7 +213,6 @@ public class UsuarioService {
             log.error("Error al cambiar la contraseña: {}", e.getMessage());
         }
     }
-
 
 
 }

@@ -13,7 +13,7 @@
     <script src="/js/modificarUsuario.js"></script>
 </head>
 
-<body>
+<body onload="usuariosIniciales()">
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-xl">
@@ -48,15 +48,16 @@
                                 Crear usuario
                             </button>
                         </div>
-                        <div class="col-md-6 d-flex mb-3 justify-content-center align-items-center"></div>
-                        <div class="col-md-3 d-flex mb-3 justify-content-center align-items-center">
-                            <select id="idSelectRoles" class="btn border-success" onchange="selectoption(this)">
-                                <option class="text-secondary" value="todos">Todos los usuarios</option>
-                                <option class="text-primary" value="administrador">Administrador</option>
-                                <option class="text-success" value="usuario">Usuario</option>
-                                <option class="text-danger" value="bloqueado">Bloqueado</option>
+                        <div class="col-md-5 d-flex mb-3 justify-content-center align-items-center"></div>
+                        <div class="col-md-4 d-flex mb-3 justify-content-center align-items-center">
+                            <select id="idSelectRoles" class="btn border-success" onchange="selectOption(this)">
+                                <option class="text-secondary" value="%" th:selected="${Srol=='todos'}">Todos los usuarios</option>
+                                <option class="text-primary" value="administrador" th:selected="${Srol=='administrador'}">Administrador</option>
+                                <option class="text-success" value="usuario" th:selected="${Srol=='usuario'}">Usuario</option>
+                                <option class="text-danger" value="bloqueado" th:selected="${Srol=='bloqueado'}">Bloqueado</option>
                             </select>
                         </div>
+                        <input id="idUsuario" type="hidden" th:value="${idUsuario}">
                         <div class="row">
                             <div class="col-md-12 table-responsive">
                                 <table class="table table-hover text-center">
@@ -69,8 +70,8 @@
                                         <th></th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr th:each="usuario:${listaUsuarios}">
+                                    <tbody id="idBodyUsuarios">
+                                    <tr th:each="usuario:${listaUsuarios}" id="idTrUsuarios">
                                         <td th:text="${usuario.id}"></td>
                                         <td th:text="${usuario.nombre}"></td>
                                         <td th:if="${usuario.rol=='usuario'}">
@@ -134,16 +135,19 @@
                                 <nav class="d-flex justify-content-end">
                                     <ul class="pagination">
                                         <li class="page-item">
-                                            <a class="page-link text-success" href="#" aria-label="Previous">
+                                            <a id="idFirstPag" onclick="cambiarPagina(1)" class="page-link text-success" aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                             </a>
                                         </li>
-                                        <li class="page-item" ><a class="page-link text-success" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link text-success" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link text-success" href="#">3</a></li>
+                                        <div id="idDivPaginas">
+                                            <li class="page-item" ><a class="page-link text-success" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link text-success" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link text-success" href="#">3</a></li>
+                                        </div>
                                         <li class="page-item">
-                                            <a class="page-link text-success" href="#" aria-label="Next">
+                                            <a id="idLastPag" onclick="cambiarPagina(document.getElementById('idNumUltimaPag').value)" class="page-link text-success" aria-label="Next">
                                                 <span aria-hidden="true">&raquo;</span>
+                                                <input id="idNumUltimaPag" type="hidden"></a>
                                             </a>
                                         </li>
                                     </ul>
@@ -240,6 +244,9 @@
                                     <input id="idRolHidden" type="hidden" name="rol">
                                     <input id="idAccionHidden" type="hidden" name="accion">
                                     <input id="idContrasenaHidden" type="hidden" name="contrasena">
+									
+									<input type="hidden" id="idSRolHidden" name="Srol" th:value="${Srol}">
+									<input type="hidden" id="idPagHidden" name="pag" th:value="${pag}">
                                 </form>
                             </div>
                         </div>
