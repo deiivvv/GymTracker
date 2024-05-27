@@ -1,0 +1,6 @@
+# Dockerfile para la API
+FROM openjdk:17-jdk-slim
+COPY Api-Ejercicios-0.0.1-SNAPSHOT.jar /api/api.jar
+WORKDIR /api
+CMD ["java", "-jar", "api.jar"]
+
