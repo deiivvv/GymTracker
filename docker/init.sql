@@ -1,11 +1,18 @@
+-- Asegurarse de usar UTF-8
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
+
 DROP DATABASE IF EXISTS gymtracker;
-CREATE DATABASE gymtracker;
+CREATE DATABASE gymtracker CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 DROP USER IF EXISTS 'dad'@'localhost';
 CREATE USER 'dad'@'localhost' IDENTIFIED BY 'padre';
 GRANT ALL PRIVILEGES ON gymtracker.* TO 'dad'@'localhost';
 
+-- Asegurarse de usar UTF-8 para la conexión
 USE gymtracker;
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
 
 CREATE TABLE usuarios (
   id INT AUTO_INCREMENT,
@@ -71,7 +78,7 @@ SET @id_usuario = -1;
 
 -- Rutina1:Pecho y Tríceps
 
-insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, "Pecho y Tríceps", "2004-01-16");
+insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, 'Pecho y Tríceps', "2004-01-16");
 SET @id_rutina_1 = LAST_INSERT_ID();
 
 insert into ejercicios(id, nombre) values
@@ -95,7 +102,7 @@ insert into rutinas_ejercicios_series(id_rutina, id_ejercicio, id_serie) values
 
 -- Rutina2:Espalda y Bíceps
 
-insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, "Espalda y Bíceps", "1995-11-28");
+insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, 'Espalda y Bíceps', "1995-11-28");
 SET @id_rutina_2 = LAST_INSERT_ID();
 
 insert into ejercicios(id, nombre) values
@@ -119,7 +126,7 @@ insert into rutinas_ejercicios_series(id_rutina, id_ejercicio, id_serie) values
 
 -- Rutina3:Piernas y Glúteos:
 
-insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, "Piernas y Glúteos", "2004-11-2");
+insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, 'Piernas y Glúteos', "2004-11-2");
 SET @id_rutina_3 = LAST_INSERT_ID();
 
 insert into ejercicios(id, nombre) values
