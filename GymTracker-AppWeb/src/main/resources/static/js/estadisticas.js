@@ -83,13 +83,6 @@ $(document).ready(function(){
         }
     });
 
-    $('#dataForm').on('submit', function(event){
-        event.preventDefault();
-        var label = $('#label').val();
-        var value = $('#value').val();
-
-        
-    });
 });
 
 function cargarEstadisticas(){
@@ -134,14 +127,17 @@ function contarEjercicios(musculo, ids) {
             $('#myChart').addClass('fade-in');
             setTimeout(() => $('#myChart').removeClass('fade-in'), 1000);
             
-                var legendItem = $("<button class='btn mr-2'>")
+                var legendItem = $("<button class='btn mb-2 mr-2'>")
                     .text(label)
                     .css('background-color', backgroundColors[index])
                     .css('border-color', borderColors[index])
                     .click(function() {
+                        $(this).toggleClass('fade-outB');
+                        setTimeout(() => $(this).toggleClass('fade-inB'), 500);
+
                         var index = chart.data.labels.indexOf(label);
                         chart.data.datasets[0].data[index] = chart.data.datasets[0].data[index] ? 0 : value;
-                        chart.update();
+                        chart.update();       
                     });
                 $('#legend-container').append(legendItem);
             }

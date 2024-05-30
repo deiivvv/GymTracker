@@ -24,6 +24,15 @@ public class EstadisticasControler {
     public String estadisticas(Model model, HttpSession session){
         model.addAttribute("idUsuario", session.getAttribute("idUsuario"));
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
+        
+        model.addAttribute("numeroEntrenamientos", estadisticasService.numeroEntrenamientos((Integer) session.getAttribute("idUsuario")));
+        model.addAttribute("numeroEjercicios",  estadisticasService.numeroEjercicios((Integer) session.getAttribute("idUsuario")));
+        String ejercicioFavorito = estadisticasService.ejercicioFavorito((Integer) session.getAttribute("idUsuario"));
+        model.addAttribute("ejercicioFavorito",  ejercicioFavorito != null ? ejercicioFavorito : "Sin datos");
+        Double volumen = estadisticasService.volumen((Integer) session.getAttribute("idUsuario"));
+        model.addAttribute("volumen",  volumen != null ? volumen : 0.0);
+        model.addAttribute("numeroSeries",  estadisticasService.numeroSeries((Integer) session.getAttribute("idUsuario")));
+        
         return RUTATEMPLATES + "listar";
     }
 	
