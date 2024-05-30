@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Estadisticas</title>
+	<link rel="shortcut icon" href="/images/logo/logoVerde.png">
+
+	<div th:replace="~{fragments/sidebar.html}"></div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/styles_estadisticas.css">
+    <script src="/js/estadisticas.js"></script>
+</head>
+<body onload="cargarEstadisticas()">
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow-lg">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                <img src="/images/logo/logoVerde.png" class="logo" loading="lazy" alt="Logo Gymtracker">
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                                <h1 class="text-center">Estadísticas</h1>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                                <button onclick="clase_activo()" class="btn btn-success" type="button"
+                                    data-bs-toggle="offcanvas" data-bs-target="#idSidebar" aria-controls="sidebar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-list" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                                    </svg>
+                                    Menú
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <canvas id="myChart" class="mt-4"></canvas>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex align-items-center justify-content-center">
+                                <div id="legend-container" class="mt-3 mb-3"></div>
+                            </div>
+		                </div>
+                    </div>
+                </div>
+            </div>  
+		</div>
+    </div>
+</body>
+</html>
+
+
+
+
+                        
+           
