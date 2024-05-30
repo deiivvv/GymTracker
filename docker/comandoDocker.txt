@@ -12,11 +12,13 @@ docker volume ls
 borrar volumen de gymtracker:
 docker volume rm contenedor-gymtracker_db_data
 
-ejecutar compose para generar los contenedores(por ahora tiene problema que funciona la segunda vez que lo ejecutas):
+ejecutar compose para generar los contenedores o iniciarlos:
 
 docker-compose -p contenedor-gymtracker up --build
 
+
+parar dockers:
 ctrl + c
 
-docker-compose -p contenedor-gymtracker up --build
+
 
