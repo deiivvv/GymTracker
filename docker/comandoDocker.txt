@@ -21,4 +21,8 @@ parar dockers:
 ctrl + c
 
 
+Ver base de datos del contenedor:
+docker exec -it contenedor-gymtracker_database_1 /bin/bash
+mysql -u root -p 
+password:root_password
 
