@@ -30,6 +30,7 @@ services:
       dockerfile: Dockerfile.app
     depends_on:
       - database
+      - api
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/gymtracker
       SPRING_DATASOURCE_USERNAME: dad
