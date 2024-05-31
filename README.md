@@ -15,10 +15,6 @@
 
 Este repositorio contiene los archivos necesarios para desplegar la aplicación GymTracker utilizando Docker. Sigue las instrucciones a continuación para descargar el repositorio, descomprimir el archivo ZIP y ejecutar Docker Compose para generar los contenedores.
 
-## Descargar Repositorio
-
-1. Descarga el repositorio desde [aquí](link_del_repositorio).
-
 ## Descomprimir el Archivo ZIP llamado `despliegue_docker`
 
 1. Localiza el archivo ZIP llamado `despliegue_docker.zip` en la carpeta donde descargaste el repositorio.
