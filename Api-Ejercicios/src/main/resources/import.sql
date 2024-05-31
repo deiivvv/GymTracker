@@ -15,7 +15,7 @@ INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('e
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('curl de biceps con mancuernas', 'biceps', 'Ejercicio para el desarrollo de los biceps', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('hip thrust', 'gluteos', 'Ejercicio para gluteos y parte baja de la espalda', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('elevaciones de talones', 'gemelos', 'Ejercicio para los musculos de la pantorrilla', 'maquina');
-INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('pull-ups', 'espalda, biceps', 'Ejercicio para la espalda y biceps', 'peso corporal');
+INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('hiperextensiones', 'espalda baja, isquiotibiales, gluteos', 'Ejercicio para la parte posterior del cuerpo', 'maquina');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de hombros con mancuernas', 'deltoides', 'Ejercicio para el desarrollo de los hombros', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('deadlift rumano', 'espalda baja, isquiotibiales, gluteos', 'Ejercicio para la parte posterior del cuerpo', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('burpees', 'multiples', 'Ejercicio cardiovascular y de fuerza', 'peso corporal');
