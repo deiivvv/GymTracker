@@ -48,6 +48,6 @@ Para detener los contenedores de GymTracker, sigue estos pasos:
 
 1. En la terminal donde se están ejecutando los contenedores, presiona `Ctrl + C`.
    
-##Gracias por confiar en gymtracker
+## Gracias por confiar en gymtracker
 
 ¡Ahora deberías tener la aplicación GymTracker ejecutándose en contenedores Docker en tu sistema. Disfruta de tu experiencia con GymTracker!
