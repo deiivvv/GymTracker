@@ -42,7 +42,7 @@ Este repositorio contiene los archivos necesarios para desplegar la aplicación 
    
 Este comando generará los contenedores de GymTracker y los iniciará. Si es la primera vez que ejecutas este comando o si realizaste cambios en la configuración, se reconstruirán las imágenes de Docker antes de iniciar los contenedores.
 
-## Gracias por confiar en gymtracker
+## Gracias por confiar en Gymtracker
 
 ¡Ahora deberías tener la aplicación GymTracker ejecutándose en contenedores Docker en tu sistema. Disfruta de tu experiencia con GymTracker!
 
