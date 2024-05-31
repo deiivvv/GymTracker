@@ -40,7 +40,7 @@ Este repositorio contiene los archivos necesarios para desplegar la aplicación 
    ```bash
    docker-compose -p contenedor-gymtracker up --build
    
-Este comando generará los contenedores de GymTracker y los iniciará. Si es la primera vez que ejecutas este comando o si realizaste cambios en la configuración, se reconstruirán las imágenes de Docker antes de iniciar los contenedores.
+Este comando generará los contenedores de GymTracker y los iniciará. Si es la primera vez que ejecutas este comando o si realizaste cambios en la configuración, se reconstruirán las imágenes de Docker antes de iniciar los contenedores. Además, este comando también se utiliza para reiniciar los contenedores después de haberlos detenido previamente.
 
 ## Gracias por confiar en Gymtracker
 
