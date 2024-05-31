@@ -88,8 +88,8 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col d-flex justify-content-center align-items-center">
-                                                    <img th:src="@{${'/images/ejercicios/' + ejercicioFavorito + '.png'}}"
-                                                        class="ejerFav w-75" alt="${ejercicioFavorito}">
+                                                    <img th:if="${ejercicioFavorito!='Sin datos'}" th:src="@{${'/images/ejercicios/' + ejercicioFavorito + '.png'}}"
+                                                        class="ejerFav w-75" th:alt="${ejercicioFavorito}">
                                                 </div>
                                             </div>
                                         </div>
