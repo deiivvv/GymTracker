@@ -26,7 +26,7 @@ mysql -u root -p
 
 La contraseña predeterminada es "root_password".
 
-## Acceder a los Logs de los Otros Contenedores
+## Acceder a los Logs de los Contenedores de la app y la api
 
 Puedes acceder a los logs de los contenedores de la aplicación y la API de GymTracker de la siguiente manera:
 
