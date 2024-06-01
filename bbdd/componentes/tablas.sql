@@ -56,3 +56,4 @@ CREATE TABLE rutinas_ejercicios_series (
     ON DELETE CASCADE,
   PRIMARY KEY (id_rutina, id_ejercicio, id_serie)
 );
+
