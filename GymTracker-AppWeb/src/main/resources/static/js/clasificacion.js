@@ -42,8 +42,8 @@ function selectOption(estadistica) {
 					tr.appendChild(tdNombre);
 					tr.appendChild(tdEntrenos);
 					tr.appendChild(tdEjercicios);
-					tr.appendChild(tdVolumen);
 					tr.appendChild(tdSeries);
+					tr.appendChild(tdVolumen);
 					tr.appendChild(tdUsuario);
 				}
 				usuariosIniciales();
