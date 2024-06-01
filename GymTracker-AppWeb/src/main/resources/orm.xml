@@ -28,6 +28,15 @@
         </attributes>
     </entity>
 
+    <entity class="com.dad.gymtracker.Dto.EstadisticasUsuarioDTO" name="EstadisticasUsuarioMapping">
+        <attributes>
+            <basic name="nombre"/>
+            <basic name="entrenos"/>
+            <basic name="ejercicios"/>
+            <basic name="volumen"/>
+            <basic name="series"/>
+        </attributes>
+    </entity>
   <!--  <entity class="com.ejemplo.OtraClaseDTO" name="OtraClaseMapping">
         &lt;!&ndash; Define el mapeo para OtraClaseDTO &ndash;&gt;
     </entity>-->

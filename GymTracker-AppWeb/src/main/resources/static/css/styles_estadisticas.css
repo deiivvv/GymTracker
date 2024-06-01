@@ -1,0 +1,47 @@
+body{
+    background-color: lightgrey;
+}
+
+.logo {
+	max-width: 37%;
+}
+
+.fade-in {
+    animation: fadeIn 1s;
+}
+
+.fade-outB {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
+.fade-inB {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeOutB {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+@keyframes fadeInB {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+@media only screen and (max-width: 768px){
+	
+	.ejerFav{
+        max-width: 35%;
+    }
+}

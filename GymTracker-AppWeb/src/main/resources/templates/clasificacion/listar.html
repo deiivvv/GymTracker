@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificación - GymTracker</title>
+    <link rel="shortcut icon" href="/images/logo/logoVerde.png">
+
+    <div th:replace="~{fragments/sidebar.html}"></div>
+    <link rel="stylesheet" href="/css/styles_clasificacion.css">
+    <script src="/js/clasificacion.js"></script>
+</head>
+
+<body onload="usuariosIniciales()">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-xl">
+            <div class="card shadow-lg">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-3 d-flex align-items-center justify-content-center">
+                            <img class="img-fluid logo" loading="lazy" src="/images/logo/logoVerde.png"
+                                 alt="Logo Gymtracker">
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <h1 class="text-center">Clasificación de usuarios</h1>
+                        </div>
+                        <div class="col-md-3 d-flex justify-content-center align-items-center">
+                            <button onclick="clase_activo()" class="btn btn-success" type="button"
+                                    data-bs-toggle="offcanvas" data-bs-target="#idSidebar" aria-controls="sidebar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-list" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                                </svg>
+                                Menú
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3  d-flex justify-content-center align-items-center">
+                            <div th:attr="onclick=|cambiarPagina('${pag}')|" class="btn btn-secondary d-flex mb-3 justify-content-center align-items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                     fill="currentColor" class="bi bi-person-fill"
+                                     viewBox="0 0 16 16">
+                                    <path
+                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="col-md-5 d-flex mb-3 justify-content-center align-items-center"></div>
+                        <div class="col-md-4 d-flex mb-3 justify-content-center align-items-center">
+                            <input type="hidden" id="idSelectHidden" name="select">
+                            <select id="idSelectRoles" class="btn border-success" onchange="selectOption(this)">
+                                <option value="entrenos">Entrenos</option>
+                                <option value="ejercicios">Ejercicios</option>
+                                <option value="series">Series</option>
+                                <option value="volumen">Volumen</option>
+                            </select>
+                        </div>
+                        <input id="idUsuario" type="hidden" th:value="${idUsuario}">
+                        <div class="row">
+                            <div class="col-md-12 table-responsive">
+                                <table class="table table-hover text-center">
+                                    <thead style="color:#fff; background-color:#000">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Entrenos</th>
+                                        <th>Ejercicios</th>
+                                        <th>Series</th>
+                                        <th>Volumen (kg)</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="idBodyUsuarios">
+                                    <tr th:each="usuario:${listaUsuarios}" id="idTrUsuarios">
+                                        <td class="align-middle" th:text="${usuario.nombre}"></td>
+                                        <td class="align-middle" th:text="${usuario.entrenos}"></td>
+                                        <td class="align-middle" th:text="${usuario.ejercicios}"></td>
+                                        <td class="align-middle" th:text="${usuario.series}"></td>
+                                        <td class="align-middle" th:text="${usuario.volumen}"></td>
+                                        <td>
+                                            <div th:if="${usuario.id==idUsuario}" class="btn btn-secondary">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor" class="bi bi-person-fill"
+                                                     viewBox="0 0 16 16">
+                                                    <path
+                                                            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                                                </svg>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <nav class="d-flex justify-content-end">
+                                    <input type="hidden" id="idPagHidden" name="pag" th:value="${pag}">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a id="idFirstPag" onclick="cambiarPagina(1)" class="page-link text-success"
+                                               aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <div id="idDivPaginas">
+                                        </div>
+                                        <li class="page-item">
+                                            <a id="idLastPag"
+                                               onclick="cambiarPagina(document.getElementById('idNumUltimaPag').value)"
+                                               class="page-link text-success" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <input id="idNumUltimaPag" type="hidden"></a>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

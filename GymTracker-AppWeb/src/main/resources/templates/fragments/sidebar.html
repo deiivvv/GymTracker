@@ -28,7 +28,7 @@
 				<li class="list-group-item list-group-item-action" id="inicio">
 					<a href="/menu" class="btn w-100 text-start">Inicio</a>
 				</li>
-				<li th:if="${rolUsuario == 'administrador'}" class="list-group-item list-group-item-action bg-primary"
+				<li th:if="${session.rolUsuario == 'administrador'}" class="list-group-item list-group-item-action bg-primary"
 					id="admin">
 					<a href="/admin" class="btn w-100 text-start text-white">Administrar usuarios</a>
 				</li>
@@ -40,6 +40,12 @@
 				</li>
 				<li class="list-group-item list-group-item-action" id="ejercicios">
 					<a href="/ejercicios" class="btn w-100 text-start">Ejercicios</a>
+				</li>
+				<li class="list-group-item list-group-item-action" id="estadisticas">
+					<a href="/estadisticas" class="btn w-100 text-start">Estadísticas</a>
+				</li>
+				<li class="list-group-item list-group-item-action" id="clasificacion">
+					<a href="/clasificacion" class="btn w-100 text-start">Clasificacion</a>
 				</li>
 				<li class="list-group-item list-group-item-action" id="nuestras-rutinas">
 					<a href="/nuestras-rutinas" class="btn w-100 text-start">Nuestras rutinas</a>
