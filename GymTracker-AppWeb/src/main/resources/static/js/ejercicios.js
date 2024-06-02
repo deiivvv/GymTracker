@@ -59,7 +59,7 @@ function crearCard(nombre, descripcion, id) {
     imgDiv.classList.add("d-flex", "justify-content-center");
 
     let imgElement = document.createElement("img");
-    imgElement.classList.add("card-img-top");
+    imgElement.classList.add("card-img-top", "mt-3");
 
     let cardBodyDiv = document.createElement("div");
     cardBodyDiv.classList.add("card-body");
