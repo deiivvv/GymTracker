@@ -20,7 +20,7 @@ INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('p
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('deadlift rumano', 'espalda baja, isquiotibiales, gluteos', 'Ejercicio para la parte posterior del cuerpo', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('burpees', 'multiples', 'Ejercicio cardiovascular y de fuerza', 'peso corporal');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de banca inclinado', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'pesas');
-INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('fondos en anillas', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'peso corporal');
+INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('flexion en pica', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'peso corporal');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('pajaros', 'deltoides', 'Ejercicio para el desarrollo de los hombros', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('sentadillas frontales', 'cuadriceps, gluteos', 'Ejercicio para piernas y gluteos', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de banca declinado', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'pesas');
