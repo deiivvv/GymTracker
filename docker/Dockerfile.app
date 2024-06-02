@@ -7,7 +7,7 @@ COPY GymTracker-0.0.1-SNAPSHOT.jar /app/app.jar
 # Copia el script wait-for-it
 COPY wait-for-it.sh /app/wait-for-it.sh
 
-# Asegúrate de que el script wait-for-it.sh tenga permisos de ejecución
+# Para que el script wait-for-it.sh tenga permisos de ejecución
 RUN chmod +x /app/wait-for-it.sh
 
 # Establecer el directorio de trabajo
