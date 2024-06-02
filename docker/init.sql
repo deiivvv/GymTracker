@@ -1,11 +1,19 @@
+-- Asegurarse de usar UTF-8
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
+
 DROP DATABASE IF EXISTS gymtracker;
+CREATE DATABASE gymtracker CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE DATABASE gymtracker;
 
 DROP USER IF EXISTS 'dad'@'localhost';
 CREATE USER 'dad'@'localhost' IDENTIFIED BY 'padre';
 GRANT ALL PRIVILEGES ON gymtracker.* TO 'dad'@'localhost';
 
+-- Asegurarse de usar UTF-8 para la conexión
 USE gymtracker;
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
 
 CREATE TABLE usuarios (
   id INT AUTO_INCREMENT,
