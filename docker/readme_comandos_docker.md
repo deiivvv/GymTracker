@@ -1,4 +1,15 @@
-```markdown
+## Ejecutar Docker Compose para Generar o Iniciar los Contenedores
+
+```bash
+docker-compose -p contenedor-gymtracker up --build
+```
+
+Este comando genera los contenedores de GymTracker y los inicia. Si es la primera vez que se ejecuta este comando o si se realizaron cambios en la configuración, se reconstruirán las imágenes de Docker antes de iniciar los contenedores.
+
+## Parar Dockers
+
+Para detener los contenedores de GymTracker, presiona Ctrl + C en la terminal donde se están ejecutando.
+
 ## Ver Contenedores
 
 ```bash
@@ -50,16 +61,3 @@ docker volume rm contenedor-gymtracker_db_data
 ```
 
 Este comando elimina el volumen llamado "contenedor-gymtracker_db_data", utilizado por la base de datos de GymTracker.
-
-## Ejecutar Docker Compose para Generar o Iniciar los Contenedores
-
-```bash
-docker-compose -p contenedor-gymtracker up --build
-```
-
-Este comando genera los contenedores de GymTracker y los inicia. Si es la primera vez que se ejecuta este comando o si se realizaron cambios en la configuración, se reconstruirán las imágenes de Docker antes de iniciar los contenedores.
-
-## Parar Dockers
-
-Para detener los contenedores de GymTracker, presiona Ctrl + C en la terminal donde se están ejecutando.
-```
