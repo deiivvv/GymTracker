@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS gymtracker;
 CREATE DATABASE gymtracker;
 
