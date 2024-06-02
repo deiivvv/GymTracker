@@ -1,4 +1,4 @@
-INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('sentadilla con barra', 'cuadriceps, gluteos', 'Ejercicio para piernas y gluteos', 'pesas');
+INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('sentadillas con barra', 'cuadriceps, gluteos', 'Ejercicio para piernas y gluteos', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de banca', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('dominadas', 'espalda, biceps', 'Ejercicio para la espalda y biceps', 'peso corporal');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('peso muerto', 'espalda baja, isquiotibiales, gluteos', 'Ejercicio para la espalda baja, gluteos y piernas', 'pesas');
@@ -17,7 +17,7 @@ INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('h
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('elevaciones de talones', 'gemelos', 'Ejercicio para los musculos de la pantorrilla', 'maquina');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('hiperextensiones', 'espalda baja, isquiotibiales, gluteos', 'Ejercicio para la parte posterior del cuerpo', 'maquina');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de hombros con mancuernas', 'deltoides', 'Ejercicio para el desarrollo de los hombros', 'pesas');
-INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('sentadilla', 'cuadriceps, gluteos', 'Ejercicio para piernas y gluteos', 'peso corporal');
+INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('sentadillas', 'cuadriceps, gluteos', 'Ejercicio para piernas y gluteos', 'peso corporal');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('burpees', 'multiples', 'Ejercicio cardiovascular y de fuerza', 'peso corporal');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de banca inclinado', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('flexiones en pica', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'peso corporal');
@@ -26,7 +26,7 @@ INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('s
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de banca declinado', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('curl de biceps en polea baja', 'biceps', 'Ejercicio para el desarrollo de los biceps', 'polea');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de hombros con barra', 'deltoides', 'Ejercicio para el desarrollo de los hombros', 'pesas');
-INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('sentadilla pistola', 'cuadriceps, gluteos', 'Ejercicio para piernas y gluteos', 'peso corporal');
+INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('sentadillas pistola', 'cuadriceps, gluteos', 'Ejercicio para piernas y gluteos', 'peso corporal');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('pullover', 'pectorales, espalda, triceps', 'Ejercicio para el pecho, espalda y triceps', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('hip thrust en banco', 'gluteos', 'Ejercicio para gluteos y parte baja de la espalda', 'peso corporal');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('extensiones de triceps con mancuerna', 'triceps', 'Ejercicio para el triceps', 'pesas');
