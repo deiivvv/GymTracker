@@ -15,7 +15,10 @@ function cargarEjercicios(url, callback) {
                 seleccionable();
             }
             
-            callback();
+            if(callback!=null){
+				callback();	
+			}
+            
 		})
 		.catch(function(error) {
 			console.error('Error al obtener los ejercicios:', error);
