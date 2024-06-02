@@ -1,6 +1,5 @@
 
 DROP DATABASE IF EXISTS gymtracker;
-CREATE DATABASE gymtracker CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE DATABASE gymtracker;
 
 DROP USER IF EXISTS 'dad'@'localhost';
