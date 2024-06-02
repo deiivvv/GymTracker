@@ -6,7 +6,7 @@ docker-compose -p contenedor-gymtracker up --build
 
 Este comando genera los contenedores de GymTracker y los inicia. Si es la primera vez que se ejecuta este comando o si se realizaron cambios en la configuración, se reconstruirán las imágenes de Docker antes de iniciar los contenedores.
 
-## Parar Dockers
+## Parar Contenedores
 
 Para detener los contenedores de GymTracker, presiona Ctrl + C en la terminal donde se están ejecutando.
 
