@@ -33,7 +33,7 @@ INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('e
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('flexiones diamante', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'peso corporal');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('elevaciones frontales con mancuernas', 'deltoides', 'Ejercicio para el desarrollo de los hombros', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('zancadas inversas', 'cuadriceps, gluteos', 'Ejercicio para piernas y gluteos', 'peso corporal');
-INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('dominadas en agarre cerrado', 'espalda, biceps', 'Ejercicio para la espalda y biceps', 'peso corporal');
+INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('dominadas australianas', 'espalda, biceps', 'Ejercicio para la espalda y biceps', 'peso corporal');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de banca con mancuernas', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('face pull', 'deltoides, trapecio', 'Ejercicio para el desarrollo de los hombros y trapecio', 'polea');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('peso muerto rumano con mancuernas', 'espalda baja, isquiotibiales, gluteos', 'Ejercicio para la parte posterior del cuerpo', 'pesas');
