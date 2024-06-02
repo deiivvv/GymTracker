@@ -123,7 +123,7 @@ insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, 'Piernas y Gl
 SET @id_rutina_3 = LAST_INSERT_ID();
 
 insert into ejercicios(id, nombre) values
-(1, 'sentadillas'),
+(1, 'sentadillas con barra'),
 (4, 'peso muerto'),
 (10, 'zancadas'),
 (16, 'hip thrust'),
