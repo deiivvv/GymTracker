@@ -10,12 +10,12 @@ insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, 'Pecho y Trí
 SET @id_rutina_1 = LAST_INSERT_ID();
 
 insert into ejercicios(id, nombre) values
-(2, 'press banca'),
+(2, 'press de banca'),
 (5, 'fondos en paralelas'),
 (14, 'extensiones de triceps en polea alta'),
 (33, 'flexiones diamante'),
 (37, 'press de banca con mancuernas'),
-(43, 'pulldown con polea alta');
+(43, 'pullover en maquina');
 
 insert into series(peso, repes) values(0, 0);
 SET @id_serie_1 = LAST_INSERT_ID();

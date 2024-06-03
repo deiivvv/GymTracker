@@ -12,12 +12,12 @@ insert into rutinas(id_usuario, nombre, fecha) values(@id_usuario, 'Pecho y Trí
 SET @id_rutina_1 = LAST_INSERT_ID();
 
 insert into ejercicios(id, nombre) values
-(2, 'press banca'),
+(2, 'press de banca'),
 (5, 'fondos en paralelas'),
 (14, 'extensiones de triceps en polea alta'),
 (33, 'flexiones diamante'),
 (37, 'press de banca con mancuernas'),
-(43, 'pulldown con polea alta');
+(43, 'pullover en maquina');
 
 insert into series(peso, repes) values(0, 0);
 SET @id_serie_1 = LAST_INSERT_ID();
@@ -94,7 +94,7 @@ INSERT INTO perfil (id_usuario, genero, edad, altura, peso) VALUES (LAST_INSERT_
 -- Obtener el ID del ejercicio 'sentadillas' 
 SET @id_sentadillas = 1;
 
--- Obtener el ID del ejercicio 'press banca' 
+-- Obtener el ID del ejercicio 'press de banca' 
 SET @id_press_banca = 2;
 
 -- Insertar series para el ejercicio 'sentadillas'
@@ -108,15 +108,15 @@ INSERT INTO series (peso, repes) VALUES
 -- Obtener el ID de la serie insertada para 'sentadillas'
 SET @id_serie_sentadillas_2 = LAST_INSERT_ID();
 
--- Insertar series para el ejercicio 'press banca'
+-- Insertar series para el ejercicio 'press de banca'
 INSERT INTO series (peso, repes) VALUES
 (50, 20);
--- Obtener el ID de la serie insertada para 'press banca'
+-- Obtener el ID de la serie insertada para 'press de banca'
 SET @id_serie_press_banca_1 = LAST_INSERT_ID();
 
 INSERT INTO series (peso, repes) VALUES
 (100, 1);
--- Obtener el ID de la serie insertada para 'press banca'
+-- Obtener el ID de la serie insertada para 'press de banca'
 SET @id_serie_press_banca_2 = LAST_INSERT_ID();
 
 -- Insertar rutina 'rutina1' asociada al usuario 'damago'
@@ -132,7 +132,7 @@ INSERT INTO rutinas_ejercicios_series (id_rutina, id_ejercicio, id_serie) VALUES
 (@id_rutina_rutina1, @id_sentadillas, @id_serie_sentadillas_1),
 (@id_rutina_rutina1, @id_sentadillas, @id_serie_sentadillas_2);
 
--- Para el ejercicio 'press banca'
+-- Para el ejercicio 'press de banca'
 INSERT INTO rutinas_ejercicios_series (id_rutina, id_ejercicio, id_serie) VALUES
 (@id_rutina_rutina1, @id_press_banca, @id_serie_press_banca_1),
 (@id_rutina_rutina1, @id_press_banca, @id_serie_press_banca_2);
