@@ -1,5 +1,5 @@
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('sentadillas con barra', 'cuadriceps, gluteos', 'Ejercicio para piernas y gluteos', 'pesas');
-INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press banca', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'pesas');
+INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('press de banca', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('dominadas', 'espalda, biceps', 'Ejercicio para la espalda y biceps', 'peso corporal');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('peso muerto', 'espalda baja, isquiotibiales, gluteos', 'Ejercicio para la espalda baja, gluteos y piernas', 'pesas');
 INSERT INTO ejercicioORM (nombre, musculo, descripcion, equipamiento) VALUES ('fondos en paralelas', 'pectorales, triceps', 'Ejercicio para el pecho y triceps', 'peso corporal');
