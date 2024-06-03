@@ -1,8 +1,8 @@
-package com.example.apiejercicios.repositorio;
+package com.apiejercicios.repositorio;
 
 import java.util.List;
 
-import com.example.apiejercicios.orm.EjercicioORM;
+import com.apiejercicios.orm.EjercicioORM;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 

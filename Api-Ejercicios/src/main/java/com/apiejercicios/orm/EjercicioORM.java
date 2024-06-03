@@ -1,4 +1,4 @@
-package com.example.apiejercicios.orm;
+package com.apiejercicios.orm;
 
 import java.util.Objects;
 

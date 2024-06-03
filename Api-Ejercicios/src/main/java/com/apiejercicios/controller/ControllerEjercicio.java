@@ -1,14 +1,10 @@
-package com.example.apiejercicios.controller;
+package com.apiejercicios.controller;
 
-import com.example.apiejercicios.orm.EjercicioORM;
-import com.example.apiejercicios.repositorio.RepositoryEjercicio;
+import com.apiejercicios.orm.EjercicioORM;
+import com.apiejercicios.repositorio.RepositoryEjercicio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class ControllerEjercicio {
