@@ -20,27 +20,6 @@ public class MenuController {
 
 	private final UsuarioService usuarioService;
 
-    @RequestMapping("/inicio")
-    @PreAuthorize("permitAll()")
-    public String inicioSesion(@ModelAttribute UsuarioDTO usuario,
-                       HttpSession session, Model model){
-    	UsuarioDTO usuarioDTOBD=usuarioService.buscarUsuarioByNombreAndContrasena(usuario.getNombre(), usuario.getContrasena());
-    	if(usuarioDTOBD==null) {
-    		model.addAttribute("mensajeErrorWarning", "Usuario o contraseña incorrectos");
-    		model.addAttribute("usuario", new UsuarioDTO());
-            return "login/inicioSesion";
-    	}else if(usuarioDTOBD.getRol().equals("bloqueado")){
-            model.addAttribute("mensajeErrorDanger", "Usuario bloqueado");
-            model.addAttribute("usuario", new UsuarioDTO());
-            return "login/inicioSesion";
-        }
-        session.setAttribute("idUsuario", usuarioDTOBD.getId());
-        session.setAttribute("rolUsuario", usuarioDTOBD.getRol());
-        return "redirect:/menu";
-
-    }
-
-
     @RequestMapping("/menu")
     @PreAuthorize("permitAll()")
     public String menu(@RequestParam(required = false) String admin,
@@ -54,8 +33,6 @@ public class MenuController {
                 return "redirect:/?error=bloqueado";
             }
         }
-
-//        if(session.getAttribute("idUsuario")==null) return "redirect:/cerrar-sesion";
         model.addAttribute("rolUsuario", session.getAttribute("rolUsuario"));
         return "menu";
     }
