@@ -25,9 +25,7 @@ function selectOption(estadistica) {
 					let tdSeries = document.createElement("td");
 					tdSeries.innerHTML = usuario.series
 					let tdUsuario = document.createElement("td");
-					console.log(usuario.id);
-					let idUsuario = document.getElementById("idUsuario").value;
-					console.log(idUsuario);
+					
 					if (usuario.id === parseInt(document.getElementById("idUsuario").value)) {
 						tdUsuario.innerHTML = '<div class="btn btn-secondary">\n' +
 							'                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"\n' +

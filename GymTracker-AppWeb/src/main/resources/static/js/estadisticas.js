@@ -87,8 +87,8 @@ $(document).ready(function(){
 
 function cargarEstadisticas(){
        musculos.forEach((m)=>{
-        let url=`http://localhost:8081/ejercicios/buscar?musculo=${m}`;
-        //let url=`http://gymtracker.duckdns.org:8081/ejercicios/buscar?musculo=${m}`;
+        let url=`https://localhost:8081/ejercicios/buscar?musculo=${m}`;
+        // let url=`https://gymtracker.duckdns.org:8081/ejercicios/buscar?musculo=${m}`;
         axios.get(url)
 		.then(function(response) {
               let ejercicios = response.data;
@@ -104,15 +104,13 @@ function cargarEstadisticas(){
 }
 
 function contarEjercicios(musculo, ids) {
-	let url=`https://localhost/estadisticas/contar?ids=${ids}`
-	axios.get(url)
+	axios.get(`/estadisticas/contar?ids=${ids}`)
 		.then(function(response) {
             crearBarra(musculo, response.data);
             })
             .catch(function(error) {
                  console.error('Error al enviar los IDs a estadísticas:', error);
             })
-        
  }
   
  function crearBarra(label, value){

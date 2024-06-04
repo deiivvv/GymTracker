@@ -39,8 +39,6 @@
 
     let dia = 1;
     mes++;
-    console.log(fechas.includes=== (ano+"-0"+mes+"-0"+dia))
-    console.log((ano+"-0"+mes+"-0"+dia))
     for (let i = 0; i < 6; i++) {
       html += '<tr>';
       for (let j = 0; j < 7; j++) {
