@@ -32,7 +32,6 @@ public class DataLoader implements CommandLineRunner {
         List<UsuarioDTO> usuarioDTOList = usuarioService.buscarAllUsuarios();
         for (UsuarioDTO usuarioDTO : usuarioDTOList) {
             UserDetails user = User.withUsername(usuarioDTO.getNombre())
-/*                    .password(passwordEncoder.encode(usuarioDTO.getContrasena()))*/
                     .password(usuarioDTO.getContrasena())
                     .roles(usuarioDTO.getRol().toUpperCase())
                     .build();
